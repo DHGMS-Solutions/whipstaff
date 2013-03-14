@@ -1,0 +1,21 @@
+﻿<vw:ThemeSelectorView x:Class="Dhgms.Whipstaff.ShowCase.View.ThemeSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        Title="ThemeSelector" Height="300" Width="300">
+    <Grid>
+        <ListView>
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.Visibility" Value="Collapsed"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridView.Columns>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</vw:ThemeSelectorView>

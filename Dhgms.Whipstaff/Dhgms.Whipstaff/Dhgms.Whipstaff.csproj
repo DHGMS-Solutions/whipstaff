@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6DF6E098-BFDD-430F-BCD1-3CE891F1752E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dhgms.Whipstaff</RootNamespace>
+    <AssemblyName>Dhgms.Whipstaff</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- Multi Framework Targetting -->
+  <PropertyGroup Condition="  '$(Framework)' == 'NET40' ">
+    <DefineConstants>NET40</DefineConstants>
+    <OutputPath>bin\$(Configuration)\$(Framework)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="  '$(Framework)' == 'NET45' ">
+    <DefineConstants>NET45</DefineConstants>
+    <OutputPath>bin\$(Configuration)\$(Framework)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Framework Condition=" '$(Framework)' == '' ">NET45</Framework>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <MSBuild Condition=" '$(Framework)' != 'NET40'" Projects="$(MSBuildProjectFile)" Properties="Framework=NET40" RunEachTargetSeparately="true" />
+  </Target>
+  <!-- End of Multi Framework Targetting -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>dhgms.whipstaff.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dhgms.DataManager">
+      <HintPath>..\packages\Dhgms.DataManager.0.1301.1.0\lib\net40\Dhgms.DataManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Dhgms.DataManager.Provider">
+      <HintPath>..\packages\Dhgms.DataManager.Provider.0.1302.5.0\lib\net40\Dhgms.DataManager.Provider.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.14-rc\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.14-rc\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.14-rc\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAPICodePack">
+      <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ExtendedLinguisticServices">
+      <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.ExtendedLinguisticServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Sensors">
+      <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.Sensors.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions">
+      <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReactiveUI, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-core.4.4.1\lib\Net40\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Blend, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-xaml.4.4.1\lib\Net40\ReactiveUI.Blend.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Routing, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-xaml.4.4.1\lib\Net40\ReactiveUI.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Xaml, Version=4.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-xaml.4.4.1\lib\Net40\ReactiveUI.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="RibbonControlsLibrary, Version=4.0.0.11019, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ThirdParty\RibbonControl\RibbonControlsLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Reactive.Core, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net40\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net40\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net40\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net40\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading, Version=2.1.30214.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Xaml.2.1.30214.0\lib\Net40\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.16-rc\lib\net40\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.1.0.16-rc\lib\net40\System.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controller\Application.cs" />
+    <Compile Include="Model\FeatureUsageTracking.cs" />
+    <Compile Include="Model\Helper\HResult.cs" />
+    <Compile Include="Model\Info\ChangeLog.cs" />
+    <Compile Include="Model\Info\KeyboardMapping.cs" />
+    <Compile Include="Model\Info\SecurityProvider.cs" />
+    <Compile Include="Model\Info\SecurityProviderHealth.cs" />
+    <Compile Include="Model\ProviderBase\ChangeLog.cs" />
+    <Compile Include="Model\ProviderBase\FeatureUsageTracking.cs" />
+    <Compile Include="Model\ProviderCollection\FeatureUsageTracking.cs" />
+    <Compile Include="Model\ProviderProxy\FeatureUsageTracking.cs" />
+    <Compile Include="Model\ProviderSection\FeatureUsageTracking.cs" />
+    <Compile Include="Model\Provider\ChangeLog\WebService\Base.cs" />
+    <Compile Include="Model\SingleInstance\ApplicationDispatcherInvoker.cs" />
+    <Compile Include="Model\SingleInstance\ArgumentsDeliveryStrategy.cs" />
+    <Compile Include="Model\ControlData\Button\ButtonItem.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ApplicationMenuItemData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ApplicationSplitMenuItemData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ButtonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\CheckBoxData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ComboBoxData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ContextualTabGroupData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ControlData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\DelegateCommand.cs" />
+    <Compile Include="Model\ControlData\Ribbon\GalleryCategoryData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\GalleryData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\GalleryItemData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\GroupData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\MenuButtonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\MenuItemData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\RadioButtonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\RibbonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\SeparatorData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\SplitButtonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\SplitMenuItemData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\TabData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\TextBoxData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ToggleButtonData.cs" />
+    <Compile Include="Model\ControlData\Ribbon\ViewModelData.cs" />
+    <Compile Include="Model\ControlData\StatusBar\StatusBarItem.cs" />
+    <Compile Include="Model\ControlData\SystemNotificationArea\ContextMenuControlData.cs" />
+    <Compile Include="Model\ControlData\SystemNotificationArea\ContextMenuItem.cs" />
+    <Compile Include="Model\SingleInstance\DeliveryStrategyFactory.cs" />
+    <Compile Include="Model\Excptn\ApplicationCompatabilityModeException.cs" />
+    <Compile Include="Model\Excptn\ApplicationInstanceAlreadyExistsException.cs" />
+    <Compile Include="Model\Excptn\OperatingSystem\LessThanMinimumVersion.cs" />
+    <Compile Include="Model\Excptn\Security\AntiSpyware\NotFound.cs" />
+    <Compile Include="Model\Excptn\Security\AntiSpyware\UnexpectedProductState.cs" />
+    <Compile Include="Model\Excptn\Security\AntiVirus\NotFound.cs" />
+    <Compile Include="Model\Excptn\Security\AntiVirus\UnexpectedProductState.cs" />
+    <Compile Include="Model\Excptn\Security\Firewall\NotFound.cs" />
+    <Compile Include="Model\Excptn\Security\Firewall\UnexpectedProductState.cs" />
+    <Compile Include="Model\Excptn\Security\TerminalServerSessionNotAllowed.cs" />
+    <Compile Include="Model\Helper\CommandLine.cs" />
+    <Compile Include="Model\Helper\ICommandLine.cs" />
+    <Compile Include="Model\Helper\SecurityCenter\AntiSpyware.cs" />
+    <Compile Include="Model\Helper\SecurityCenter\AntiVirus.cs" />
+    <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
+    <Compile Include="Model\Helper\SecurityCenter\Firewall.cs" />
+    <Compile Include="Model\Helper\SystemIntegrity.cs" />
+    <Compile Include="Model\Info\CommandLineArguments.cs" />
+    <Compile Include="Model\Info\GroupPolicy\Window.cs" />
+    <Compile Include="Model\Info\OperatingSystemFeatureSet.cs" />
+    <Compile Include="Model\Info\Registry\Window.cs" />
+    <Compile Include="Model\SingleInstance\InstanceNotificationOption.cs" />
+    <Compile Include="Model\Interface\IArgumentsHandlerInvoker.cs" />
+    <Compile Include="Model\ProgramHandler.cs" />
+    <Compile Include="Model\Remoting\RemotingStrategy.cs" />
+    <Compile Include="Model\Remoting\RemotingStrategyFactory.cs" />
+    <Compile Include="Model\SingleInstance\SingleInstance.cs" />
+    <Compile Include="Model\SingleInstance\SingleInstanceManagerSetup.cs" />
+    <Compile Include="Model\SpeechSynthesizer.cs" />
+    <Compile Include="Model\SingleInstance\TerminationOption.cs" />
+    <Compile Include="Model\SingleInstance\ThreadPoolInvoker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
+    <Compile Include="ViewModel\Base.cs" />
+    <Compile Include="ViewModel\BaseClosable.cs" />
+    <Compile Include="ViewModel\BaseSavable.cs" />
+    <Compile Include="ViewModel\ChangeLogViewModel.cs" />
+    <Compile Include="ViewModel\DiagnosticViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IAboutViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IChangeLogViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IClosableViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IDiagnosticViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IFeatureUsageTracking.cs" />
+    <Compile Include="ViewModel\Interface\IKeyboardViewModel.cs" />
+    <Compile Include="ViewModel\Interface\ILoggingConsoleViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IOptionsViewModel.cs" />
+    <Compile Include="ViewModel\Interface\IPermissionsListViewModel.cs" />
+    <Compile Include="ViewModel\Interface\ISavableViewModel.cs" />
+    <Compile Include="ViewModel\Interface\ISplashScreenViewModel.cs" />
+    <Compile Include="ViewModel\Interface\ISystemNotificationAreaViewModel.cs" />
+    <Compile Include="ViewModel\KeyboardViewModel.cs" />
+    <Compile Include="ViewModel\OptionsViewModel.cs" />
+    <Compile Include="ViewModel\SplashScreenViewModel.cs" />
+    <Compile Include="View\Wndw\ChangeLog.xaml.cs">
+      <DependentUpon>ChangeLog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\Generic\AboutView.cs" />
+    <Compile Include="View\Wndw\Generic\BaseView.cs" />
+    <Compile Include="View\Wndw\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\Generic\ChangeLogView.cs" />
+    <Compile Include="View\Wndw\Generic\DiagnosticView.cs" />
+    <Compile Include="View\Wndw\Generic\KeyboardView.cs" />
+    <Compile Include="View\Wndw\Generic\OptionsView.cs" />
+    <Compile Include="View\Wndw\Generic\SplashScreenView.cs" />
+    <Compile Include="View\Wndw\Options.xaml.cs">
+      <DependentUpon>Options.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\Diagnostic.xaml.cs">
+      <DependentUpon>Diagnostic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\Keyboard.xaml.cs">
+      <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\SystemNotificationArea.xaml.cs">
+      <DependentUpon>SystemNotificationArea.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="dhgms.whipstaff.snk" />
+    <EmbeddedResource Include="Resource\Font\opendyslexic.ttf" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\Provider\FeatureUsageTracking\" />
+    <Folder Include="View\Ctrl\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\Wndw\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\ChangeLog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\Options.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\Diagnostic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\Keyboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Wndw\SystemNotificationArea.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ThirdParty\wpf-notifyicon\NotifyIconWpf\NotifyIconWpf.csproj">
+      <Project>{7ac63864-7638-41c4-969c-d3197ef2bed9}</Project>
+      <Name>NotifyIconWpf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.0-rc\tools\Microsoft.Bcl.Build.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
