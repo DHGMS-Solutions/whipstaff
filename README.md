@@ -1,4 +1,4 @@
-# WSUS Smart Approve
+# Whipstaff
 
 ## Introduction
 
