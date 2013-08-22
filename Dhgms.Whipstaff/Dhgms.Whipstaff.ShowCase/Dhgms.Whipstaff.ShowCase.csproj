@@ -87,20 +87,37 @@
     <Reference Include="Dhgms.DataManager">
       <HintPath>..\packages\Dhgms.DataManager.0.1301.1.0\lib\net40\Dhgms.DataManager.dll</HintPath>
     </Reference>
-    <Reference Include="Dhgms.DataManager.EntityFramework">
-      <HintPath>..\packages\Dhgms.DataManager.EntityFramework.0.1305.4.1\lib\net40\Dhgms.DataManager.EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ReactiveUI">
+      <HintPath>..\packages\reactiveui-core.5.1.2\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Blend">
+      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Blend.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Xaml">
+      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Windows.Threading">
+      <HintPath>..\packages\Rx-XAML.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime">
       <HintPath>..\packages\Microsoft.Bcl.1.0.16-rc\lib\net40\System.Runtime.dll</HintPath>
     </Reference>
@@ -131,11 +148,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ServerDifference.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Helper\EntityFramework.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityFramework.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Helper\GridUtils.cs" />
     <Compile Include="Model\Info\CommandStatus.cs" />
@@ -387,10 +399,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ServerDifference.cs</LastGenOutput>
     </None>
-    <None Include="Model\Helper\EntityFramework.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntityFramework.cs</LastGenOutput>
-    </None>
     <None Include="Model\Info\Server.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Server.cs</LastGenOutput>
@@ -421,6 +429,10 @@
     <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
       <Project>{A3DD6754-6E83-4C13-9B82-B6E10F46CAB9}</Project>
       <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dhgms.Whipstaff\Dhgms.Whipstaff.csproj">
+      <Project>{4a63bf10-4c22-4ac9-bd0d-1f7880c98ecb}</Project>
+      <Name>Dhgms.Whipstaff</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
