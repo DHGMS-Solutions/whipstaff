@@ -12,6 +12,6 @@ namespace Dhgms.Whipstaff.ViewModel
         /// <summary>
         /// Gets or sets the collection of changes
         /// </summary>
-        string[] Changes { get; set; }
+        ReactiveList<Model.Info.VersionHistory> Versions { get; set; }
     }
 }

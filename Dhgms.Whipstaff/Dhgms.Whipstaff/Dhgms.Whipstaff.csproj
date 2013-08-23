@@ -139,7 +139,7 @@
     <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Firewall.cs" />
     <Compile Include="Model\Helper\SystemIntegrity.cs" />
-    <Compile Include="Model\Info\ChangeLog.cs" />
+    <Compile Include="Model\Info\VersionHistory.cs" />
     <Compile Include="Model\Info\CommandLineArguments.cs" />
     <Compile Include="Model\Info\GroupPolicy\Window.cs" />
     <Compile Include="Model\Info\KeyboardMapping.cs" />
@@ -147,6 +147,7 @@
     <Compile Include="Model\Info\Registry\Window.cs" />
     <Compile Include="Model\Info\SecurityProvider.cs" />
     <Compile Include="Model\Info\SecurityProviderHealth.cs" />
+    <Compile Include="Model\Info\ValidationIndicator.cs" />
     <Compile Include="Model\Interface\IArgumentsHandlerInvoker.cs" />
     <Compile Include="Model\ProgramHandler.cs" />
     <Compile Include="Model\ProviderBase\ChangeLog.cs" />
@@ -172,22 +173,39 @@
     <Compile Include="ViewModel\BaseClosable.cs" />
     <Compile Include="ViewModel\BaseSavable.cs" />
     <Compile Include="ViewModel\ChangeLogViewModel.cs" />
+    <Compile Include="ViewModel\Ctrl\SingleLineTextInputControlViewModel.cs" />
     <Compile Include="ViewModel\DiagnosticViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IAboutViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IChangeLogViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IClosableViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IDiagnosticViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IFeatureUsageTracking.cs" />
-    <Compile Include="ViewModel\Interface\IKeyboardViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ILoggingConsoleViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IOptionsViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IPermissionsListViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ISavableViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ISplashScreenViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ISystemNotificationAreaViewModel.cs" />
+    <Compile Include="ViewModel\IntegerTextBoxViewModel.cs" />
+    <Compile Include="ViewModel\IAboutViewModel.cs" />
+    <Compile Include="ViewModel\IChangeLogViewModel.cs" />
+    <Compile Include="ViewModel\IClosableViewModel.cs" />
+    <Compile Include="ViewModel\IDiagnosticViewModel.cs" />
+    <Compile Include="ViewModel\IFeatureUsageTracking.cs" />
+    <Compile Include="ViewModel\IKeyboardViewModel.cs" />
+    <Compile Include="ViewModel\ILoggingConsoleViewModel.cs" />
+    <Compile Include="ViewModel\IOptionsViewModel.cs" />
+    <Compile Include="ViewModel\IPermissionsListViewModel.cs" />
+    <Compile Include="ViewModel\ISavableViewModel.cs" />
+    <Compile Include="ViewModel\Ctrl\ISingleLineTextInputControlViewModel.cs" />
+    <Compile Include="ViewModel\ISplashScreenViewModel.cs" />
+    <Compile Include="ViewModel\ISystemNotificationAreaViewModel.cs" />
     <Compile Include="ViewModel\KeyboardViewModel.cs" />
     <Compile Include="ViewModel\OptionsViewModel.cs" />
     <Compile Include="ViewModel\SplashScreenViewModel.cs" />
+    <Compile Include="ViewModel\TextBoxViewControl.cs" />
+    <Compile Include="View\Ctrl\ChangeLogControl.xaml.cs">
+      <DependentUpon>ChangeLogControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Ctrl\Generic\BaseControl.cs" />
+    <Compile Include="View\Ctrl\Generic\SingleLineTextInputControlGeneric.cs" />
+    <Compile Include="View\Ctrl\IntegerTextBoxControl.cs" />
+    <Compile Include="View\Ctrl\MoneyTextBoxControl.cs" />
+    <Compile Include="View\Ctrl\SingleLineCardPanInputControl.cs" />
+    <Compile Include="View\Ctrl\SingleLineIntegerInputControl.cs" />
+    <Compile Include="View\Ctrl\SingleLineMoneyInputControl.cs" />
+    <Compile Include="View\Ctrl\SingleLineTextInputControl.xaml.cs">
+      <DependentUpon>SingleLineTextInputControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Wndw\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -221,6 +239,14 @@
     <EmbeddedResource Include="Resource\Font\opendyslexic.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\Ctrl\ChangeLogControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Ctrl\SingleLineTextInputControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Wndw\About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -258,6 +284,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\Interface\" />
+    <Folder Include="ViewModel\Wndw\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
