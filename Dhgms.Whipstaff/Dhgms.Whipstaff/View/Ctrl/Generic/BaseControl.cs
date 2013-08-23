@@ -1,35 +1,26 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="BaseView.cs" company="DHGMS Solutions">
-//   Copyright 2012. Some Rights Reserved.
-// </copyright>
-// <summary>
-//   BaseView class for a view
-// </summary>
-// --------------------------------------------------------------------------------------------------------------------
+﻿using ReactiveUI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
-namespace Dhgms.Whipstaff.View.Wndw.Generic
+namespace Dhgms.Whipstaff.View.Ctrl.Generic
 {
-    using System;
-    using System.Windows;
-
-    using ReactiveUI;
-
     /// <summary>
-    /// BaseView class for a view
+    /// BaseView class for a control
     /// </summary>
     /// <typeparam name="TView">
     /// The type for the view
     /// </typeparam>
-    /// <typeparam name="TViewModelInterface">
-    /// The type for the view model interface
-    /// </typeparam>
     /// <typeparam name="TViewModel">
     /// The type for the view model
     /// </typeparam>
-    public class BaseView<TView, TViewModelInterface, TViewModel> : Window, IViewFor<TViewModelInterface>
+    public class BaseControl<TView, TViewModel> : UserControl, IViewFor<TViewModel>
         where TView : class
-        where TViewModelInterface : class
-        where TViewModel : class, TViewModelInterface, IRoutableViewModel, new()
+        where TViewModel : class, IRoutableViewModel, new()
     {
         /// <summary>
         /// Dependency Property for the view model
@@ -37,17 +28,10 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
 // ReSharper disable StaticFieldInGenericType
         public static readonly DependencyProperty ViewModelProperty =
 // ReSharper restore StaticFieldInGenericType
-            DependencyProperty.Register("ViewModel", typeof(TViewModelInterface), typeof(TView), new PropertyMetadata(null));
+            DependencyProperty.Register("ViewModel", typeof(TViewModel), typeof(TView), new PropertyMetadata(null));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseView{TView,TViewModelInterface,TViewModel}"/> class.
-        /// </summary>
-        public BaseView() : this(new TViewModel())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseView{TView,TViewModelInterface,TViewModel}"/> class.
+        /// Initializes a new instance of the <see cref="BaseControl{TView,TViewModelInterface,TViewModel}"/> class.
         /// </summary>
         /// <param name="viewModel">
         /// The view model.
@@ -55,7 +39,7 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
         /// <exception cref="ArgumentNullException">
         /// No view model was passed.
         /// </exception>
-        public BaseView(TViewModel viewModel)
+        public BaseControl(TViewModel viewModel)
         {
             /*
             if (viewModel == null)
@@ -80,18 +64,18 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
 
             set
             {
-                this.ViewModel = (TViewModelInterface)value;
+                this.ViewModel = (TViewModel)value;
             }
         }
 
         /// <summary>
         /// Gets or sets the ViewModel corresponding to this specific View.
         /// </summary>
-        public TViewModelInterface ViewModel
+        public TViewModel ViewModel
         {
             get
             {
-                return (TViewModelInterface)this.GetValue(ViewModelProperty);
+                return (TViewModel)this.GetValue(ViewModelProperty);
             }
 
             set

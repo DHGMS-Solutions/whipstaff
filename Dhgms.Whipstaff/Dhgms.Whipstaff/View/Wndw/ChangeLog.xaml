@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:vw="clr-namespace:Dhgms.Whipstaff.View.Wndw.Generic" mc:Ignorable="d"
-        Title="About" Height="260" Width="525" ResizeMode="NoResize">
+        Title="Change Log" Height="260" Width="525" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="64" />

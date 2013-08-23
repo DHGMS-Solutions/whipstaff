@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Dhgms.Whipstaff.Model.Info
 {
-    public class ChangeLog
+    public class VersionHistory
     {
-        public string Changes { get; set; }
+        public string Header { get; set; }
+
+        public List<string> Changes { get; set; }
     }
 }

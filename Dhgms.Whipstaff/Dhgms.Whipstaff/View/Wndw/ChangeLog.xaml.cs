@@ -23,7 +23,7 @@ namespace Dhgms.Whipstaff.View.Wndw
         {
             InitializeComponent();
 
-            this.Bind(ViewModel, x => x.Changes);
+            //this.Bind(ViewModel, model => model.Versions, control => control.Versions);
         }
     }
 }
