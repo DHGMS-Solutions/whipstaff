@@ -31,28 +31,6 @@ namespace Dhgms.Whipstaff.View.Ctrl.Generic
             DependencyProperty.Register("ViewModel", typeof(TViewModel), typeof(TView), new PropertyMetadata(null));
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BaseControl{TView,TViewModelInterface,TViewModel}"/> class.
-        /// </summary>
-        /// <param name="viewModel">
-        /// The view model.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// No view model was passed.
-        /// </exception>
-        public BaseControl(TViewModel viewModel)
-        {
-            /*
-            if (viewModel == null)
-            {
-                throw new ArgumentNullException("viewModel");
-            }
-
-            this.ViewModel = viewModel;
-            this.DataContext = this.ViewModel;
-             * */
-        }
-
-        /// <summary>
         /// Gets or sets the view model.
         /// </summary>
         object IViewFor.ViewModel

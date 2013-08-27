@@ -6,26 +6,34 @@
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using System.Windows.Threading;
 
     public class SingleLineTextInputControlViewModel : Dhgms.Whipstaff.ViewModel.Base, ISingleLineTextInputControlViewModel
     {
+        private DispatcherTimer validationTimer;
+
         private string actualValue;
         private int maximumLength;
         private string title;
         private string description;
         private bool required;
         private ObservableAsPropertyHelper<int> remainingCharacters;
-        private ObservableAsPropertyHelper<Dhgms.Whipstaff.Model.Info.ValidationIndicator> validationIndicator;
-        private ObservableAsPropertyHelper<string> validationFeedback;
+
+        private ObservableAsPropertyHelper<Dhgms.Whipstaff.Model.Info.ValidationDetails> validationDetails;
         private string watermark;
+
+        private Func<string, Dhgms.Whipstaff.Model.Info.ValidationDetails> validationMethod;
+
+        public SingleLineTextInputControlViewModel()
+        {
+            this.validationTimer = new DispatcherTimer();
+        }
 
         public SingleLineTextInputControlViewModel()
         {
             this.remainingCharacters = this.WhenAny(x => x.ActualValue, x => x.MaximumLength, GetRemainingCharacters).ToProperty(this, x => x.RemainingCharacters);
 
-            this.validationIndicator = this.WhenAny(x => x.ActualValue, x => x.Required, GetValidationIndicator).ToProperty(this, x => x.ValidationIndicator);
-
-            this.validationFeedback = this.WhenAny(x => x.ActualValue, x => x.Required, GetValidationFeedback).ToProperty(this, x => x.ValidationFeedback);
+            this.validationDetails = this.WhenAny(x => x.ActualValue, x => x.Required, x => x.ValidationMethod, GetValidationDetails).ToProperty(this, x => x.ValidationDetails);
         }
 
         public string Title
@@ -101,19 +109,11 @@
             }
         }
 
-        public string ValidationFeedback
+        public Dhgms.Whipstaff.Model.Info.ValidationDetails ValidationDetails
         {
             get
             {
-                return this.validationFeedback.Value;
-            }
-        }
-
-        public Dhgms.Whipstaff.Model.Info.ValidationIndicator ValidationIndicator
-        {
-            get
-            {
-                return this.validationIndicator.Value;
+                return this.validationDetails.Value;
             }
         }
 
@@ -130,28 +130,42 @@
             }
         }
 
-        private static string GetValidationFeedback(IObservedChange<SingleLineTextInputControlViewModel, string> val, IObservedChange<SingleLineTextInputControlViewModel, bool> req)
+        public Func<string, Dhgms.Whipstaff.Model.Info.ValidationDetails> ValidationMethod
         {
-            //var val1 = val.Value;
-            //var req1 = req.Value;
-
-            //TODO: allow registration of additional validators
-
-            return string.Empty;
+            get
+            {
+                return this.validationMethod;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.validationMethod, value);
+            }
         }
 
-        private static Dhgms.Whipstaff.Model.Info.ValidationIndicator GetValidationIndicator(IObservedChange<SingleLineTextInputControlViewModel, string> val, IObservedChange<SingleLineTextInputControlViewModel, bool> req)
+        private Dhgms.Whipstaff.Model.Info.ValidationDetails GetValidationDetails(IObservedChange<SingleLineTextInputControlViewModel, string> val, IObservedChange<SingleLineTextInputControlViewModel, bool> req, IObservedChange<SingleLineTextInputControlViewModel, Func<string, Dhgms.Whipstaff.Model.Info.ValidationDetails>> validatorObservable)
         {
+            // cancel any pending deferred validation
+            if (this.validationTimer.IsEnabled)
+            {
+                this.validationTimer.Stop();
+            }
+
             var val1 = val.Value;
             var req1 = req.Value;
             if (string.IsNullOrWhiteSpace(val1) || val1.Length == 0)
             {
-                return req1 ? Dhgms.Whipstaff.Model.Info.ValidationIndicator.Required : Dhgms.Whipstaff.Model.Info.ValidationIndicator.Optional;
+                return req1 ? new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Required, string.Intern("Requested"))
+                    : new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Optional, string.Intern("Optional"));
             }
 
-            //TODO: allow registration of additional validators
+            if (this.ValidationMethod != null)
+            {
+                //validation to be deferred, handy if we want to wait till user stops typing, rather than do per char
+                this.validationTimer.Start();
+                return new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.InProgress, string.Intern("Pending"));
+            }
 
-            return Dhgms.Whipstaff.Model.Info.ValidationIndicator.Ok;
+            return new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Ok, string.Empty);
         }
 
         private static int GetRemainingCharacters(IObservedChange<SingleLineTextInputControlViewModel, string> val, IObservedChange<SingleLineTextInputControlViewModel, int> max)
@@ -159,6 +173,15 @@
             var val1 = val.Value;
             var max1 = max.Value;
             return string.IsNullOrWhiteSpace(val1) ? max1 : max1 - val1.Length;
+        }
+
+        private void ValidationTimerTick(object state, EventArgs e)
+        {
+            //HACK: this looks a bit dirty, is there a better way?
+            var subject = new ScheduledSubject<Dhgms.Whipstaff.Model.Info.ValidationDetails>(RxApp.MainThreadScheduler);
+            subject.ToProperty(this, x=> x.ValidationDetails);
+            var vf = this.ValidationMethod(this.ActualValue);
+            subject.OnNext(vf);
         }
     }
 }
