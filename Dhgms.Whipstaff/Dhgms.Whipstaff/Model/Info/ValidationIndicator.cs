@@ -13,6 +13,7 @@ namespace Dhgms.Whipstaff.Model.Info
         Required,
         Error,
         Warning,
-        Ok
+        Ok,
+        InProgress
     }
 }
