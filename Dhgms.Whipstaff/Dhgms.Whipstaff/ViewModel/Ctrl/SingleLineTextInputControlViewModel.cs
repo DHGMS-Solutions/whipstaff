@@ -27,10 +27,7 @@
         public SingleLineTextInputControlViewModel()
         {
             this.validationTimer = new DispatcherTimer();
-        }
 
-        public SingleLineTextInputControlViewModel()
-        {
             this.remainingCharacters = this.WhenAny(x => x.ActualValue, x => x.MaximumLength, GetRemainingCharacters).ToProperty(this, x => x.RemainingCharacters);
 
             this.validationDetails = this.WhenAny(x => x.ActualValue, x => x.Required, x => x.ValidationMethod, GetValidationDetails).ToProperty(this, x => x.ValidationDetails);

@@ -1,0 +1,28 @@
+﻿<gen:RibbonMainWindow x:Class="Dhgms.Whipstaff.View.Wndw.MainRibbonWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gen="clr-namespace:Dhgms.Whipstaff.View.Wndw.Generic"
+             mc:Ignorable="d" 
+             d:DesignHeight="480" d:DesignWidth="640"
+             Title="Window Name">
+    <Grid Name="HostGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Ribbon Grid.Row="0">
+            <Ribbon.QuickAccessToolBar>
+                <RibbonQuickAccessToolBar>
+                    <RibbonButton Name="QuickAccessShowKeyboardShortcuts" ToolTip="Show Keyboard Shortcuts" FontFamily="pack://application:,,,/Resource/Font/#FontAwesome">&#xf11c;</RibbonButton>
+                    <!--<RibbonButton Name="Search" ToolTip="Search" FontFamily="pack://application:,,,/Resource/Font/#FontAwesome">&#xf002;</RibbonButton>-->
+                    <RibbonButton Name="QuickAccessSearch" ToolTip="Search" ContentStringFormat="-{0}-" Label="S" />
+                </RibbonQuickAccessToolBar>
+            </Ribbon.QuickAccessToolBar>
+        </Ribbon>
+        <ContentControl Grid.Row="1" Name="MainControl" />
+        <StatusBar Grid.Row="2" />
+    </Grid>
+</gen:RibbonMainWindow>

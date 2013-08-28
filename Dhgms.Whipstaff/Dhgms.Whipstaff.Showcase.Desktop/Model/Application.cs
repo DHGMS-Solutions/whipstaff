@@ -11,6 +11,8 @@
     /// </summary>
     public class Application : Controller.Desktop<SplashScreen, MainWindow, SystemNotificationAreaViewModel>
     {
+        private static Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel> mainWindowViewModel = new Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel>(() => new Whipstaff.ViewModel.MainRibbonWindowViewModel());
+
         private static TeamView teamView;
 
         private static BuildingView buildingView;
@@ -133,6 +135,14 @@
         /// </param>
         protected override void OnRemoteInstanceCommandRecieved(string[] args)
         {
+        }
+
+        public override Whipstaff.ViewModel.MainRibbonWindowViewModel MainWindowViewModel
+        {
+            get
+            {
+                return mainWindowViewModel.Value;
+            }
         }
     }
 }
