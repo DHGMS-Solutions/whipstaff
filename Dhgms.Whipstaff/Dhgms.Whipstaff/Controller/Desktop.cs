@@ -39,9 +39,9 @@ namespace Dhgms.Whipstaff.Controller
     /// <typeparam name="TSystemNotificationAreaViewModel">
     /// The type for the system notification area view model.
     /// </typeparam>
-    public abstract class Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel> : System.Windows.Application
+    public abstract class Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel> : Base
         where TSplashScreenClass : Window, new()
-        where TMainWindowClass : Window, new()
+        where TMainWindowClass : Window, IViewFor<ViewModel.IMainRibbonWindowViewModel>, new()
         where TSystemNotificationAreaViewModel : ReactiveObject, ISystemNotificationAreaViewModel, IRoutableViewModel, new()
     {
         /// <summary>

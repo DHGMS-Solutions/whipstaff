@@ -91,6 +91,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\Base.cs" />
     <Compile Include="Controller\Desktop.cs" />
     <Compile Include="Controller\WindowsStore.cs" />
     <Compile Include="Model\ControlData\Button\ButtonItem.cs" />
@@ -176,6 +177,7 @@
     <Compile Include="ViewModel\ChangeLogViewModel.cs" />
     <Compile Include="ViewModel\Ctrl\SingleLineTextInputControlViewModel.cs" />
     <Compile Include="ViewModel\DiagnosticViewModel.cs" />
+    <Compile Include="ViewModel\IMainRibbonWindowViewModel.cs" />
     <Compile Include="ViewModel\IntegerTextBoxViewModel.cs" />
     <Compile Include="ViewModel\IAboutViewModel.cs" />
     <Compile Include="ViewModel\IChangeLogViewModel.cs" />
@@ -191,9 +193,12 @@
     <Compile Include="ViewModel\ISplashScreenViewModel.cs" />
     <Compile Include="ViewModel\ISystemNotificationAreaViewModel.cs" />
     <Compile Include="ViewModel\KeyboardViewModel.cs" />
+    <Compile Include="ViewModel\MainRibbonWindowViewModel.cs" />
     <Compile Include="ViewModel\OptionsViewModel.cs" />
     <Compile Include="ViewModel\SplashScreenViewModel.cs" />
     <Compile Include="ViewModel\TextBoxViewControl.cs" />
+    <Compile Include="ViewModel\Wndw\IMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\Wndw\MainWindowViewModel.cs" />
     <Compile Include="View\Ctrl\ChangeLogControl.xaml.cs">
       <DependentUpon>ChangeLogControl.xaml</DependentUpon>
     </Compile>
@@ -217,14 +222,19 @@
       <DependentUpon>Diagnostic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Wndw\Generic\AboutView.cs" />
+    <Compile Include="View\Wndw\Generic\BaseRibbonView.cs" />
     <Compile Include="View\Wndw\Generic\BaseView.cs" />
     <Compile Include="View\Wndw\Generic\ChangeLogView.cs" />
     <Compile Include="View\Wndw\Generic\DiagnosticView.cs" />
     <Compile Include="View\Wndw\Generic\KeyboardView.cs" />
     <Compile Include="View\Wndw\Generic\OptionsView.cs" />
+    <Compile Include="View\Wndw\Generic\RibbonMainWindow.cs" />
     <Compile Include="View\Wndw\Generic\SplashScreenView.cs" />
     <Compile Include="View\Wndw\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Wndw\MainRibbonWindow.xaml.cs">
+      <DependentUpon>MainRibbonWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Wndw\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -264,6 +274,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Wndw\MainRibbonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Wndw\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -285,11 +299,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="Resource\Font\fontawesome-webfont.ttf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Interface\" />
-    <Folder Include="ViewModel\Wndw\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
