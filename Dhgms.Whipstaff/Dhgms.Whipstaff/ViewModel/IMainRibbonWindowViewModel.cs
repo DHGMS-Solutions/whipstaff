@@ -12,6 +12,8 @@ namespace Dhgms.Whipstaff.ViewModel
     {
         ReactiveList<Model.Info.KeyboardMapping> KeyboardShortcuts { get; }
 
-        ReactiveCommand ShowKeyboardShortcuts { get; }
+        ReactiveCommand ShowKeyboardShortcutsCommand { get; }
+
+        ReactiveCommand ShowSearchCommand { get; }
     }
 }

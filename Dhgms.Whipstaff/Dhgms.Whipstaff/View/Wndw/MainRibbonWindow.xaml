@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:gen="clr-namespace:Dhgms.Whipstaff.View.Wndw.Generic"
+             xmlns:wpftools="clr-namespace:WpfTools;assembly=Dhgms.Whipstaff.Common.BaseTypes"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="640"
              Title="Window Name">
@@ -13,12 +14,13 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Ribbon Grid.Row="0">
+        <Ribbon Grid.Row="0" Name="Ribbon">
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>
-                    <RibbonButton Name="QuickAccessShowKeyboardShortcuts" ToolTip="Show Keyboard Shortcuts" FontFamily="pack://application:,,,/Resource/Font/#FontAwesome">&#xf11c;</RibbonButton>
-                    <!--<RibbonButton Name="Search" ToolTip="Search" FontFamily="pack://application:,,,/Resource/Font/#FontAwesome">&#xf002;</RibbonButton>-->
-                    <RibbonButton Name="QuickAccessSearch" ToolTip="Search" ContentStringFormat="-{0}-" Label="S" />
+                    <RibbonButton Name="QuickAccessShowKeyboardShortcuts" ToolTip="Show Keyboard Shortcuts" />
+                    <!-- SmallImageSource="{wpftools:ImageFromFont Text=&#xf11c;, FontFamily=/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome, Brush=Green}" -->
+                    <RibbonButton Name="QuickAccessSearch" ToolTip="Search" />
+                    <!-- SmallImageSource="{wpftools:ImageFromFont Text=&#xf002;,FontFamily=/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome, Brush=Black}" -->
                 </RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>
         </Ribbon>
