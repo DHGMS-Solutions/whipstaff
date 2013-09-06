@@ -29,7 +29,23 @@ namespace Dhgms.Whipstaff.View.Wndw
 
             InitializeComponent();
 
+            this.QuickAccessShowKeyboardShortcuts.SmallImageSource = new WpfTools.ImageFromFont
+                {
+                    Text= "\xf11c",
+                    FontFamily = new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
+                    Brush = System.Windows.Media.Brushes.Green
+                }.GetGlyph();
+
+            this.QuickAccessSearch.SmallImageSource = new WpfTools.ImageFromFont() 
+            {
+                Text="\xf002",
+                FontFamily= new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
+                Brush=System.Windows.Media.Brushes.Black
+            }.GetGlyph();
+
             this.Bind(this.ViewModel, model => model.MainControl, control => control.MainControl.Content);
+            this.Bind(this.ViewModel, model => model.ShowKeyboardShortcutsCommand, control => control.QuickAccessShowKeyboardShortcuts.Command);
+            this.Bind(this.ViewModel, model => model.ShowSearchCommand, control => control.QuickAccessSearch.Command);
         }
     }
 }

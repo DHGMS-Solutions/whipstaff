@@ -12,11 +12,17 @@ namespace Dhgms.Whipstaff.ViewModel
     public class MainRibbonWindowViewModel : Wndw.MainWindowViewModel, ViewModel.IMainRibbonWindowViewModel
     {
         private ReactiveList<Model.Info.KeyboardMapping> keyboardShortcuts;
+        private ReactiveCommand showKeyboardShortcutsCommand;
+        private Action<object> doSearchCallback;
+
+        private readonly IObservable<bool> canShowKeyboardShortcutsObservable;
+        private readonly IObservable<bool> canShowSearchObservable;
+        private readonly IObservable<bool> canExecuteQueryPaymentSessionStatusObservable;
 
         public MainRibbonWindowViewModel()
         {
-            var canShowKeyboardShortcutsObservable = this.WhenAny(x => x.KeyboardShortcuts, CanShowKeyboardShortcuts);
-            this.ShowKeyboardShortcuts = new ReactiveCommand(canShowKeyboardShortcutsObservable);
+            canShowKeyboardShortcutsObservable = this.WhenAny(x => x.KeyboardShortcuts, CanShowKeyboardShortcuts);
+            canShowSearchObservable = this.WhenAny(x => x.DoSearchCallback, CanShowSearch);
         }
 
         public ReactiveList<Model.Info.KeyboardMapping> KeyboardShortcuts
@@ -31,7 +37,15 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
-        public ReactiveCommand ShowKeyboardShortcuts
+        public ReactiveCommand ShowKeyboardShortcutsCommand
+        {
+            get
+            {
+                return EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canExecuteQueryPaymentSessionStatusObservable, this.DoSearchCallback);
+            }
+        }
+
+        public ReactiveCommand ShowSearchCommand
         {
             get;
             protected set;
@@ -41,6 +55,23 @@ namespace Dhgms.Whipstaff.ViewModel
         {
             var ks = ksObservable.Value;
             return ks != null && ks.Count > 0;
+        }
+
+        private bool CanShowSearch(IObservedChange<MainRibbonWindowViewModel, Action<object>> searchCallbackObservable)
+        {
+            return searchCallbackObservable.Value != null;
+        }
+
+        protected Action<object> DoSearchCallback
+        {
+            get
+            {
+                return this.doSearchCallback;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.doSearchCallback, value);
+            }
         }
     }
 }

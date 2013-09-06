@@ -37,5 +37,51 @@ namespace Dhgms.Whipstaff.ViewModel
         public void OnFeatureError()
         {
         }
+
+        protected static Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem EnsureButtonExists(
+            ref Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem backingField,
+            string name,
+            ReactiveCommand command)
+        {
+            if (backingField == null)
+            {
+                backingField = new Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem
+                {
+                    Name = name,
+                    Command = command
+                };
+            }
+
+            return backingField;
+        }
+
+        protected static Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData EnsureRibbonButtonExists(
+            ref Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData backingField,
+            string name,
+            ReactiveCommand command)
+        {
+            if (backingField == null)
+            {
+                backingField = new Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData
+                {
+                    Label = name,
+                    Command = command
+                };
+            }
+
+            return backingField;
+        }
+
+        protected static ReactiveCommand EnsureCommandExists(ref ReactiveCommand backingField, IObservable<bool> canExecuteObservable, Action<object> subscriptionEvent)
+        {
+            if (backingField == null)
+            {
+
+                backingField = new ReactiveCommand(canExecuteObservable);
+                backingField.Subscribe(subscriptionEvent);
+            }
+
+            return backingField;
+        }
     }
 }

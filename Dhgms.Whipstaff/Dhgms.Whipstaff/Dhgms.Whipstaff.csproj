@@ -247,7 +247,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource\Font\opendyslexic.ttf" />
+    <Resource Include="Resource\Font\opendyslexic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\Ctrl\ChangeLogControl.xaml">
@@ -296,10 +296,14 @@
       <Project>{7ac63864-7638-41c4-969c-d3197ef2bed9}</Project>
       <Name>NotifyIconWpf</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
+      <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
+      <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <EmbeddedResource Include="Resource\Font\fontawesome-webfont.ttf" />
+    <Resource Include="Resource\Font\fontawesome-webfont.ttf" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

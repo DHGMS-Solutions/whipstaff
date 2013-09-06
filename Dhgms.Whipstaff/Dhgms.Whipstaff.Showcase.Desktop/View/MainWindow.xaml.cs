@@ -19,7 +19,7 @@ namespace Dhgms.Whipstaff.ShowCase
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow //: Window, IViewFor<Dhgms.Whipstaff.ShowCase.ViewModel.MainWindowViewModel>
+    public partial class MainWindow : IViewFor<Dhgms.Whipstaff.ShowCase.ViewModel.MainWindowViewModel>
     {
         public MainWindow()
         {
