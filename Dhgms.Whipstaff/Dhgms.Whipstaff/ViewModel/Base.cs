@@ -8,8 +8,19 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
 
-    public class Base : ReactiveObject, IRoutableViewModel, IFeatureUsageTracking
+    using NLog;
+
+    public class Base<TInheritingClass> : ReactiveObject, IRoutableViewModel, IFeatureUsageTracking
+        where TInheritingClass : Base<TInheritingClass>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Base{TInheritingClass}"/> class.
+        /// </summary>
+        public Base()
+        {
+            Logger = LogManager.GetLogger(typeof(TInheritingClass).Name);
+        }
+
         /// <summary>
         /// Gets or sets a string token representing the current ViewModel, such as 'login' or 'user'
         /// </summary>
@@ -22,16 +33,28 @@ namespace Dhgms.Whipstaff.ViewModel
         /// </summary>
         public IScreen HostScreen { get; private set; }
 
+        /// <summary>
+        /// Gets the logger instance.
+        /// </summary>
+        protected Logger Logger
+        {
+            get;
+            private set;
+        }
+
         public void OnFeatureStart()
         {
+            this.Logger.Info("Feature Started.");
         }
 
         public void OnFeatureEnd()
         {
+            this.Logger.Info("Feature Ended.");
         }
 
-        public void OnFeatureException()
+        public void OnFeatureException(System.Exception exception)
         {
+            this.Logger.WarnException("Feature Exception", exception);
         }
 
         public void OnFeatureError()
@@ -43,16 +66,9 @@ namespace Dhgms.Whipstaff.ViewModel
             string name,
             ReactiveCommand command)
         {
-            if (backingField == null)
-            {
-                backingField = new Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem
-                {
-                    Name = name,
-                    Command = command
-                };
-            }
-
-            return backingField;
+            return backingField
+                   ?? (backingField =
+                       new Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem { Name = name, Command = command });
         }
 
         protected static Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData EnsureRibbonButtonExists(
@@ -60,23 +76,15 @@ namespace Dhgms.Whipstaff.ViewModel
             string name,
             ReactiveCommand command)
         {
-            if (backingField == null)
-            {
-                backingField = new Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData
-                {
-                    Label = name,
-                    Command = command
-                };
-            }
-
-            return backingField;
+            return backingField
+                   ?? (backingField =
+                       new Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData { Label = name, Command = command });
         }
 
         protected static ReactiveCommand EnsureCommandExists(ref ReactiveCommand backingField, IObservable<bool> canExecuteObservable, Action<object> subscriptionEvent)
         {
             if (backingField == null)
             {
-
                 backingField = new ReactiveCommand(canExecuteObservable);
                 backingField.Subscribe(subscriptionEvent);
             }

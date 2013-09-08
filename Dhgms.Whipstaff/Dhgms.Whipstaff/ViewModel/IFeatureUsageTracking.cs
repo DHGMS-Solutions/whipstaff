@@ -6,7 +6,7 @@
 
         void OnFeatureEnd();
 
-        void OnFeatureException();
+        void OnFeatureException(System.Exception exception);
 
         void OnFeatureError();
     }
