@@ -9,7 +9,7 @@ namespace Dhgms.Whipstaff.ViewModel.Wndw
 {
     using ReactiveUI;
 
-    public class MainWindowViewModel : Dhgms.Whipstaff.ViewModel.Base, IMainWindowViewModel
+    public class MainWindowViewModel : Dhgms.Whipstaff.ViewModel.Base<MainWindowViewModel>, IMainWindowViewModel
     {
         private UserControl mainControl;
 

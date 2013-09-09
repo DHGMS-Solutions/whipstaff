@@ -9,7 +9,7 @@ namespace Dhgms.Whipstaff.ViewModel
     using ReactiveUI;
     using ReactiveUI.Xaml;
 
-    public class OptionsViewModel : BaseClosable, IOptionsViewModel
+    public class OptionsViewModel : BaseClosable<OptionsViewModel>, IOptionsViewModel
     {
         /// <summary>
         /// Gets the command handler for saving changes

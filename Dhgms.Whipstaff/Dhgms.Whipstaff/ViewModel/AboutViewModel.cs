@@ -14,7 +14,7 @@ namespace Dhgms.Whipstaff.ViewModel
     /// <summary>
     /// View Model for the About View
     /// </summary>
-    public class AboutViewModel : BaseClosable, IAboutViewModel
+    public class AboutViewModel : BaseClosable<AboutViewModel>, IAboutViewModel
     {
         /// <summary>
         /// The program name
