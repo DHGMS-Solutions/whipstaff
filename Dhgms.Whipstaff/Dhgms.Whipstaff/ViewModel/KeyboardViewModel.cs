@@ -14,7 +14,7 @@ namespace Dhgms.Whipstaff.ViewModel
     /// <summary>
     /// The keyboard view model.
     /// </summary>
-    public class KeyboardViewModel : BaseClosable, IKeyboardViewModel
+    public class KeyboardViewModel : BaseClosable<KeyboardViewModel>, IKeyboardViewModel
     {
         /// <summary>
         /// Gets or sets the keyboard mappings.

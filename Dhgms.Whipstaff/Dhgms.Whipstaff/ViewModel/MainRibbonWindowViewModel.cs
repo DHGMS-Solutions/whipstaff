@@ -13,16 +13,22 @@ namespace Dhgms.Whipstaff.ViewModel
     {
         private ReactiveList<Model.Info.KeyboardMapping> keyboardShortcuts;
         private ReactiveCommand showKeyboardShortcutsCommand;
+        private ReactiveCommand showSearchCommand;
+        private ReactiveCommand showEventLogCommand;
+
         private Action<object> doSearchCallback;
 
         private readonly IObservable<bool> canShowKeyboardShortcutsObservable;
         private readonly IObservable<bool> canShowSearchObservable;
-        private readonly IObservable<bool> canExecuteQueryPaymentSessionStatusObservable;
+        private readonly IObservable<bool> canShowEventLogObservable;
+
+        private bool userCanViewEventLog;
 
         public MainRibbonWindowViewModel()
         {
             canShowKeyboardShortcutsObservable = this.WhenAny(x => x.KeyboardShortcuts, CanShowKeyboardShortcuts);
             canShowSearchObservable = this.WhenAny(x => x.DoSearchCallback, CanShowSearch);
+            canShowEventLogObservable = this.WhenAny(x => x.UserCanViewEventLog, CanShowEventLog);
         }
 
         public ReactiveList<Model.Info.KeyboardMapping> KeyboardShortcuts
@@ -37,18 +43,40 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
+        public ReactiveCommand ShowEventLogCommand
+        {
+            get
+            {
+                return EnsureCommandExists(ref this.showEventLogCommand, this.canShowEventLogObservable, this.ShowEventLog);
+            }
+        }
+
         public ReactiveCommand ShowKeyboardShortcutsCommand
         {
             get
             {
-                return EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canExecuteQueryPaymentSessionStatusObservable, this.DoSearchCallback);
+                return EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canShowKeyboardShortcutsObservable, this.ShowKeyboardShortcuts);
             }
         }
 
         public ReactiveCommand ShowSearchCommand
         {
-            get;
-            protected set;
+            get
+            {
+                return EnsureCommandExists(ref this.showSearchCommand, this.canShowKeyboardShortcutsObservable, this.DoSearchCallback);
+            }
+        }
+
+        public bool UserCanViewEventLog
+        {
+            get
+            {
+                return this.userCanViewEventLog;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.userCanViewEventLog, value);
+            }
         }
 
         private bool CanShowKeyboardShortcuts(IObservedChange<MainRibbonWindowViewModel, ReactiveList<Model.Info.KeyboardMapping>> ksObservable)
@@ -62,6 +90,11 @@ namespace Dhgms.Whipstaff.ViewModel
             return searchCallbackObservable.Value != null;
         }
 
+        private bool CanShowEventLog(IObservedChange<MainRibbonWindowViewModel, bool> observable)
+        {
+            return observable.Value;
+        }
+
         protected Action<object> DoSearchCallback
         {
             get
@@ -72,6 +105,14 @@ namespace Dhgms.Whipstaff.ViewModel
             {
                 this.RaiseAndSetIfChanged(ref this.doSearchCallback, value);
             }
+        }
+
+        private void ShowKeyboardShortcuts(object obj)
+        {
+        }
+
+        private void ShowEventLog(object obj)
+        {
         }
     }
 }

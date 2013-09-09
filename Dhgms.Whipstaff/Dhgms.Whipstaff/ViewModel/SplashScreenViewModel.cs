@@ -5,7 +5,7 @@
     /// <summary>
     /// Splash Screen View Model
     /// </summary>
-    public class SplashScreenViewModel : Base, ISplashScreenViewModel
+    public class SplashScreenViewModel : Base<SplashScreenViewModel>, ISplashScreenViewModel
     {
         /// <summary>
         /// Name of the program

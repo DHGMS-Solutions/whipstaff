@@ -8,7 +8,7 @@
     using System.Threading.Tasks;
     using System.Windows.Threading;
 
-    public class SingleLineTextInputControlViewModel : Dhgms.Whipstaff.ViewModel.Base, ISingleLineTextInputControlViewModel
+    public class SingleLineTextInputControlViewModel : Dhgms.Whipstaff.ViewModel.Base<SingleLineTextInputControlViewModel>, ISingleLineTextInputControlViewModel
     {
         private DispatcherTimer validationTimer;
 

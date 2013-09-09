@@ -31,14 +31,14 @@ namespace Dhgms.Whipstaff.View.Wndw
 
             this.QuickAccessShowKeyboardShortcuts.SmallImageSource = new WpfTools.ImageFromFont
                 {
-                    Text= "\xf11c",
+                    Text = Dhgms.Whipstaff.Model.Info.FontAwesome.Keyboard,
                     FontFamily = new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
                     Brush = System.Windows.Media.Brushes.Green
                 }.GetGlyph();
 
             this.QuickAccessSearch.SmallImageSource = new WpfTools.ImageFromFont() 
             {
-                Text="\xf002",
+                Text = Dhgms.Whipstaff.Model.Info.FontAwesome.Search,
                 FontFamily= new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
                 Brush=System.Windows.Media.Brushes.Black
             }.GetGlyph();

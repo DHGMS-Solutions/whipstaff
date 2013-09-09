@@ -143,6 +143,7 @@
     <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Firewall.cs" />
     <Compile Include="Model\Helper\SystemIntegrity.cs" />
+    <Compile Include="Model\Info\FontAwesome.cs" />
     <Compile Include="Model\Info\ValidationDetails.cs" />
     <Compile Include="Model\Info\VersionHistory.cs" />
     <Compile Include="Model\Info\CommandLineArguments.cs" />
