@@ -307,6 +307,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Resource Include="Resource\Font\openwebicons.ttf" />
+    <Resource Include="Resource\Font\zocial-regular-webfont.ttf" />
+    <Resource Include="Resource\Font\Entypo.ttf" />
+    <Resource Include="Resource\Font\Entypo-Social.ttf" />
     <Resource Include="Resource\Font\fontawesome-webfont.ttf" />
   </ItemGroup>
   <ItemGroup />

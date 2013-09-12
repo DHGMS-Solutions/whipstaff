@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.Model.Info
+﻿namespace Dhgms.Whipstaff.Model.Info
 {
+    /// <summary>
+    /// The font awesome.
+    /// </summary>
     public static class FontAwesome
     {
         public const string Glass = "\xf000";
