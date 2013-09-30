@@ -8,27 +8,30 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
     using System.Windows.Controls;
+    using System.Windows.Input;
+    using Model.Helper;
 
     public class MainRibbonWindowViewModel : Wndw.MainWindowViewModel, ViewModel.IMainRibbonWindowViewModel
     {
         private ReactiveList<Model.Info.KeyboardMapping> keyboardShortcuts;
         private ReactiveCommand showKeyboardShortcutsCommand;
         private ReactiveCommand showSearchCommand;
+        private ReactiveCommand showOptionsCommand;
         private ReactiveCommand showEventLogCommand;
+        private ReactiveCommand showHelpCommand;
 
-        private Action<object> doSearchCallback;
+        private Action<object> onShowSearchCallback;
+        private Action<object> onShowHelpCallback;
 
         private readonly IObservable<bool> canShowKeyboardShortcutsObservable;
         private readonly IObservable<bool> canShowSearchObservable;
-        private readonly IObservable<bool> canShowEventLogObservable;
-
-        private bool userCanViewEventLog;
+        private readonly IObservable<bool> canShowHelpObservable;
 
         public MainRibbonWindowViewModel()
         {
             canShowKeyboardShortcutsObservable = this.WhenAny(x => x.KeyboardShortcuts, CanShowKeyboardShortcuts);
-            canShowSearchObservable = this.WhenAny(x => x.DoSearchCallback, CanShowSearch);
-            canShowEventLogObservable = this.WhenAny(x => x.UserCanViewEventLog, CanShowEventLog);
+            canShowSearchObservable = this.WhenAny(x => x.OnShowSearchCallback, CanShowSearch);
+            canShowHelpObservable = this.WhenAny(x => x.OnShowHelpCallback, CanShowHelp);
         }
 
         public ReactiveList<Model.Info.KeyboardMapping> KeyboardShortcuts
@@ -43,39 +46,43 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
-        public ReactiveCommand ShowEventLogCommand
+        public ICommand ShowEventLogCommand
         {
             get
             {
-                return EnsureCommandExists(ref this.showEventLogCommand, this.canShowEventLogObservable, this.ShowEventLog);
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showEventLogCommand, null, this.OnShowEventLog);
             }
         }
 
-        public ReactiveCommand ShowKeyboardShortcutsCommand
+        public ICommand ShowHelpCommand
         {
             get
             {
-                return EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canShowKeyboardShortcutsObservable, this.ShowKeyboardShortcuts);
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showHelpCommand, this.canShowHelpObservable, this.OnShowHelp);
             }
         }
 
-        public ReactiveCommand ShowSearchCommand
+        public ICommand ShowKeyboardShortcutsCommand
         {
             get
             {
-                return EnsureCommandExists(ref this.showSearchCommand, this.canShowKeyboardShortcutsObservable, this.DoSearchCallback);
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canShowKeyboardShortcutsObservable, this.OnShowKeyboardShortcuts);
             }
         }
 
-        public bool UserCanViewEventLog
+        public ICommand ShowSearchCommand
         {
             get
             {
-                return this.userCanViewEventLog;
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showSearchCommand, this.canShowKeyboardShortcutsObservable, this.OnShowSearch);
             }
-            set
+        }
+
+        public ICommand ShowOptionsCommand
+        {
+            get
             {
-                this.RaiseAndSetIfChanged(ref this.userCanViewEventLog, value);
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showOptionsCommand, null, this.OnShowOptions);
             }
         }
 
@@ -90,28 +97,64 @@ namespace Dhgms.Whipstaff.ViewModel
             return searchCallbackObservable.Value != null;
         }
 
-        private bool CanShowEventLog(IObservedChange<MainRibbonWindowViewModel, bool> observable)
+        private bool CanShowHelp(IObservedChange<MainRibbonWindowViewModel, Action<object>> helpCallbackObservable)
         {
-            return observable.Value;
+            return helpCallbackObservable.Value != null;
         }
 
-        protected Action<object> DoSearchCallback
+        public Action<object> OnShowHelpCallback
         {
             get
             {
-                return this.doSearchCallback;
+                return this.onShowHelpCallback;
             }
             set
             {
-                this.RaiseAndSetIfChanged(ref this.doSearchCallback, value);
+                this.RaiseAndSetIfChanged(ref this.onShowHelpCallback, value);
             }
         }
 
-        private void ShowKeyboardShortcuts(object obj)
+        public Action<object> OnShowSearchCallback
+        {
+            get
+            {
+                return this.onShowSearchCallback;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.onShowSearchCallback, value);
+            }
+        }
+
+        private void OnShowKeyboardShortcuts(object obj)
         {
         }
 
-        private void ShowEventLog(object obj)
+        private void OnShowHelp(object obj)
+        {
+            if (this.OnShowHelpCallback == null)
+            {
+                throw new InvalidOperationException("OnShowHelpCallback is not set");
+            }
+
+            this.OnShowHelp(obj);
+        }
+
+        private void OnShowEventLog(object obj)
+        {
+        }
+
+        private void OnShowSearch(object obj)
+        {
+            if (this.OnShowSearchCallback == null)
+            {
+                throw new InvalidOperationException("OnShowSearchCallback is not set");
+            }
+
+            this.OnShowSearchCallback(obj);
+        }
+
+        private void OnShowOptions(object obj)
         {
         }
     }

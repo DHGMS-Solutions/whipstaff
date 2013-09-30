@@ -21,6 +21,9 @@
                     <!-- SmallImageSource="{wpftools:ImageFromFont Text=&#xf11c;, FontFamily=/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome, Brush=Green}" -->
                     <RibbonButton Name="QuickAccessSearch" ToolTip="Search" />
                     <!-- SmallImageSource="{wpftools:ImageFromFont Text=&#xf002;,FontFamily=/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome, Brush=Black}" -->
+                    <RibbonButton Name="QuickAccessOptions" ToolTip="Show Options" />
+                    <RibbonButton Name="QuickAccessEventLog" ToolTip="Show Event Log" />
+                    <RibbonButton Name="QuickAccessHelp" ToolTip="Show Help" />
                 </RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>
         </Ribbon>

@@ -138,6 +138,7 @@
     <Compile Include="Model\Helper\CommandLine.cs" />
     <Compile Include="Model\Helper\HResult.cs" />
     <Compile Include="Model\Helper\ICommandLine.cs" />
+    <Compile Include="Model\Helper\ReactiveUI.cs" />
     <Compile Include="Model\Helper\SecurityCenter\AntiSpyware.cs" />
     <Compile Include="Model\Helper\SecurityCenter\AntiVirus.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
