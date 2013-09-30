@@ -7,13 +7,20 @@ using System.Threading.Tasks;
 namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
+    using System.Windows.Input;
 
     public interface IMainRibbonWindowViewModel : Wndw.IMainWindowViewModel
     {
         ReactiveList<Model.Info.KeyboardMapping> KeyboardShortcuts { get; }
 
-        ReactiveCommand ShowKeyboardShortcutsCommand { get; }
+        ICommand ShowEventLogCommand { get; }
 
-        ReactiveCommand ShowSearchCommand { get; }
+        ICommand ShowHelpCommand { get; }
+
+        ICommand ShowKeyboardShortcutsCommand { get; }
+
+        ICommand ShowSearchCommand { get; }
+
+        ICommand ShowOptionsCommand { get; }
     }
 }

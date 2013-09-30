@@ -26,6 +26,7 @@ namespace Dhgms.Whipstaff.Controller
     using ReactiveUI;
 
     using MessageBox = System.Windows.MessageBox;
+    using System.Diagnostics;
 
     /// <summary>
     /// The application.
@@ -142,6 +143,15 @@ namespace Dhgms.Whipstaff.Controller
         {
             base.OnStartup(e);
 
+            // special argument for forcing the process to re-run as a different user
+            // used for shell namespaces where we have our own "run as..." menu command
+            if (e.Args.Any(x => x.Equals("/runas", StringComparison.OrdinalIgnoreCase)))
+            {
+                var argsToPass = e.Args.Where(x => !x.Equals("/runas", StringComparison.OrdinalIgnoreCase)).ToArray();
+                DoRunAs(argsToPass);
+                return;
+            }
+
             if (!this.allowMultipleInstances)
             {
                 // this will exit the program if an instance already exists
@@ -168,6 +178,28 @@ namespace Dhgms.Whipstaff.Controller
             {
                 win.Show();
             }
+        }
+
+        /// <summary>
+        /// Code for relaunching a process under UAC
+        /// </summary>
+        private static void DoRunAs(string[] arguments)
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+
+            processStartInfo.FileName = System.Reflection.Assembly.GetEntryAssembly().CodeBase;
+
+            string argumentsToPass = arguments != null && arguments.Length > 0 ? string.Join(" ", arguments) : null;
+            if (string.IsNullOrWhiteSpace(argumentsToPass))
+            {
+                processStartInfo.Arguments = argumentsToPass;
+            }
+
+            processStartInfo.Verb = "runas";
+            processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            processStartInfo.UseShellExecute = true;
+
+            Process.Start(processStartInfo);
         }
 
         /// <summary>

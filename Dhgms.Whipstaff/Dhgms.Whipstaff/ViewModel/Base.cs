@@ -61,35 +61,5 @@ namespace Dhgms.Whipstaff.ViewModel
         {
         }
 
-        protected static Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem EnsureButtonExists(
-            ref Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem backingField,
-            string name,
-            ReactiveCommand command)
-        {
-            return backingField
-                   ?? (backingField =
-                       new Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem { Name = name, Command = command });
-        }
-
-        protected static Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData EnsureRibbonButtonExists(
-            ref Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData backingField,
-            string name,
-            ReactiveCommand command)
-        {
-            return backingField
-                   ?? (backingField =
-                       new Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData { Label = name, Command = command });
-        }
-
-        protected static ReactiveCommand EnsureCommandExists(ref ReactiveCommand backingField, IObservable<bool> canExecuteObservable, Action<object> subscriptionEvent)
-        {
-            if (backingField == null)
-            {
-                backingField = new ReactiveCommand(canExecuteObservable);
-                backingField.Subscribe(subscriptionEvent);
-            }
-
-            return backingField;
-        }
     }
 }

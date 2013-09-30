@@ -29,6 +29,20 @@ namespace Dhgms.Whipstaff.View.Wndw
 
             InitializeComponent();
 
+            this.QuickAccessEventLog.SmallImageSource = new WpfTools.ImageFromFont()
+            {
+                Text = Dhgms.Whipstaff.Model.Info.FontAwesome.Stethoscope,
+                FontFamily = new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
+                Brush = System.Windows.Media.Brushes.Black
+            }.GetGlyph();
+
+            this.QuickAccessHelp.SmallImageSource = new WpfTools.ImageFromFont()
+            {
+                Text = Dhgms.Whipstaff.Model.Info.FontAwesome.QuestionSign,
+                FontFamily = new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
+                Brush = System.Windows.Media.Brushes.Blue
+            }.GetGlyph();
+
             this.QuickAccessShowKeyboardShortcuts.SmallImageSource = new WpfTools.ImageFromFont
                 {
                     Text = Dhgms.Whipstaff.Model.Info.FontAwesome.Keyboard,
@@ -43,8 +57,18 @@ namespace Dhgms.Whipstaff.View.Wndw
                 Brush=System.Windows.Media.Brushes.Black
             }.GetGlyph();
 
+            this.QuickAccessOptions.SmallImageSource = new WpfTools.ImageFromFont()
+            {
+                Text = Dhgms.Whipstaff.Model.Info.FontAwesome.Cogs,
+                FontFamily = new FontFamily("/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome"),
+                Brush = System.Windows.Media.Brushes.Black
+            }.GetGlyph();
+
             this.Bind(this.ViewModel, model => model.MainControl, control => control.MainControl.Content);
+            this.Bind(this.ViewModel, model => model.ShowEventLogCommand, control => control.QuickAccessEventLog.Command);
+            this.Bind(this.ViewModel, model => model.ShowHelpCommand, control => control.QuickAccessHelp.Command);
             this.Bind(this.ViewModel, model => model.ShowKeyboardShortcutsCommand, control => control.QuickAccessShowKeyboardShortcuts.Command);
+            this.Bind(this.ViewModel, model => model.ShowOptionsCommand, control => control.QuickAccessOptions.Command);
             this.Bind(this.ViewModel, model => model.ShowSearchCommand, control => control.QuickAccessSearch.Command);
         }
     }
