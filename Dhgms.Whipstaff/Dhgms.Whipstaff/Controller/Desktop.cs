@@ -21,7 +21,11 @@ namespace Dhgms.Whipstaff.Controller
     using Dhgms.Whipstaff.View.Wndw;
     using Dhgms.Whipstaff.ViewModel;
 
+    using Microsoft.Win32;
+
     using MS.WindowsAPICodePack.Internal;
+
+    using NLog;
 
     using ReactiveUI;
 
@@ -84,6 +88,10 @@ namespace Dhgms.Whipstaff.Controller
         /// </summary>
         private Guid applicationId;
 
+        private readonly bool monitorGroupPolicyRefresh;
+
+        private readonly Logger logger;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Application{TSplashScreenClass,TMainWindowClass,TSystemNotificationAreaViewModel, TCommandLineArgumentsClass, TRemoteCommandHandlerClass}"/> class. 
         /// </summary>
@@ -99,7 +107,7 @@ namespace Dhgms.Whipstaff.Controller
         /// <param name="alwaysShowSystemNotificationArea">
         /// Whether to always Show System Notification Area.
         /// </param>
-        protected Desktop(Guid applicationId, bool multiScreenMode, bool allowMultipleInstances, bool alwaysShowSystemNotificationArea)
+        protected Desktop(Guid applicationId, bool multiScreenMode, bool allowMultipleInstances, bool alwaysShowSystemNotificationArea, bool monitorGroupPolicyRefresh)
         {
             if (applicationId.Equals(Guid.Empty))
             {
@@ -111,6 +119,9 @@ namespace Dhgms.Whipstaff.Controller
             this.MultiScreenMode = multiScreenMode;
             this.allowMultipleInstances = allowMultipleInstances;
             this.alwaysShowSystemNotificationArea = alwaysShowSystemNotificationArea;
+            this.monitorGroupPolicyRefresh = monitorGroupPolicyRefresh;
+
+            this.logger = NLog.LogManager.GetCurrentClassLogger();
         }
 
         /// <summary>
@@ -209,6 +220,8 @@ namespace Dhgms.Whipstaff.Controller
         {
             new Model.Helper.SystemIntegrity().CheckOk();
 
+            this.DoGroupPolicyRefreshMonitoring();
+
             // TODO: Reactive Extensions
             // TODO: pushing child windows between the different windows
             // TODO: logging console
@@ -220,6 +233,30 @@ namespace Dhgms.Whipstaff.Controller
             // feature sets will be used for jump lists etc.
             this.DoOperatingSystemFeatureSets();
             this.DoMainWindowInitialisation();
+        }
+
+        private void DoGroupPolicyRefreshMonitoring()
+        {
+            if (this.monitorGroupPolicyRefresh)
+            {
+                SystemEvents.UserPreferenceChanging += this.SystemEventsOnUserPreferenceChanging;
+            }
+        }
+
+        private void SystemEventsOnUserPreferenceChanging(object sender, UserPreferenceChangingEventArgs userPreferenceChangingEventArgs)
+        {
+
+            switch (userPreferenceChangingEventArgs.Category)
+            {
+                case UserPreferenceCategory.Policy:
+                    this.logger.Info("Group Policy Refresh Detected");
+                    this.OnGroupPolicyRefresh();
+                    break;
+            }
+        }
+
+        private void OnGroupPolicyRefresh()
+        {
         }
 
         /// <summary>
