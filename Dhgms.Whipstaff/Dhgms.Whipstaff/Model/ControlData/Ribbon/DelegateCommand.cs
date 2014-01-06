@@ -6,7 +6,6 @@
 
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
-    using Microsoft.Windows.Input;
     using System;
     using System.Collections.Generic;
     using System.Windows.Input;
@@ -173,51 +172,6 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
         #endregion
     }
 
-    public class PreviewDelegateCommand : DelegateCommand, IPreviewCommand
-    {
-        public PreviewDelegateCommand(Action executeMethod, Func<bool> canExecuteMethod, Action previewMethod, Action cancelPreviewMethod)
-            : base(executeMethod, canExecuteMethod)
-        {
-            this._preview = previewMethod;
-            this._cancelPreview = cancelPreviewMethod;
-        }
-
-        /// <summary>
-        ///     Preview of the command
-        /// </summary>
-        public void Preview()
-        {
-            if (this._preview != null)
-            {
-                this._preview();
-            }
-        }
-
-        /// <summary>
-        ///     CancelPreview of the command
-        /// </summary>
-        public void CancelPreview()
-        {
-            if (this._cancelPreview != null)
-            {
-                this._cancelPreview();
-            }
-        }
-
-        void IPreviewCommand.Preview(object parameter)
-        {
-            this.Preview();
-        }
-
-        void IPreviewCommand.CancelPreview()
-        {
-            this.CancelPreview();
-        }
-
-        Action _preview;
-        Action _cancelPreview;
-    }
-
     /// <summary>
     ///     This class allows delegating the commanding logic to methods passed as parameters,
     ///     and enables a View to bind commands to objects that are not part of the element tree.
@@ -382,51 +336,6 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
         private List<WeakReference> _canExecuteChangedHandlers;
 
         #endregion
-    }
-
-    public class PreviewDelegateCommand<T> : DelegateCommand<T>, IPreviewCommand
-    {
-        public PreviewDelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod, Action<T> previewMethod, Action cancelPreviewMethod)
-            : base(executeMethod, canExecuteMethod)
-        {
-            this._preview = previewMethod;
-            this._cancelPreview = cancelPreviewMethod;
-        }
-
-        /// <summary>
-        ///     Preview of the command
-        /// </summary>
-        public void Preview(T parameter)
-        {
-            if (this._preview != null)
-            {
-                this._preview(parameter);
-            }
-        }
-
-        /// <summary>
-        ///     CancelPreview of the command
-        /// </summary>
-        public void CancelPreview()
-        {
-            if (this._cancelPreview != null)
-            {
-                this._cancelPreview();
-            }
-        }
-
-        void IPreviewCommand.Preview(object parameter)
-        {
-            this.Preview((T)parameter);
-        }
-
-        void IPreviewCommand.CancelPreview()
-        {
-            this.CancelPreview();
-        }
-
-        Action<T> _preview;
-        Action _cancelPreview;
     }
 
     /// <summary>

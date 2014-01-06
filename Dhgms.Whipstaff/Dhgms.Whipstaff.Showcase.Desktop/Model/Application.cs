@@ -9,7 +9,7 @@
     /// <summary>
     /// Main Application Logic
     /// </summary>
-    public class Application : Controller.Desktop<SplashScreen, MainWindow, SystemNotificationAreaViewModel>
+    public class Application : Controller.Desktop<SplashScreen, Dhgms.Whipstaff.View.Wndw.MainRibbonWindow, SystemNotificationAreaViewModel>
     {
         private static Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel> mainWindowViewModel = new Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel>(() => new Whipstaff.ViewModel.MainRibbonWindowViewModel());
 
@@ -21,7 +21,7 @@
         /// Initializes a new instance of the <see cref="Application"/> class.
         /// </summary>
         protected Application()
-            : base(new Guid("4758C856-FD05-4D38-84C6-1FE91B669041"), false, false, true)
+            : base(new Guid("4758C856-FD05-4D38-84C6-1FE91B669041"), false, false, false, false)
         {
         }
 
