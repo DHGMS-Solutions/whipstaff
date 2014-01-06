@@ -21,6 +21,7 @@ namespace Dhgms.Whipstaff.ShowCase.View
     {
         public SplashScreen()
         {
+            this.ViewModel = new Dhgms.Whipstaff.ViewModel.SplashScreenViewModel();
             InitializeComponent();
 
             this.ViewModel.ProgramName = "DHGMS Whipstaff Showcase";

@@ -39,46 +39,47 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Akavache">
-      <HintPath>..\packages\akavache.3.0.2\lib\net45\Akavache.dll</HintPath>
-    </Reference>
-    <Reference Include="Akavache.Portable">
-      <HintPath>..\packages\akavache.portable.3.0.2\lib\net45\Akavache.Portable.dll</HintPath>
+      <HintPath>..\packages\akavache.3.2.0\lib\net45\Akavache.dll</HintPath>
     </Reference>
     <Reference Include="Dhgms.DataManager">
-      <HintPath>..\packages\Dhgms.DataManager.0.1301.1.0\lib\net40\Dhgms.DataManager.dll</HintPath>
+      <HintPath>..\packages\Dhgms.DataManager.0.1312.27.1\lib\net40\Dhgms.DataManager.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.5.1.2\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+      <HintPath>..\packages\reactiveui-core.5.4.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI.Blend">
-      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Blend.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI.Xaml">
-      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.1.0.0\lib\Net45\Splat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+      <HintPath>..\packages\Rx-Core.2.2.2\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+      <HintPath>..\packages\Rx-Interfaces.2.2.2\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+      <HintPath>..\packages\Rx-Linq.2.2.2\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+      <HintPath>..\packages\Rx-PlatformServices.2.2.2\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Windows.Threading">
-      <HintPath>..\packages\Rx-XAML.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
+      <HintPath>..\packages\Rx-XAML.2.2.2\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -382,6 +383,10 @@
     <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
       <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
       <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dhgms.Whipstaff.Desktop\Dhgms.Whipstaff.Desktop.csproj">
+      <Project>{07f58508-4d92-46f4-88a7-35206bf1a902}</Project>
+      <Name>Dhgms.Whipstaff.Desktop</Name>
     </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Showcase.Common\Dhgms.Whipstaff.Showcase.Common.csproj">
       <Project>{7ab86fed-edf7-4d2d-a979-77a1e59df003}</Project>

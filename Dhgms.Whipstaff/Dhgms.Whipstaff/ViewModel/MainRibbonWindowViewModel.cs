@@ -128,34 +128,37 @@ namespace Dhgms.Whipstaff.ViewModel
 
         private void OnShowKeyboardShortcuts(object obj)
         {
+            OnCallback(this.OnShowKeyboardShortcuts, obj, "OnShowKeyboardShortcuts");
         }
 
         private void OnShowHelp(object obj)
         {
-            if (this.OnShowHelpCallback == null)
-            {
-                throw new InvalidOperationException("OnShowHelpCallback is not set");
-            }
-
-            this.OnShowHelp(obj);
+            OnCallback(this.OnShowHelp, obj, "OnShowHelp");
         }
 
         private void OnShowEventLog(object obj)
         {
+            OnCallback(this.OnShowSearchCallback, obj, "OnShowSearch");
         }
 
         private void OnShowSearch(object obj)
         {
-            if (this.OnShowSearchCallback == null)
-            {
-                throw new InvalidOperationException("OnShowSearchCallback is not set");
-            }
-
-            this.OnShowSearchCallback(obj);
+            OnCallback(this.OnShowSearch, obj, "OnShowSearch");
         }
 
         private void OnShowOptions(object obj)
         {
+            OnCallback(this.OnShowOptions, obj, "OnShowOptions");
+        }
+
+        private static void OnCallback(Action<object> action, object obj, string p)
+        {
+            if (action == null)
+            {
+                throw new InvalidOperationException(p + " Callback is not set");
+            }
+
+            action(obj);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Dhgms.Whipstaff.Model.Excptn
 {
-    class ApplicationCompatabilityModeException
+    public class ApplicationCompatabilityModeException
         : System.Exception
     {
         public ApplicationCompatabilityModeException()

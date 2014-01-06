@@ -49,42 +49,49 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions">
       <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\packages\NLog.2.0.1.2\lib\net45\NLog.dll</HintPath>
+    <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.5.1.2\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-core.5.4.0\lib\Portable-Net45+WinRT45+WP8\ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Blend">
-      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Blend.dll</HintPath>
+    <Reference Include="ReactiveUI.Blend, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Blend.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI.Xaml">
-      <HintPath>..\packages\reactiveui-platforms.5.1.2\lib\net45\ReactiveUI.Xaml.dll</HintPath>
+    <Reference Include="ReactiveUI.Xaml, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-platforms.5.4.0\lib\net45\ReactiveUI.Xaml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.1.30214.0\lib\Net45\System.Reactive.Core.dll</HintPath>
+    <Reference Include="System.Reactive.Core, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.2.2\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.1.30214.0\lib\Net45\System.Reactive.Interfaces.dll</HintPath>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.2.2\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.1.30214.0\lib\Net45\System.Reactive.Linq.dll</HintPath>
+    <Reference Include="System.Reactive.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.2.2\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.1.30214.0\lib\Net45\System.Reactive.PlatformServices.dll</HintPath>
+    <Reference Include="System.Reactive.PlatformServices, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-PlatformServices.2.2.2\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Windows.Threading">
-      <HintPath>..\packages\Rx-XAML.2.1.30214.0\lib\Net45\System.Reactive.Windows.Threading.dll</HintPath>
+    <Reference Include="System.Reactive.Windows.Threading, Version=2.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-XAML.2.2.2\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Speech" />
-    <Reference Include="System.Windows.Controls.Ribbon" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -95,8 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Base.cs" />
-    <Compile Include="Controller\Desktop.cs" />
-    <Compile Include="Controller\WindowsStore.cs" />
     <Compile Include="Model\ControlData\Button\ButtonItem.cs" />
     <Compile Include="Model\ControlData\Ribbon\ApplicationMenuItemData.cs" />
     <Compile Include="Model\ControlData\Ribbon\ApplicationSplitMenuItemData.cs" />
@@ -143,7 +148,6 @@
     <Compile Include="Model\Helper\SecurityCenter\AntiVirus.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Firewall.cs" />
-    <Compile Include="Model\Helper\SystemIntegrity.cs" />
     <Compile Include="Model\Info\FontAwesome.cs" />
     <Compile Include="Model\Info\ValidationDetails.cs" />
     <Compile Include="Model\Info\VersionHistory.cs" />
@@ -204,19 +208,8 @@
     <Compile Include="ViewModel\TextBoxViewControl.cs" />
     <Compile Include="ViewModel\Wndw\IMainWindowViewModel.cs" />
     <Compile Include="ViewModel\Wndw\MainWindowViewModel.cs" />
-    <Compile Include="View\Ctrl\ChangeLogControl.xaml.cs">
-      <DependentUpon>ChangeLogControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Ctrl\Generic\BaseControl.cs" />
     <Compile Include="View\Ctrl\Generic\SingleLineTextInputControlGeneric.cs" />
-    <Compile Include="View\Ctrl\IntegerTextBoxControl.cs" />
-    <Compile Include="View\Ctrl\MoneyTextBoxControl.cs" />
-    <Compile Include="View\Ctrl\SingleLineCardPanInputControl.cs" />
-    <Compile Include="View\Ctrl\SingleLineIntegerInputControl.cs" />
-    <Compile Include="View\Ctrl\SingleLineMoneyInputControl.cs" />
-    <Compile Include="View\Ctrl\SingleLineTextInputControl.xaml.cs">
-      <DependentUpon>SingleLineTextInputControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Wndw\About.xaml.cs">
       <DependentUpon>About.xaml</DependentUpon>
     </Compile>
@@ -227,19 +220,14 @@
       <DependentUpon>Diagnostic.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Wndw\Generic\AboutView.cs" />
-    <Compile Include="View\Wndw\Generic\BaseRibbonView.cs" />
     <Compile Include="View\Wndw\Generic\BaseView.cs" />
     <Compile Include="View\Wndw\Generic\ChangeLogView.cs" />
     <Compile Include="View\Wndw\Generic\DiagnosticView.cs" />
     <Compile Include="View\Wndw\Generic\KeyboardView.cs" />
     <Compile Include="View\Wndw\Generic\OptionsView.cs" />
-    <Compile Include="View\Wndw\Generic\RibbonMainWindow.cs" />
     <Compile Include="View\Wndw\Generic\SplashScreenView.cs" />
     <Compile Include="View\Wndw\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Wndw\MainRibbonWindow.xaml.cs">
-      <DependentUpon>MainRibbonWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Wndw\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -247,22 +235,11 @@
     <Compile Include="View\Wndw\Options.xaml.cs">
       <DependentUpon>Options.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Wndw\SystemNotificationArea.xaml.cs">
-      <DependentUpon>SystemNotificationArea.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\Font\opendyslexic.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="View\Ctrl\ChangeLogControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Ctrl\SingleLineTextInputControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Wndw\About.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -279,10 +256,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Wndw\MainRibbonWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\Wndw\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -291,16 +264,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\Wndw\SystemNotificationArea.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\wpf-notifyicon\NotifyIconWpf\NotifyIconWpf.csproj">
-      <Project>{7ac63864-7638-41c4-969c-d3197ef2bed9}</Project>
-      <Name>NotifyIconWpf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
       <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
       <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
