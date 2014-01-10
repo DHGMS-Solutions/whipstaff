@@ -22,5 +22,21 @@ namespace Dhgms.Whipstaff.ViewModel
         ICommand ShowSearchCommand { get; }
 
         ICommand ShowOptionsCommand { get; }
+
+        bool CanShowKeyboardShortcuts { get; }
+
+        bool CanShowEventLog { get; }
+
+        bool CanShowFeedback { get; }
+
+        bool CanShowHelp { get; }
+
+        bool CanShowNotifications { get; }
+
+        bool CanShowOptions { get; }
+
+        bool CanShowSearch { get; }
+
+        int NotificationCount { get; }
     }
 }
