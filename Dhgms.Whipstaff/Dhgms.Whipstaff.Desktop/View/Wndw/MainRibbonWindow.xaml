@@ -15,6 +15,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Ribbon Grid.Row="0" Name="Ribbon">
+            <Ribbon.HelpPaneContent>
+                <RibbonButton Name="HelpButton" ToolTip="Show Help Contents" KeyTip="H" />
+            </Ribbon.HelpPaneContent>
             <Ribbon.QuickAccessToolBar>
                 <RibbonQuickAccessToolBar>
                     <RibbonButton Name="QuickAccessShowKeyboardShortcuts" ToolTip="Show Keyboard Shortcuts" />
@@ -23,7 +26,8 @@
                     <!-- SmallImageSource="{wpftools:ImageFromFont Text=&#xf002;,FontFamily=/Dhgms.Whipstaff;Component/Resource/Font/#FontAwesome, Brush=Black}" -->
                     <RibbonButton Name="QuickAccessOptions" ToolTip="Show Options" />
                     <RibbonButton Name="QuickAccessEventLog" ToolTip="Show Event Log" />
-                    <RibbonButton Name="QuickAccessHelp" ToolTip="Show Help" />
+                    <RibbonButton Name="QuickAccessFeedback" ToolTip="Show Feedback System" />
+                    <RibbonButton Name="QuickAccessNotifications" ToolTip="View Notifications" />
                 </RibbonQuickAccessToolBar>
             </Ribbon.QuickAccessToolBar>
         </Ribbon>
