@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dhgms.Whipstaff.vsmdi = Dhgms.Whipstaff.vsmdi
 		Local.testsettings = Local.testsettings
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		TransformOnBuild.targets = TransformOnBuild.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.CodeGeneration", "Dhgms.Whipstaff.CodeGeneration\Dhgms.Whipstaff.CodeGeneration.csproj", "{2F107A4F-0373-4289-AADB-DB195F3710EA}"
@@ -36,8 +37,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Server.Core
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff", "Dhgms.Whipstaff\Dhgms.Whipstaff.csproj", "{4A63BF10-4C22-4AC9-BD0D-1F7880C98ECB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Nucleotide", "..\..\..\nucleotide\main\Dhgms.Nucleotide\Dhgms.Nucleotide.csproj", "{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Showcase.Desktop", "Dhgms.Whipstaff.Showcase.Desktop\Dhgms.Whipstaff.Showcase.Desktop.csproj", "{B2D54242-533A-48A9-B963-961AEBDF4FCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Showcase.Common", "Dhgms.Whipstaff.Showcase.Common\Dhgms.Whipstaff.Showcase.Common.csproj", "{7AB86FED-EDF7-4D2D-A979-77A1E59DF003}"
@@ -52,7 +51,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Showcase", "Showcase", "{C3
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 17
+		SccNumberOfProjects = 16
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -94,27 +93,23 @@ Global
 		SccProjectUniqueName10 = Dhgms.Whipstaff\\Dhgms.Whipstaff.csproj
 		SccProjectName10 = Dhgms.Whipstaff
 		SccLocalPath10 = Dhgms.Whipstaff
-		SccProjectUniqueName11 = ..\\..\\..\\nucleotide\\main\\Dhgms.Nucleotide\\Dhgms.Nucleotide.csproj
+		SccProjectUniqueName11 = Dhgms.Whipstaff.Showcase.Desktop\\Dhgms.Whipstaff.Showcase.Desktop.csproj
 		SccProjectTopLevelParentUniqueName11 = Dhgms.Whipstaff.sln
-		SccProjectName11 = ../../../nucleotide/main/Dhgms.Nucleotide
-		SccLocalPath11 = ..\\..\\..\\nucleotide\\main\\Dhgms.Nucleotide
-		SccProjectUniqueName12 = Dhgms.Whipstaff.Showcase.Desktop\\Dhgms.Whipstaff.Showcase.Desktop.csproj
+		SccProjectName11 = Dhgms.Whipstaff.Showcase.Desktop
+		SccLocalPath11 = Dhgms.Whipstaff.Showcase.Desktop
+		SccProjectUniqueName12 = Dhgms.Whipstaff.Showcase.Common\\Dhgms.Whipstaff.Showcase.Common.csproj
 		SccProjectTopLevelParentUniqueName12 = Dhgms.Whipstaff.sln
-		SccProjectName12 = Dhgms.Whipstaff.Showcase.Desktop
-		SccLocalPath12 = Dhgms.Whipstaff.Showcase.Desktop
-		SccProjectUniqueName13 = Dhgms.Whipstaff.Showcase.Common\\Dhgms.Whipstaff.Showcase.Common.csproj
-		SccProjectTopLevelParentUniqueName13 = Dhgms.Whipstaff.sln
-		SccProjectName13 = Dhgms.Whipstaff.Showcase.Common
-		SccLocalPath13 = Dhgms.Whipstaff.Showcase.Common
-		SccProjectUniqueName14 = Dhgms.Whipstaff.Desktop\\Dhgms.Whipstaff.Desktop.csproj
-		SccProjectName14 = Dhgms.Whipstaff.Desktop
-		SccLocalPath14 = Dhgms.Whipstaff.Desktop
-		SccProjectUniqueName15 = Dhgms.Whipstaff.WindowsStore\\Dhgms.Whipstaff.WindowsStore.csproj
-		SccProjectName15 = Dhgms.Whipstaff.WindowsStore
-		SccLocalPath15 = Dhgms.Whipstaff.WindowsStore
-		SccProjectUniqueName16 = Dhgms.Whipstaff.WindowsPhone\\Dhgms.Whipstaff.WindowsPhone.csproj
-		SccProjectName16 = Dhgms.Whipstaff.WindowsPhone
-		SccLocalPath16 = Dhgms.Whipstaff.WindowsPhone
+		SccProjectName12 = Dhgms.Whipstaff.Showcase.Common
+		SccLocalPath12 = Dhgms.Whipstaff.Showcase.Common
+		SccProjectUniqueName13 = Dhgms.Whipstaff.Desktop\\Dhgms.Whipstaff.Desktop.csproj
+		SccProjectName13 = Dhgms.Whipstaff.Desktop
+		SccLocalPath13 = Dhgms.Whipstaff.Desktop
+		SccProjectUniqueName14 = Dhgms.Whipstaff.WindowsStore\\Dhgms.Whipstaff.WindowsStore.csproj
+		SccProjectName14 = Dhgms.Whipstaff.WindowsStore
+		SccLocalPath14 = Dhgms.Whipstaff.WindowsStore
+		SccProjectUniqueName15 = Dhgms.Whipstaff.WindowsPhone\\Dhgms.Whipstaff.WindowsPhone.csproj
+		SccProjectName15 = Dhgms.Whipstaff.WindowsPhone
+		SccLocalPath15 = Dhgms.Whipstaff.WindowsPhone
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -253,20 +248,6 @@ Global
 		{4A63BF10-4C22-4AC9-BD0D-1F7880C98ECB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{4A63BF10-4C22-4AC9-BD0D-1F7880C98ECB}.Release|x64.ActiveCfg = Release|Any CPU
 		{4A63BF10-4C22-4AC9-BD0D-1F7880C98ECB}.Release|x86.ActiveCfg = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|ARM.ActiveCfg = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|x64.ActiveCfg = Release|Any CPU
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -354,14 +335,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{08D9CC10-DEAE-4DFA-998C-3C3BD620A418} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{2F107A4F-0373-4289-AADB-DB195F3710EA} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
-		{B74FDDD1-0B58-4D89-B86C-0393D5D69B0E} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
 		{E2CC84C8-77E1-4072-9D53-E690DA5FD0D0} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
 		{7AC63864-7638-41C4-969C-D3197EF2BED9} = {2D853942-AD4E-4AE4-8CFF-92FE767AC7CD}
 		{3ED117DA-CC3A-412F-AD7A-873E68965473} = {3E584C04-4589-471D-9410-8F7AC824387F}
 		{E58A0B9A-365B-470B-96CD-FC790B30DC90} = {3E584C04-4589-471D-9410-8F7AC824387F}
-		{B2D54242-533A-48A9-B963-961AEBDF4FCF} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
 		{7AB86FED-EDF7-4D2D-A979-77A1E59DF003} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{B2D54242-533A-48A9-B963-961AEBDF4FCF} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Dhgms.Whipstaff.vsmdi

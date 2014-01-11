@@ -288,4 +288,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\TransformOnBuild.targets" />
 </Project>

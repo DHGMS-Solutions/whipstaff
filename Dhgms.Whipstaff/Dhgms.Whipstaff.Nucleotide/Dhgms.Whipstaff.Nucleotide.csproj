@@ -50,10 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\nucleotide\main\Dhgms.Nucleotide\Dhgms.Nucleotide.csproj">
-      <Project>{b74fddd1-0b58-4d89-b86c-0393d5d69b0e}</Project>
-      <Name>Dhgms.Nucleotide</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
       <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
       <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>

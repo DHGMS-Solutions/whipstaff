@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ViewModel
+﻿namespace Dhgms.Whipstaff.ViewModel
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     using ReactiveUI;
     using System.Windows.Controls;
     using System.Windows.Input;
@@ -88,11 +88,17 @@ namespace Dhgms.Whipstaff.ViewModel
             this.canShowEventLogObservable = this.WhenAny(x => x.OnShowEventLogCallback, HasCallbackAssigned);
             this.canShowEventLogPropertyHelper = this.canShowEventLogObservable.ToProperty(this, x => x.CanShowEventLog);
 
+            this.canShowFeedbackObservable = this.WhenAny(x => x.OnShowFeedbackCallback, HasCallbackAssigned);
+            this.canShowFeedbackPropertyHelper = this.canShowFeedbackObservable.ToProperty(this, x => x.CanShowFeedback);
+
             this.canShowHelpObservable = this.WhenAny(x => x.OnShowHelpCallback, HasCallbackAssigned);
             this.canShowHelpPropertyHelper = this.canShowHelpObservable.ToProperty(this, x => x.CanShowHelp);
 
             this.canShowKeyboardShortcutsObservable = this.WhenAny(x => x.KeyboardShortcuts, x => x.OnShowKeyboardShortcutsCallback, CheckCanShowKeyboardShortcuts);
             this.canShowKeyboardShortcutsPropertyHelper = this.canShowKeyboardShortcutsObservable.ToProperty(this, x => x.CanShowKeyboardShortcuts);
+
+            this.canShowNotificationsObservable = this.WhenAny(x => x.OnShowNotificationsCallback, HasCallbackAssigned);
+            this.canShowNotificationsPropertyHelper = this.canShowNotificationsObservable.ToProperty(this, x => x.CanShowNotifications);
 
             this.canShowOptionsObservable = this.WhenAny(x => x.OnShowOptionsCallback, HasCallbackAssigned);
             this.canShowOptionsPropertyHelper = this.canShowOptionsObservable.ToProperty(this, x => x.CanShowOptions);
@@ -133,6 +139,14 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
+        public ICommand ShowFeedbackCommand
+        {
+            get
+            {
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showFeedbackCommand, this.canShowFeedbackObservable, this.OnShowFeedback);
+            }
+        }
+
         public ICommand ShowHelpCommand
         {
             get
@@ -146,6 +160,14 @@ namespace Dhgms.Whipstaff.ViewModel
             get
             {
                 return ReactiveUiHelpers.EnsureCommandExists(ref this.showKeyboardShortcutsCommand, this.canShowKeyboardShortcutsObservable, this.OnShowKeyboardShortcuts);
+            }
+        }
+
+        public ICommand ShowNotificationCommand
+        {
+            get
+            {
+                return ReactiveUiHelpers.EnsureCommandExists(ref this.showNotificationsCommand, this.canShowNotificationsObservable, this.OnShowNotifications);
             }
         }
 
@@ -251,6 +273,18 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
+        public Action<object> OnShowFeedbackCallback
+        {
+            get
+            {
+                return this.onShowFeedbackCallback;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.onShowFeedbackCallback, value);
+            }
+        }
+
         public Action<object> OnShowHelpCallback
         {
             get
@@ -272,6 +306,18 @@ namespace Dhgms.Whipstaff.ViewModel
             set
             {
                 this.RaiseAndSetIfChanged(ref this.onShowKeyboardShortcutsCallback, value);
+            }
+        }
+
+        public Action<object> OnShowNotificationsCallback
+        {
+            get
+            {
+                return this.onShowNotificationsCallback;
+            }
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.onShowNotificationsCallback, value);
             }
         }
 
@@ -299,9 +345,14 @@ namespace Dhgms.Whipstaff.ViewModel
             }
         }
 
-        private void OnShowKeyboardShortcuts(object obj)
+        private void OnShowEventLog(object obj)
         {
-            OnCallback(this.OnShowKeyboardShortcutsCallback, obj, "OnShowKeyboardShortcuts");
+            OnCallback(this.OnShowSearchCallback, obj, "OnShowSearch");
+        }
+
+        private void OnShowFeedback(object obj)
+        {
+            OnCallback(this.OnShowFeedbackCallback, obj, "OnShowFeedback");
         }
 
         private void OnShowHelp(object obj)
@@ -309,9 +360,14 @@ namespace Dhgms.Whipstaff.ViewModel
             OnCallback(this.OnShowHelpCallback, obj, "OnShowHelp");
         }
 
-        private void OnShowEventLog(object obj)
+        private void OnShowKeyboardShortcuts(object obj)
         {
-            OnCallback(this.OnShowSearchCallback, obj, "OnShowSearch");
+            OnCallback(this.OnShowKeyboardShortcutsCallback, obj, "OnShowKeyboardShortcuts");
+        }
+
+        private void OnShowNotifications(object obj)
+        {
+            OnCallback(this.OnShowNotificationsCallback, obj, "OnShowNotifications");
         }
 
         private void OnShowSearch(object obj)
