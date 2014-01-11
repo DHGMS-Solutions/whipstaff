@@ -50,10 +50,6 @@
     <Compile Include="Server.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\nucleotide\main\Dhgms.Nucleotide\Dhgms.Nucleotide.csproj">
-      <Project>{b74fddd1-0b58-4d89-b86c-0393d5d69b0e}</Project>
-      <Name>Dhgms.Nucleotide</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Nucleotide\Dhgms.Whipstaff.Nucleotide.csproj">
       <Project>{08d9cc10-deae-4dfa-998c-3c3bd620a418}</Project>
       <Name>Dhgms.Whipstaff.Nucleotide</Name>
