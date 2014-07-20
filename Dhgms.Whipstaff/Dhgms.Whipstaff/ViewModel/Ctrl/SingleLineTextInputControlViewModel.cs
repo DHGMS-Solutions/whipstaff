@@ -2,24 +2,20 @@
 {
     using ReactiveUI;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Threading;
 
-    public class SingleLineTextInputControlViewModel : Dhgms.Whipstaff.ViewModel.Base<SingleLineTextInputControlViewModel>, ISingleLineTextInputControlViewModel
+    public class SingleLineTextInputControlViewModel : Dhgms.Whipstaff.ViewModel.ViewModelBase<SingleLineTextInputControlViewModel>, ISingleLineTextInputControlViewModel
     {
-        private DispatcherTimer validationTimer;
+        private readonly DispatcherTimer validationTimer;
 
         private string actualValue;
         private int maximumLength;
         private string title;
         private string description;
         private bool required;
-        private ObservableAsPropertyHelper<int> remainingCharacters;
+        private readonly ObservableAsPropertyHelper<int> remainingCharacters;
 
-        private ObservableAsPropertyHelper<Dhgms.Whipstaff.Model.Info.ValidationDetails> validationDetails;
+        private readonly ObservableAsPropertyHelper<Dhgms.Whipstaff.Model.Info.ValidationDetails> validationDetails;
         private string watermark;
 
         private Func<string, Dhgms.Whipstaff.Model.Info.ValidationDetails> validationMethod;
@@ -151,15 +147,15 @@
             var req1 = req.Value;
             if (string.IsNullOrWhiteSpace(val1) || val1.Length == 0)
             {
-                return req1 ? new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Required, string.Intern("Requested"))
-                    : new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Optional, string.Intern("Optional"));
+                return req1 ? new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Required, "Requested")
+                    : new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Optional, "Optional");
             }
 
             if (this.ValidationMethod != null)
             {
                 //validation to be deferred, handy if we want to wait till user stops typing, rather than do per char
                 this.validationTimer.Start();
-                return new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.InProgress, string.Intern("Pending"));
+                return new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.InProgress, "Pending");
             }
 
             return new Model.Info.ValidationDetails(Dhgms.Whipstaff.Model.Info.ValidationIndicator.Ok, string.Empty);
@@ -175,6 +171,7 @@
         private void ValidationTimerTick(object state, EventArgs e)
         {
             //HACK: this looks a bit dirty, is there a better way?
+            //TODO: use an Rx style throttle instead
             var subject = new ScheduledSubject<Dhgms.Whipstaff.Model.Info.ValidationDetails>(RxApp.MainThreadScheduler);
             subject.ToProperty(this, x=> x.ValidationDetails);
             var vf = this.ValidationMethod(this.ActualValue);

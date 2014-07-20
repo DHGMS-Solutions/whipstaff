@@ -8,7 +8,7 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
 
-    public class TextBoxViewControl : Dhgms.Whipstaff.ViewModel.Base<TextBoxViewControl>
+    public class TextBoxViewControl : Dhgms.Whipstaff.ViewModel.ViewModelBase<TextBoxViewControl>
     {
         /// <summary>
         /// The actual value of the control.

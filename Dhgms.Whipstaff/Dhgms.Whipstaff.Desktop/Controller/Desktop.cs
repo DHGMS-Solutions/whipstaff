@@ -7,6 +7,11 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Diagnostics.Contracts;
+using System.Reflection;
+using System.Windows.Shell;
+using Dhgms.Whipstaff.Desktop.Helper;
+
 namespace Dhgms.Whipstaff.Controller
 {
     using System;
@@ -44,11 +49,13 @@ namespace Dhgms.Whipstaff.Controller
     /// <typeparam name="TSystemNotificationAreaViewModel">
     /// The type for the system notification area view model.
     /// </typeparam>
-    public abstract class Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel> : Base
+    public abstract class Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel, TJumpListHelper> : Base
         where TSplashScreenClass : Window, new()
         where TMainWindowClass : Window, IViewFor<ViewModel.IMainRibbonWindowViewModel>, new()
         where TSystemNotificationAreaViewModel : ReactiveObject, ISystemNotificationAreaViewModel, IRoutableViewModel, new()
+        where TJumpListHelper : JumpListHelper, new()
     {
+
         /// <summary>
         /// Whether the program is in multi-screen mode
         /// </summary>
@@ -91,6 +98,7 @@ namespace Dhgms.Whipstaff.Controller
         private readonly bool monitorGroupPolicyRefresh;
 
         private readonly Logger logger;
+        private TJumpListHelper jumpList;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Application{TSplashScreenClass,TMainWindowClass,TSystemNotificationAreaViewModel, TCommandLineArgumentsClass, TRemoteCommandHandlerClass}"/> class. 
@@ -107,12 +115,10 @@ namespace Dhgms.Whipstaff.Controller
         /// <param name="alwaysShowSystemNotificationArea">
         /// Whether to always Show System Notification Area.
         /// </param>
-        protected Desktop(Guid applicationId, bool multiScreenMode, bool allowMultipleInstances, bool alwaysShowSystemNotificationArea, bool monitorGroupPolicyRefresh)
+        protected Desktop(Guid applicationId, bool multiScreenMode = false, bool allowMultipleInstances = false, bool alwaysShowSystemNotificationArea = false, bool monitorGroupPolicyRefresh = false)
         {
-            if (applicationId.Equals(Guid.Empty))
-            {
-                throw new ArgumentException("application id is empty", "applicationId");
-            }
+            Contract.Requires<ArgumentException>(!applicationId.Equals(Guid.Empty), "applicationId");
+            this.logger = NLog.LogManager.GetCurrentClassLogger();
 
             this.applicationId = applicationId;
 
@@ -120,8 +126,6 @@ namespace Dhgms.Whipstaff.Controller
             this.allowMultipleInstances = allowMultipleInstances;
             this.alwaysShowSystemNotificationArea = alwaysShowSystemNotificationArea;
             this.monitorGroupPolicyRefresh = monitorGroupPolicyRefresh;
-
-            this.logger = NLog.LogManager.GetCurrentClassLogger();
         }
 
         /// <summary>
@@ -129,7 +133,7 @@ namespace Dhgms.Whipstaff.Controller
         /// </summary>
         public static void ShowApplicationWindows()
         {
-            var instance = (Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel>)Current;
+            var instance = (Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel, TJumpListHelper>)Current;
 
             foreach (var win in instance.mainWindows)
             {
@@ -142,7 +146,7 @@ namespace Dhgms.Whipstaff.Controller
         /// </summary>
         public static void ExitApplication()
         {
-            var instance = (Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel>)Current;
+            var instance = (Desktop<TSplashScreenClass, TMainWindowClass, TSystemNotificationAreaViewModel, TJumpListHelper>)Current;
             instance.ActuallyCloseWindows();
         }
 
@@ -170,11 +174,11 @@ namespace Dhgms.Whipstaff.Controller
             }
 
             TSplashScreenClass splash = null;
-            //if (this.CommandLineArguments.ShowSplashScreen)
-            //{
+            if (e.Args.All(x => !x.Equals("/nosplash", StringComparison.OrdinalIgnoreCase)))
+            {
                 splash = new TSplashScreenClass();
                 splash.Show();
-            //}
+            }
 
             this.DoInitialisation();
 
@@ -196,12 +200,13 @@ namespace Dhgms.Whipstaff.Controller
         /// </summary>
         private static void DoRunAs(string[] arguments)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = System.Reflection.Assembly.GetEntryAssembly().CodeBase
+            };
 
-            processStartInfo.FileName = System.Reflection.Assembly.GetEntryAssembly().CodeBase;
-
-            string argumentsToPass = arguments != null && arguments.Length > 0 ? string.Join(" ", arguments) : null;
-            if (string.IsNullOrWhiteSpace(argumentsToPass))
+            var argumentsToPass = arguments != null && arguments.Length > 0 ? string.Join(" ", arguments) : null;
+            if (!string.IsNullOrWhiteSpace(argumentsToPass))
             {
                 processStartInfo.Arguments = argumentsToPass;
             }
@@ -275,25 +280,26 @@ namespace Dhgms.Whipstaff.Controller
         /// </returns>
         private static OperatingSystemFeatureSet GetOperatingSystemFeatureSet()
         {
+            if (Environment.OSVersion.Version.Major < 6)
+            {
+                return OperatingSystemFeatureSet.None;                
+            }
+
             if (Environment.OSVersion.Version.Major > 6)
             {
                 return OperatingSystemFeatureSet.Windows8OrLater;
             }
 
-            if (Environment.OSVersion.Version.Major == 6)
+            // v6 OS
+            switch (Environment.OSVersion.Version.Minor)
             {
-                switch (Environment.OSVersion.Version.Minor)
-                {
-                    case 0:
-                        return OperatingSystemFeatureSet.WindowsVistaOrLater;
-                    case 1:
-                        return OperatingSystemFeatureSet.Windows7OrLater;
-                    default:
-                        return OperatingSystemFeatureSet.Windows8OrLater;
-                }
+                case 0:
+                    return OperatingSystemFeatureSet.WindowsVistaOrLater;
+                case 1:
+                    return OperatingSystemFeatureSet.Windows7OrLater;
+                default:
+                    return OperatingSystemFeatureSet.Windows8OrLater;
             }
-
-            return OperatingSystemFeatureSet.None;
         }
 
         /// <summary>
@@ -429,6 +435,8 @@ namespace Dhgms.Whipstaff.Controller
         /// <param name="actualFeatureSet">The actual feature set available, can be used if we prefer to use a later OS feature instead of an earlier feature</param>
         private void DoWindows7FeatureSet(OperatingSystemFeatureSet actualFeatureSet)
         {
+            this.jumpList = new TJumpListHelper();
+            jumpList.Initialize(Current);
         }
 
         /// <summary>
@@ -445,26 +453,6 @@ namespace Dhgms.Whipstaff.Controller
                 ArgumentsHandlerInvoker = new ApplicationDispatcherInvoker(),
                 DelivaryFailureNotification = ex => MessageBox.Show(ex.Message, "An error occured"),
             };
-        }
-
-        private void CreateJumpList()
-        {
-            if (CoreHelpers.RunningOnWin7)
-            {
-                // string cmdPath = Assembly.GetEntryAssembly().Location;
-                // JumpList jumpList = JumpList.CreateJumpList();
-
-                /*
-                JumpListCustomCategory category = new JumpListCustomCategory("Status Change");
-                category.AddJumpListItems(
-                    new JumpListLink(cmdPath, Status.Online.ToString()) { Arguments = Status.Online.ToString() },
-                    new JumpListLink(cmdPath, Status.Away.ToString()) { Arguments = Status.Away.ToString() },
-                    new JumpListLink(cmdPath, Status.Busy.ToString()) { Arguments = Status.Busy.ToString() });
-                jumpList.AddCustomCategories(category);
-
-                jumpList.Refresh();
-                 * */
-            }
         }
 
         /// <summary>

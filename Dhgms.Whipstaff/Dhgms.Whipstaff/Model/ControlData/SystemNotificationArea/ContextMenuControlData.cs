@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 {
     using System.ComponentModel;
@@ -11,17 +13,12 @@ namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ContextMenuControlData
+    public class ContextMenuControlData : ReactiveObject
     {
         /// <summary>
         /// Collection of items for the context menu
         /// </summary>
         private ContextMenuItem[] items;
-
-        /// <summary>
-        /// Property Changed Event Handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Gets or sets the collection of items for the context menu.
@@ -35,27 +32,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 
             set
             {
-                if (this.items == value)
-                {
-                    return;
-                }
-
-                this.items = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("Label"));
-            }
-        }
-
-        /// <summary>
-        /// On Property Changed Event
-        /// </summary>
-        /// <param name="e">
-        /// Event Arguments
-        /// </param>
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
+                this.RaiseAndSetIfChanged(ref this.items, value);
             }
         }
     }

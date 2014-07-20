@@ -10,6 +10,6 @@
         /// <summary>
         /// Gets the Close Window Command
         /// </summary>
-        ReactiveCommand CloseWindow { get; }
+        ReactiveCommand<object> CloseWindow { get; }
     }
 }

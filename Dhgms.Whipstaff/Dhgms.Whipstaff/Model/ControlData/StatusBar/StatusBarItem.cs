@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ReactiveUI;
 
 namespace Dhgms.Whipstaff.Model.ControlData.StatusBar
 {
     using System.ComponentModel;
     using System.Windows.Input;
 
-    public class StatusBarItem
+    public class StatusBarItem : ReactiveObject
     {
         /// <summary>
         /// command for the context menu item
@@ -38,13 +39,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.StatusBar
 
             set
             {
-                if (this.label == value)
-                {
-                    return;
-                }
-
-                this.label = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("Label"));
+                this.RaiseAndSetIfChanged(ref this.label, value);
             }
         }
 
@@ -60,13 +55,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.StatusBar
 
             set
             {
-                if (this.toolTip == value)
-                {
-                    return;
-                }
-
-                this.toolTip = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTip"));
+                this.RaiseAndSetIfChanged(ref this.toolTip, value);
             }
         }
 
@@ -82,37 +71,8 @@ namespace Dhgms.Whipstaff.Model.ControlData.StatusBar
 
             set
             {
-                if (this.command == value)
-                {
-                    return;
-                }
-
-                this.command = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("Command"));
+                this.RaiseAndSetIfChanged(ref this.command, value);
             }
         }
-
-        #region INotifyPropertyChanged Members
-
-        /// <summary>
-        /// Property Changed Event Handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// On Property Changed Event
-        /// </summary>
-        /// <param name="e">
-        /// Event Arguments
-        /// </param>
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

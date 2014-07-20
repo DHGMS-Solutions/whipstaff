@@ -4,9 +4,6 @@
 
     using Dhgms.Whipstaff.Model.Info;
 
-    using ReactiveUI;
-    using ReactiveUI.Xaml;
-
     /// <summary>
     /// The Keyboard View Model interface.
     /// </summary>

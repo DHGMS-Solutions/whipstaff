@@ -6,20 +6,17 @@
 
 namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 {
-    using System.ComponentModel;
-    using System.Windows.Input;
-
     using ReactiveUI;
 
     /// <summary>
     /// Context Menu Item Control Data
     /// </summary>
-    public class ContextMenuItem
+    public class ContextMenuItem : ReactiveObject
     {
         /// <summary>
         /// command for the context menu item
         /// </summary>
-        private ReactiveCommand command;
+        private ReactiveCommand<object> command;
 
         /// <summary>
         /// Label for the context menu item
@@ -43,13 +40,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 
             set
             {
-                if (this.label == value)
-                {
-                    return;
-                }
-
-                this.label = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("Label"));
+                this.RaiseAndSetIfChanged(ref this.label, value);
             }
         }
 
@@ -65,20 +56,14 @@ namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 
             set
             {
-                if (this.toolTip == value)
-                {
-                    return;
-                }
-
-                this.toolTip = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTip"));
+                this.RaiseAndSetIfChanged(ref this.toolTip, value);
             }
         }
 
         /// <summary>
         /// Gets or sets the command for the context menu item
         /// </summary>
-        public ReactiveCommand Command
+        public ReactiveCommand<object> Command
         {
             get
             {
@@ -87,37 +72,8 @@ namespace Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea
 
             set
             {
-                if (this.command == value)
-                {
-                    return;
-                }
-
-                this.command = value;
-                this.OnPropertyChanged(new PropertyChangedEventArgs("Command"));
+                this.RaiseAndSetIfChanged(ref this.command, value);
             }
         }
-
-        #region INotifyPropertyChanged Members
-
-        /// <summary>
-        /// Property Changed Event Handler
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        /// <summary>
-        /// On Property Changed Event
-        /// </summary>
-        /// <param name="e">
-        /// Event Arguments
-        /// </param>
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

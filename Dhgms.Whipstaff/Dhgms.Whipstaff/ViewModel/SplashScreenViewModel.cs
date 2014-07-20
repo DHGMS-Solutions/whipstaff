@@ -5,7 +5,7 @@
     /// <summary>
     /// Splash Screen View Model
     /// </summary>
-    public class SplashScreenViewModel : Base<SplashScreenViewModel>, ISplashScreenViewModel
+    public class SplashScreenViewModel : ViewModelBase<SplashScreenViewModel>, ISplashScreenViewModel
     {
         /// <summary>
         /// Name of the program
@@ -18,7 +18,29 @@
         private string programVersion;
 
         /// <summary>
-        /// Gets the Name of the program
+        /// The name of the company
+        /// </summary>
+        private string companyName;
+
+        /// <summary>
+        /// Get and sets the Name of the company
+        /// </summary>
+        public string CompanyName
+        {
+            get
+            {
+                return this.companyName;
+                
+            }
+
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.companyName, value);
+            }
+        }
+
+        /// <summary>
+        /// Get and sets the Name of the program
         /// </summary>
         public string ProgramName
         {
@@ -34,7 +56,7 @@
         }
 
         /// <summary>
-        /// Gets the Version of the program
+        /// Get and sets the Version of the program
         /// </summary>
         public string ProgramVersion
         {

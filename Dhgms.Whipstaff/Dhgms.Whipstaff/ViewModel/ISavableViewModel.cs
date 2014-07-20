@@ -10,11 +10,11 @@
         /// <summary>
         /// Gets the Save Command
         /// </summary>
-        ReactiveCommand Save { get; }
+        ReactiveCommand<object> Save { get; }
 
         /// <summary>
         /// Gets the Cancel Command
         /// </summary>
-        ReactiveCommand Cancel { get; }
+        ReactiveCommand<object> Cancel { get; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F08881D-DEEA-4B5A-AE6E-6D5A0E3A8196}"
 	ProjectSection(SolutionItems) = preProject
@@ -49,9 +49,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.WindowsPhon
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Showcase", "Showcase", "{C30E074D-E642-4E96-AEE7-8CE404C79370}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Core", "Dhgms.Whipstaff.Core\Dhgms.Whipstaff.Core.csproj", "{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}"
+EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 16
+		SccNumberOfProjects = 17
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -110,6 +112,9 @@ Global
 		SccProjectUniqueName15 = Dhgms.Whipstaff.WindowsPhone\\Dhgms.Whipstaff.WindowsPhone.csproj
 		SccProjectName15 = Dhgms.Whipstaff.WindowsPhone
 		SccLocalPath15 = Dhgms.Whipstaff.WindowsPhone
+		SccProjectUniqueName16 = Dhgms.Whipstaff.Core\\Dhgms.Whipstaff.Core.csproj
+		SccProjectName16 = Dhgms.Whipstaff.Core
+		SccLocalPath16 = Dhgms.Whipstaff.Core
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -328,20 +333,34 @@ Global
 		{F18DD916-7BE3-4909-9C91-2832C0779342}.Release|x64.ActiveCfg = Release|Any CPU
 		{F18DD916-7BE3-4909-9C91-2832C0779342}.Release|x86.ActiveCfg = Release|x86
 		{F18DD916-7BE3-4909-9C91-2832C0779342}.Release|x86.Build.0 = Release|x86
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|ARM.ActiveCfg = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|x64.ActiveCfg = Release|Any CPU
+		{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{08D9CC10-DEAE-4DFA-998C-3C3BD620A418} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{2F107A4F-0373-4289-AADB-DB195F3710EA} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
+		{08D9CC10-DEAE-4DFA-998C-3C3BD620A418} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
-		{E2CC84C8-77E1-4072-9D53-E690DA5FD0D0} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
 		{7AC63864-7638-41C4-969C-D3197EF2BED9} = {2D853942-AD4E-4AE4-8CFF-92FE767AC7CD}
 		{3ED117DA-CC3A-412F-AD7A-873E68965473} = {3E584C04-4589-471D-9410-8F7AC824387F}
 		{E58A0B9A-365B-470B-96CD-FC790B30DC90} = {3E584C04-4589-471D-9410-8F7AC824387F}
-		{7AB86FED-EDF7-4D2D-A979-77A1E59DF003} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{E2CC84C8-77E1-4072-9D53-E690DA5FD0D0} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{7AB86FED-EDF7-4D2D-A979-77A1E59DF003} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Dhgms.Whipstaff.vsmdi
