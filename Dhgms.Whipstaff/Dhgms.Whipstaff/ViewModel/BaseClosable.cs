@@ -8,9 +8,9 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
 
-    public class BaseClosable<TInheritingClass> : Base<TInheritingClass>, IClosableViewModel
-        where TInheritingClass : Base<TInheritingClass>
+    public class ViewModelBaseClosable<TInheritingClass> : ViewModelBase<TInheritingClass>, IClosableViewModel
+        where TInheritingClass : ViewModelBase<TInheritingClass>
     {
-        public ReactiveCommand CloseWindow { get; private set; }
+        public ReactiveCommand<object> CloseWindow { get; private set; }
     }
 }

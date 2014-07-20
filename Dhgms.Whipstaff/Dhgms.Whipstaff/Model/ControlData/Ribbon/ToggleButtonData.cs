@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System.ComponentModel;
@@ -22,13 +24,10 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._isChecked != value)
-                {
-                    this._isChecked = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("IsChecked"));
-                }
+                this.RaiseAndSetIfChanged(ref this._isChecked, value);
             }
         }
+
         private bool _isChecked;
     }
 }

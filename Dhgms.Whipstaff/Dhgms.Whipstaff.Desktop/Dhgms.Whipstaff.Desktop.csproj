@@ -51,9 +51,8 @@
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions">
       <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="NLog, Version=2.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NLog.2.1.0\lib\net45\NLog.dll</HintPath>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI, Version=5.4.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Desktop.cs" />
+    <Compile Include="Helper\JumpListHelper.cs" />
     <Compile Include="Model\Helper\SystemIntegrity.cs" />
     <Compile Include="View\Ctrl\ChangeLogControl.xaml.cs">
       <DependentUpon>ChangeLogControl.xaml</DependentUpon>

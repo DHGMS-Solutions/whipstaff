@@ -3,8 +3,6 @@
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using ReactiveUI.Xaml;
-
     /// <summary>
     /// Interface for the System Notification Area View Model
     /// </summary>

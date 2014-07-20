@@ -16,13 +16,13 @@
         private ReactiveList<Model.Info.KeyboardMapping> keyboardShortcuts;
 
         // Commands
-        private ReactiveCommand showEventLogCommand;
-        private ReactiveCommand showFeedbackCommand;
-        private ReactiveCommand showHelpCommand;
-        private ReactiveCommand showKeyboardShortcutsCommand;
-        private ReactiveCommand showNotificationsCommand;
-        private ReactiveCommand showOptionsCommand;
-        private ReactiveCommand showSearchCommand;
+        private ReactiveCommand<object> showEventLogCommand;
+        private ReactiveCommand<object> showFeedbackCommand;
+        private ReactiveCommand<object> showHelpCommand;
+        private ReactiveCommand<object> showKeyboardShortcutsCommand;
+        private ReactiveCommand<object> showNotificationsCommand;
+        private ReactiveCommand<object> showOptionsCommand;
+        private ReactiveCommand<object> showSearchCommand;
 
         // Callbacks
         private Action<object> onShowEventLogCallback;

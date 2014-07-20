@@ -13,7 +13,7 @@ namespace Dhgms.Whipstaff.Model.Helper
         public static Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem EnsureButtonExists(
             ref Dhgms.Whipstaff.Model.ControlData.Button.ButtonItem backingField,
             string name,
-            ReactiveCommand command)
+            ReactiveCommand<object> command)
         {
             return backingField
                    ?? (backingField =
@@ -23,18 +23,18 @@ namespace Dhgms.Whipstaff.Model.Helper
         public static Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData EnsureRibbonButtonExists(
             ref Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData backingField,
             string name,
-            ReactiveCommand command)
+            ReactiveCommand<object> command)
         {
             return backingField
                    ?? (backingField =
                        new Dhgms.Whipstaff.Model.ControlData.Ribbon.ButtonData { Label = name, Command = command });
         }
 
-        public static ReactiveCommand EnsureCommandExists(ref ReactiveCommand backingField, IObservable<bool> canExecuteObservable, Action<object> subscriptionEvent)
+        public static ReactiveCommand<object> EnsureCommandExists(ref ReactiveCommand<object> backingField, IObservable<bool> canExecuteObservable, Action<object> subscriptionEvent)
         {
             if (backingField == null)
             {
-                backingField = (canExecuteObservable != null) ? new ReactiveCommand(canExecuteObservable) : new ReactiveCommand();
+                backingField = (canExecuteObservable != null) ? ReactiveCommand.Create(canExecuteObservable) : ReactiveCommand.Create();
                 backingField.Subscribe(subscriptionEvent);
             }
 

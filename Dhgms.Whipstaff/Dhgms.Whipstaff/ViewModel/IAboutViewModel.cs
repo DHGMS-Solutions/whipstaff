@@ -4,7 +4,6 @@
     using System.Reflection;
 
     using ReactiveUI;
-    using ReactiveUI.Xaml;
 
     /// <summary>
     /// View Model Interface for the About View
@@ -39,6 +38,6 @@
         /// <summary>
         /// Gets the Close Window Command
         /// </summary>
-        ReactiveCommand CloseWindow { get; }
+        ReactiveCommand<object> CloseWindow { get; }
     }
 }

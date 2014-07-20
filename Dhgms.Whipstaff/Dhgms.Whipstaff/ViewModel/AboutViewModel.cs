@@ -9,12 +9,11 @@ namespace Dhgms.Whipstaff.ViewModel
     using System.Reflection;
 
     using ReactiveUI;
-    using ReactiveUI.Xaml;
 
     /// <summary>
     /// View Model for the About View
     /// </summary>
-    public class AboutViewModel : BaseClosable<AboutViewModel>, IAboutViewModel
+    public class AboutViewModel : ViewModelBaseClosable<AboutViewModel>, IAboutViewModel
     {
         /// <summary>
         /// The program name

@@ -7,7 +7,7 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
 
-    public class ChangeLogViewModel : BaseClosable<ChangeLogViewModel>, IChangeLogViewModel
+    public class ChangeLogViewModel : ViewModelBaseClosable<ChangeLogViewModel>, IChangeLogViewModel
     {
         private ReactiveList<Model.Info.VersionHistory> versions;
 
