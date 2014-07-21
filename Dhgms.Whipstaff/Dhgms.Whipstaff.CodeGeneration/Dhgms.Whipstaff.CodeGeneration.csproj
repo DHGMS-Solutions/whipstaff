@@ -37,6 +37,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dhgms.Nucleotide">
+      <HintPath>..\packages\Dhgms.Nucleotide.0.1403.6.2\lib\net40\Dhgms.Nucleotide.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,7 +58,14 @@
       <Name>Dhgms.Whipstaff.Nucleotide</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF NOT EXIST "$(SolutionDir)tools" mkdir "$(SolutionDir)tools"
+copy "$(TargetDir)*.dll" "$(SolutionDir)tools\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -63,4 +73,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\CommonBuild.targets" />
 </Project>
