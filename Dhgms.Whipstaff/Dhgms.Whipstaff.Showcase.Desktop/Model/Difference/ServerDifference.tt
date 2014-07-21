@@ -4,8 +4,8 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#@ assembly name="$(SolutionDir)\..\..\..\nucleotide\main\Dhgms.Nucleotide\bin\$(ConfigurationName)\Dhgms.Nucleotide.dll" #>
-<#@ assembly name="$(SolutionDir)\Dhgms.Whipstaff.CodeGeneration\bin\$(ConfigurationName)\Dhgms.Whipstaff.CodeGeneration.dll" #>
+<#@ assembly name="$(nucleotideToolsFolder)\Dhgms.Nucleotide.dll" #>
+<#@ assembly name="$(nucleotideToolsFolder)\Dhgms.Whipstaff.CodeGeneration.dll" #>
 <#
 
 Dhgms.Nucleotide.Model.Info.PropertyInfo.Base[] properties = new Dhgms.Whipstaff.CodeGeneration.Server().Properties;
