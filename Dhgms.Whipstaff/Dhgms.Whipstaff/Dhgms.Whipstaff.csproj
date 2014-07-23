@@ -177,24 +177,20 @@
     <Compile Include="ViewModel\DiagnosticViewModel.cs" />
     <Compile Include="ViewModel\IMainRibbonWindowViewModel.cs" />
     <Compile Include="ViewModel\IntegerTextBoxViewModel.cs" />
-    <Compile Include="ViewModel\IAboutViewModel.cs" />
-    <Compile Include="ViewModel\IChangeLogViewModel.cs" />
-    <Compile Include="ViewModel\IClosableViewModel.cs" />
-    <Compile Include="ViewModel\IDiagnosticViewModel.cs" />
-    <Compile Include="ViewModel\IFeatureUsageTracking.cs" />
-    <Compile Include="ViewModel\IKeyboardViewModel.cs" />
-    <Compile Include="ViewModel\ILoggingConsoleViewModel.cs" />
-    <Compile Include="ViewModel\IOptionsViewModel.cs" />
-    <Compile Include="ViewModel\IPermissionsListViewModel.cs" />
-    <Compile Include="ViewModel\ISavableViewModel.cs" />
     <Compile Include="ViewModel\Ctrl\ISingleLineTextInputControlViewModel.cs" />
-    <Compile Include="ViewModel\ISplashScreenViewModel.cs" />
     <Compile Include="ViewModel\ISystemNotificationAreaViewModel.cs" />
     <Compile Include="ViewModel\KeyboardViewModel.cs" />
     <Compile Include="ViewModel\MainRibbonWindowViewModel.cs" />
     <Compile Include="ViewModel\OptionsViewModel.cs" />
     <Compile Include="ViewModel\SplashScreenViewModel.cs" />
     <Compile Include="ViewModel\TextBoxViewControl.cs" />
+    <Compile Include="ViewModel\ViewModels\IAboutViewModel.cs" />
+    <Compile Include="ViewModel\ViewModels\IChangeLogViewModel.cs" />
+    <Compile Include="ViewModel\ViewModels\IClosableViewModel.cs" />
+    <Compile Include="ViewModel\ViewModels\IDiagnosticViewModel.cs" />
+    <Compile Include="ViewModel\ViewModels\IFeatureUsageTracking.cs" />
+    <Compile Include="ViewModel\ViewModels\IKeyboardViewModel.cs" />
+    <Compile Include="ViewModel\ViewModels\ILoggingConsoleViewModel.cs" />
     <Compile Include="ViewModel\Wndw\IMainWindowViewModel.cs" />
     <Compile Include="ViewModel\Wndw\MainWindowViewModel.cs" />
     <Compile Include="View\Ctrl\Generic\BaseControl.cs" />
@@ -269,7 +265,10 @@
     <Resource Include="Resource\Font\Entypo-Social.ttf" />
     <Resource Include="Resource\Font\fontawesome-webfont.ttf" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\ViewModels\Controls\" />
+    <Folder Include="ViewModel\ViewModels\Windows\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
