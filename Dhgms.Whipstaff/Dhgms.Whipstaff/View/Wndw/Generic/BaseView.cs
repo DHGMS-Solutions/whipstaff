@@ -13,7 +13,6 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
     using System.Windows;
 
     using ReactiveUI;
-    using ReactiveUI.Routing;
 
     /// <summary>
     /// BaseView class for a view
@@ -39,33 +38,6 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
         public static readonly DependencyProperty ViewModelProperty =
 // ReSharper restore StaticFieldInGenericType
             DependencyProperty.Register("ViewModel", typeof(TViewModelInterface), typeof(TView), new PropertyMetadata(null));
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseView{TView,TViewModelInterface,TViewModel}"/> class.
-        /// </summary>
-        public BaseView() : this(new TViewModel())
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseView{TView,TViewModelInterface,TViewModel}"/> class.
-        /// </summary>
-        /// <param name="viewModel">
-        /// The view model.
-        /// </param>
-        /// <exception cref="ArgumentNullException">
-        /// No view model was passed.
-        /// </exception>
-        public BaseView(TViewModel viewModel)
-        {
-            if (viewModel == null)
-            {
-                throw new ArgumentNullException("viewModel");
-            }
-
-            this.ViewModel = new TViewModel();
-            this.DataContext = this.ViewModel;
-        }
 
         /// <summary>
         /// Gets or sets the view model.

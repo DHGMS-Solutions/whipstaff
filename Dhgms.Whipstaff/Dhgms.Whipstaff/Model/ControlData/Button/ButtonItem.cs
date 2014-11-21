@@ -1,17 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.Model.ControlData.Button
+﻿namespace Dhgms.Whipstaff.Model.ControlData.Button
 {
-    using ReactiveUI.Xaml;
+    using ReactiveUI;
 
-    public class ButtonItem
+    public class ButtonItem : ReactiveObject
     {
-        public string Name { get; set; }
+        private string name;
+        private ReactiveCommand<object> command;
 
-        public ReactiveCommand Command { get; set; }
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.name, value);                
+            }
+        }
+
+        public ReactiveCommand<object> Command
+        {
+            get
+            {
+                return this.command;
+            }
+
+            set
+            {
+                this.RaiseAndSetIfChanged(ref this.command, value);
+            }
+        }
     }
 }

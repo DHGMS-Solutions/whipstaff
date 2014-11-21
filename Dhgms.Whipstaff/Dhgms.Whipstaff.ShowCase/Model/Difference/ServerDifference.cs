@@ -2,7 +2,6 @@
 {
         using System;
         using System.ComponentModel.DataAnnotations;
-        using System.Data.Entity;
         using System.Diagnostics;
         using System.Diagnostics.CodeAnalysis;
         using System.Runtime.Serialization;
@@ -79,12 +78,6 @@
             this.Status = status;
         }
 
-            /// <summary>
-            /// The on disposing event
-            /// </summary>
-            protected override void OnDisposing()
-            {
-            }
         #region properties
         /// <summary>
         /// Unique Id
@@ -410,6 +403,12 @@
         return schema.Document.CreateReader();
         }
         #endregion
+            /// <summary>
+            /// The on disposing event
+            /// </summary>
+            protected override void OnDisposing()
+            {
+            }
     }
 }
 

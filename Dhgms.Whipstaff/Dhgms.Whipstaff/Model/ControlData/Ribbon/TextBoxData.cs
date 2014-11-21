@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System.ComponentModel;
@@ -22,11 +24,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._text != value)
-                {
-                    this._text = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("Text"));
-                }
+                this.RaiseAndSetIfChanged(ref this._text, value);
             }
         }
         private string _text;

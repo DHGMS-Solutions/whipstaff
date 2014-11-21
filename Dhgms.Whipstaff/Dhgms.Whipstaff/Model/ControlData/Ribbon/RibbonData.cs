@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System;
@@ -13,7 +15,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class RibbonData : INotifyPropertyChanged
+    public class RibbonData : ReactiveObject
     {
         public ObservableCollection<TabData> TabDataCollection
         {
@@ -77,19 +79,5 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
             }
         }
         private MenuButtonData _applicationMenuData;
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

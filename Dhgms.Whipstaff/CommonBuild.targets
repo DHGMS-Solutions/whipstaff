@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Taken from: http://lessisthenewmore.wordpress.com/2010/05/25/source-control-and-t4-msbuild-integration/
+-->
+<!-- step 1 : check out tt files and their targets -->
+<!-- step 2 : transform on build -->
+<!-- step 3 : cancel checkout of files that haven't changed -->
+<!-- step 4 : on a server build check back in changes but don't trigger another build -->
+<!-- http://msdn.microsoft.com/en-us/library/dd722601.aspx -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\ExtensionPack\4.0\MSBuild.ExtensionPack.tasks"/>
+
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <TransformOnBuild>true</TransformOnBuild>
+    <TransformOutOfDateOnly>false</TransformOutOfDateOnly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <nucleotideToolsFolder>$(MSBuildProjectDirectory)\..\tools</nucleotideToolsFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <!--- Hack to get around the DSL tool not knowing the solution dir -->
+    <T4ParameterValues Include="nucleotideToolsFolder">
+      <Value>$(nucleotideToolsFolder)</Value>
+      <InProject>False</InProject>
+    </T4ParameterValues>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\TextTemplating\Microsoft.TextTemplating.targets" />
+  <PropertyGroup>
+    <BeforeTransform>CheckOutFiles</BeforeTransform>
+    <AfterTransform>CheckIfTransformedFilesModified</AfterTransform>
+  </PropertyGroup>
+  <!--
+  ================================================================
+  CheckOutFiles
+  ================================================================
+  Description: Checks out the files to be transformed.
+  Taken from : http://lessisthenewmore.wordpress.com/2010/05/25/source-control-and-t4-msbuild-integration/
+  -->
+  <Target Name="CheckOutFiles" DependsOnTargets="CreateT4ItemLists">
+    <ItemGroup>
+      <FilesToCheckout Include="&quot;%(T4TransformInputs.RootDir)%(T4TransformInputs.Directory)%(T4TransformInputs.LastGenOutput)&quot;" />
+    </ItemGroup>
+    <PropertyGroup>
+      <TfPath Condition="'$(VS120COMNTOOLS)' != ''">$(VS120COMNTOOLS)..\IDE\</TfPath>
+      <TfPath Condition="'$(TeamBuildRefPath)' != ''">$(TeamBuildRefPath)\..\</TfPath>
+    </PropertyGroup>
+    <Exec Command="&quot;$(TfPath)tf.exe&quot; checkout %(FilesToCheckout.Identity)" Condition="%(FilesToCheckout.Identity) != '&quot;&quot;'" />
+  </Target>
+  
+  <!--
+  ================================================================
+  CheckIfTransformedFilesModified
+  ================================================================
+  Description: Checks if the transformed file has been modified
+  -->
+  <Target Name="CheckIfTransformedFilesModified">
+    <!--
+    <Dhgms.Nucleotide.MsBuild.Model.CheckIfTransformedFilesModified TransformedFiles="@(GeneratedFiles)" />
+    <Exec Command="echo @(GeneratedFiles, ' ')" Condition="@(GeneratedFiles) != '&quot;&quot;'" />
+    -->
+  </Target>
+
+  <!--Style Cop -->
+  <Import Project="$(MSBuildExtensionsPath)\StyleCop\v4.7\StyleCop.targets" />
+
+  <!--
+  FX Cop
+  -->
+  <ItemGroup>
+    <!--- Need to add to the dependencies because MSBuild.ExtensionPack.CodeQuality.StyleCop.dll references StyleCop -->
+    <DependencyDirectories Include="$(MSBuildExtensionsPath)\..\StyleCop 4.7\"/>
+    <!-- Define a bespoke set of rules to run. Prefix the Rules path with ! to treat warnings as errors -->
+    <Rules Include="$(MSBuildExtensionsPath)\..\Microsoft Fxcop 10.0\Rules\DesignRules.dll"/>
+    <Files Include="$(MSBuildExtensionsPath)\ExtensionPack\4.0\MSBuild.ExtensionPack.StyleCop.dll" />
+  </ItemGroup>
+  <!-- 
+  <Target Name="AfterBuild">
+    <MSBuild.ExtensionPack.CodeQuality.FxCop TaskAction="Analyse" Files="@(Files)" OutputFile="fxcoplog.txt" FxCopPath="$(MSBuildExtensionsPath)\..\Microsoft Fxcop 10.0\FxCopCmd.exe">
+      <Output TaskParameter="AnalysisFailed" PropertyName="Result"/>
+    </MSBuild.ExtensionPack.CodeQuality.FxCop>
+    <Message Text="FXCop Analysis Failed: $(Result)"/>
+  </Target>
+  -->
+</Project>
+
+

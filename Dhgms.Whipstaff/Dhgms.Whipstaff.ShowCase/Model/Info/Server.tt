@@ -4,7 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-<#@ assembly name="$(SolutionDir)..\..\nucleotide\Dhgms.Nucleotide\bin\$(ConfigurationName)\Dhgms.Nucleotide.dll" #>
+<#@ assembly name="$(SolutionDir)..\..\..\nucleotide\main\Dhgms.Nucleotide\bin\$(ConfigurationName)\Dhgms.Nucleotide.dll" #>
 <#@ assembly name="$(SolutionDir)\Dhgms.Whipstaff.CodeGeneration\bin\$(ConfigurationName)\Dhgms.Whipstaff.CodeGeneration.dll" #>
 <#
 

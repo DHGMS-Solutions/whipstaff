@@ -1,6 +1,6 @@
 ﻿namespace Dhgms.Whipstaff.Model.Excptn.Security
 {
-    class TerminalServerSessionNotAllowed
+    public class TerminalServerSessionNotAllowed
         : System.Exception
     {
         public TerminalServerSessionNotAllowed()

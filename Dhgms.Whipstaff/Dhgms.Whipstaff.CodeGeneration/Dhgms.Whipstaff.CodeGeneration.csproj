@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dhgms.Whipstaff.CodeGeneration</RootNamespace>
     <AssemblyName>Dhgms.Whipstaff.CodeGeneration</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,8 +34,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Dhgms.Nucleotide">
+      <HintPath>..\packages\Dhgms.Nucleotide.0.1403.6.2\lib\net40\Dhgms.Nucleotide.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,16 +53,19 @@
     <Compile Include="Server.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\nucleotide\Dhgms.Nucleotide\Dhgms.Nucleotide.csproj">
-      <Project>{b74fddd1-0b58-4d89-b86c-0393d5d69b0e}</Project>
-      <Name>Dhgms.Nucleotide</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Nucleotide\Dhgms.Whipstaff.Nucleotide.csproj">
       <Project>{08d9cc10-deae-4dfa-998c-3c3bd620a418}</Project>
       <Name>Dhgms.Whipstaff.Nucleotide</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>IF NOT EXIST "$(SolutionDir)tools" mkdir "$(SolutionDir)tools"
+copy "$(TargetDir)*.dll" "$(SolutionDir)tools\"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -65,4 +73,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Import Project="..\CommonBuild.targets" />
 </Project>

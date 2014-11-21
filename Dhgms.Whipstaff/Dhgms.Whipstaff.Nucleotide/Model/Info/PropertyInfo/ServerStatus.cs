@@ -8,8 +8,6 @@
     /// </summary>
     public class ServerStatus : Base
     {
-        #region Constructors and Destructors
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ServerStatus"/> class. 
         /// Constructor
@@ -54,10 +52,6 @@
         {
         }
 
-        #endregion
-
-        #region Public Properties
-
         public override string GetDataAnnotations()
         {
             return null;
@@ -96,7 +90,12 @@
             }
         }
 
-        #endregion
+        public override string RandomUnitTestValue
+        {
+            get
+            {
+                return "";
+            }
+        }
     }
-
 }

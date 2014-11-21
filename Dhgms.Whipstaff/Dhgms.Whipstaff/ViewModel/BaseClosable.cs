@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dhgms.Whipstaff.ViewModel
 {
-    using ReactiveUI.Xaml;
+    using ReactiveUI;
 
-    public class BaseClosable : Base, IClosableViewModel
+    public class ViewModelBaseClosable<TInheritingClass> : ViewModelBase<TInheritingClass>, IClosableViewModel
+        where TInheritingClass : ViewModelBase<TInheritingClass>
     {
-        public ReactiveCommand CloseWindow { get; private set; }
+        public ReactiveCommand<object> CloseWindow { get; private set; }
     }
 }

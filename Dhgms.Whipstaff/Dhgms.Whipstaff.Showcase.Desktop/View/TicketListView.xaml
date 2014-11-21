@@ -1,0 +1,9 @@
+﻿<vw:TicketListView x:Class="Dhgms.Whipstaff.ShowCase.View.TicketListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        Title="TicketListView" Height="300" Width="300">
+    <Grid>
+        
+    </Grid>
+</vw:TicketListView>
