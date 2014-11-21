@@ -2,7 +2,6 @@
 {
         using System;
         using System.ComponentModel.DataAnnotations;
-        using System.Data.Entity;
         using System.Diagnostics;
         using System.Diagnostics.CodeAnalysis;
         using System.Runtime.Serialization;
@@ -106,18 +105,12 @@
             this.Status = status;
         }
 
-            /// <summary>
-            /// The on disposing event
-            /// </summary>
-            protected override void OnDisposing()
-            {
-            }
         #region properties
         /// <summary>
         /// Gets or sets Unique Id
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(IsRequired = true,Order = 1)]
+        [DataMember(IsRequired = true, Order = 1)]
         [Required]
 [Range(typeof(int), "0", "")]
         public int Id
@@ -143,9 +136,9 @@
         /// Gets or sets Name of project
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(IsRequired = true,Order = 2)]
+        [DataMember(IsRequired = true, Order = 2)]
         [Required]
-[MinLength(0, ErrorMessage="Must be at least 0 characters in length")]
+        [MinLength(0, ErrorMessage = "Must be at least 0 characters in length")]
         public string Name
         {
             get
@@ -154,24 +147,30 @@
             }
 
             set
-        {
-            if(value  != null && value.Length < 0)
             {
-                // ReSharper disable RedundantNameQualifier
-                throw new Dhgms.DataManager.Model.Exception.StringTooShortException(0, value.Length);
-                // ReSharper restore RedundantNameQualifier
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                if (value.Length < 0)
+                {
+                    // ReSharper disable RedundantNameQualifier
+                    throw new Dhgms.DataManager.Model.Exception.StringTooShortException(0, value.Length);
+                    // ReSharper restore RedundantNameQualifier
+                }
+
+                this.name = value;
             }
-            this.name = value;
-        }
         }
 
         /// <summary>
         /// Gets or sets Description of project
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(IsRequired = true,Order = 3)]
+        [DataMember(IsRequired = true, Order = 3)]
         [Required]
-[MinLength(0, ErrorMessage="Must be at least 0 characters in length")]
+        [MinLength(0, ErrorMessage = "Must be at least 0 characters in length")]
         public string Description
         {
             get
@@ -180,22 +179,28 @@
             }
 
             set
-        {
-            if(value  != null && value.Length < 0)
             {
-                // ReSharper disable RedundantNameQualifier
-                throw new Dhgms.DataManager.Model.Exception.StringTooShortException(0, value.Length);
-                // ReSharper restore RedundantNameQualifier
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("value");
+                }
+
+                if (value.Length < 0)
+                {
+                    // ReSharper disable RedundantNameQualifier
+                    throw new Dhgms.DataManager.Model.Exception.StringTooShortException(0, value.Length);
+                    // ReSharper restore RedundantNameQualifier
+                }
+
+                this.description = value;
             }
-            this.description = value;
-        }
         }
 
         /// <summary>
         /// Gets or sets Server Population
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(IsRequired = true,Order = 4)]
+        [DataMember(IsRequired = true, Order = 4)]
         [Required]
 [Range(typeof(int), "0", "")]
         public int Population
@@ -221,9 +226,8 @@
         /// Gets or sets Server Status
         /// </summary>
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [DataMember(IsRequired = true,Order = 5)]
+        [DataMember(IsRequired = true, Order = 5)]
         [Required]
-
         public Dhgms.Whipstaff.Common.Model.Info.ServerStatus Status
         {
             get;
@@ -309,7 +313,21 @@
             }
 
             // Status
-            checkResult = this.Status.CompareTo(other.Status);
+            if (this.Status != null)
+            {
+                if (other.Status == null)
+                {
+                    checkResult = -1;
+                }
+                else
+                {
+                    checkResult = this.Status.CompareTo(other.Status);
+                }
+            }
+            else if (other.Status != null)
+            {
+                checkResult = 1;
+            }
 
             if (checkResult != 0)
             {
@@ -434,37 +452,50 @@
             // Id
             var checkResult = this.Id.CompareTo(other.Id);
 
-            var id = checkResult != 0;
+            var idDifferent = checkResult != 0;
 
             // Name
             checkResult = string.CompareOrdinal(this.Name, other.Name);
 
-            var name = checkResult != 0;
+            var nameDifferent = checkResult != 0;
 
             // Description
             checkResult = string.CompareOrdinal(this.Description, other.Description);
 
-            var description = checkResult != 0;
+            var descriptionDifferent = checkResult != 0;
 
             // Population
             checkResult = this.Population.CompareTo(other.Population);
 
-            var population = checkResult != 0;
+            var populationDifferent = checkResult != 0;
 
             // Status
-            checkResult = this.Status.CompareTo(other.Status);
+            if (this.Status != null)
+            {
+                if (other.Status == null)
+                {
+                    checkResult = -1;
+                }
+                else
+                {
+                    checkResult = this.Status.CompareTo(other.Status);
+                }
+            }
+            else if (other.Status != null)
+            {
+                checkResult = 1;
+            }
 
-            var status = checkResult != 0;
+            var statusDifferent = checkResult != 0;
 
 // ReSharper disable RedundantNameQualifier
             return new Dhgms.Whipstaff.Model.Difference.ServerDifference(
 // ReSharper restore RedundantNameQualifier
-                id
-                ,name
-                ,description
-                ,population
-                ,status
-                );
+                idDifferent,
+                nameDifferent,
+                descriptionDifferent,
+                populationDifferent,
+                statusDifferent);
         }
 
         /// <summary>
@@ -511,5 +542,11 @@
         return schema.Document.CreateReader();
         }
         #endregion
+            /// <summary>
+            /// The on disposing event
+            /// </summary>
+            protected override void OnDisposing()
+            {
+            }
     }
 }

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Dhgms.Whipstaff")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DHGMS Solutions")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Dhgms.Whipstaff")]
-[assembly: AssemblyCopyright("Copyright © DHGMS Solutions 2012")]
+[assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("684bcfd3-46d5-406c-943d-22bed853de9e")]
+[assembly: Guid("8250556b-2d7e-4dab-9d0b-a08d0473bf68")]
 
 // Version information for an assembly consists of the following four values:
 //

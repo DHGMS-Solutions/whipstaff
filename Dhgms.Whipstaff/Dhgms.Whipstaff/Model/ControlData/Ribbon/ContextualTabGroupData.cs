@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System.Collections.ObjectModel;
@@ -12,7 +14,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ContextualTabGroupData : INotifyPropertyChanged
+    public class ContextualTabGroupData : ReactiveObject
     {
         public ContextualTabGroupData()
             : this(null)
@@ -34,11 +36,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._header != value)
-                {
-                    this._header = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("Header"));
-                }
+                this.RaiseAndSetIfChanged(ref this._header, value);
             }
         }
         private string _header;
@@ -52,11 +50,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._isVisible != value)
-                {
-                    this._isVisible = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("IsVisible"));
-                }
+                this.RaiseAndSetIfChanged(ref this._isVisible, value);
             }
         }
         private bool _isVisible;
@@ -73,19 +67,5 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
             }
         }
         private ObservableCollection<TabData> _tabDataCollection;
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

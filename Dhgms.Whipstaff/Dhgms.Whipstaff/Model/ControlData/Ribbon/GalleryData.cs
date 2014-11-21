@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System;
@@ -51,11 +53,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
             get { return this._selectedItem; }
             set
             {
-                if (this._selectedItem != value)
-                {
-                    this._selectedItem = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("SelectedItem"));
-                }
+                this.RaiseAndSetIfChanged(ref this._selectedItem, value);
             }
         }
         GalleryItemData _selectedItem;
@@ -69,11 +67,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._canUserFilter != value)
-                {
-                    this._canUserFilter = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("CanUserFilter"));
-                }
+                this.RaiseAndSetIfChanged(ref this._canUserFilter, value);
             }
         }
 
@@ -101,11 +95,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
             get { return this._selectedItem; }
             set
             {
-                if (!Object.Equals(value, this._selectedItem))
-                {
-                    this._selectedItem = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("SelectedItem"));
-                }
+                this.RaiseAndSetIfChanged(ref this._selectedItem, value);
             }
         }
         T _selectedItem;
@@ -119,11 +109,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._canUserFilter != value)
-                {
-                    this._canUserFilter = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("CanUserFilter"));
-                }
+                this.RaiseAndSetIfChanged(ref this._canUserFilter, value);
             }
         }
 

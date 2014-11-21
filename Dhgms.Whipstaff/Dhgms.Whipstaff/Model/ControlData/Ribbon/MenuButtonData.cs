@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System;
@@ -34,11 +36,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._isVerticallyResizable != value)
-                {
-                    this._isVerticallyResizable = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("IsVerticallyResizable"));
-                }
+                this.RaiseAndSetIfChanged(ref this._isVerticallyResizable, value);
             }
         }
 
@@ -51,11 +49,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._isHorizontallyResizable != value)
-                {
-                    this._isHorizontallyResizable = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("IsHorizontallyResizable"));
-                }
+                this.RaiseAndSetIfChanged(ref this._isHorizontallyResizable, value);
             }
         }
 

@@ -7,23 +7,23 @@ namespace Dhgms.Whipstaff.ViewModel
 {
     using ReactiveUI;
 
-    public class ChangeLogViewModel : BaseClosable, IChangeLogViewModel
+    public class ChangeLogViewModel : ViewModelBaseClosable<ChangeLogViewModel>, IChangeLogViewModel
     {
-        private string[] changes;
+        private ReactiveList<Model.Info.VersionHistory> versions;
 
         /// <summary>
         /// Gets or sets the Name of the program
         /// </summary>
-        public string[] Changes
+        public ReactiveList<Model.Info.VersionHistory> Versions
         {
             get
             {
-                return this.changes;
+                return this.versions;
             }
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.Changes, ref this.changes, value);
+                this.RaiseAndSetIfChanged(ref this.versions, value);
             }
         }
     }

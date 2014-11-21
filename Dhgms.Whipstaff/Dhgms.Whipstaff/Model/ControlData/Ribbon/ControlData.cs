@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System;
@@ -13,7 +15,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class ControlData : INotifyPropertyChanged
+    public class ControlData : ReactiveObject, INotifyPropertyChanged
     {
         public string Label
         {
@@ -24,11 +26,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._label != value)
-                {
-                    this._label = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("Label"));
-                }
+                this.RaiseAndSetIfChanged(ref this._label, value);
             }
         }
         private string _label;
@@ -42,11 +40,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._largeImage != value)
-                {
-                    this._largeImage = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("LargeImage"));
-                }
+                this.RaiseAndSetIfChanged(ref this._largeImage, value);
             }
         }
         private Uri _largeImage;
@@ -60,11 +54,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._smallImage != value)
-                {
-                    this._smallImage = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("SmallImage"));
-                }
+                this.RaiseAndSetIfChanged(ref this._smallImage, value);
             }
         }
         private Uri _smallImage;
@@ -78,11 +68,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipTitle != value)
-                {
-                    this._toolTipTitle = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipTitle"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipTitle, value);
             }
         }
         private string _toolTipTitle;
@@ -96,11 +82,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipDescription != value)
-                {
-                    this._toolTipDescription = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipDescription"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipDescription, value);
             }
         }
         private string _toolTipDescription;
@@ -114,11 +96,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipImage != value)
-                {
-                    this._toolTipImage = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipImage"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipImage, value);
             }
         }
         private Uri _toolTipImage;
@@ -132,11 +110,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipFooterTitle != value)
-                {
-                    this._toolTipFooterTitle = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipFooterTitle"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipFooterTitle, value);
             }
         }
         private string _toolTipFooterTitle;
@@ -150,11 +124,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipFooterDescription != value)
-                {
-                    this._toolTipFooterDescription = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipFooterDescription"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipFooterDescription, value);
             }
         }
         private string _toolTipFooterDescription;
@@ -168,11 +138,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._toolTipFooterImage != value)
-                {
-                    this._toolTipFooterImage = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ToolTipFooterImage"));
-                }
+                this.RaiseAndSetIfChanged(ref this._toolTipFooterImage, value);
             }
         }
         private Uri _toolTipFooterImage;
@@ -186,11 +152,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._command != value)
-                {
-                    this._command = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("Command"));
-                }
+                this.RaiseAndSetIfChanged(ref this._command, value);
             }
         }
         private ICommand _command;
@@ -204,27 +166,9 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._keyTip != value)
-                {
-                    this._keyTip = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("KeyTip"));
-                }
+                this.RaiseAndSetIfChanged(ref this._keyTip, value);
             }
         }
         private string _keyTip;
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

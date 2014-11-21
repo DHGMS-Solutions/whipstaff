@@ -4,6 +4,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using ReactiveUI;
+
 namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 {
     using System;
@@ -13,7 +15,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
     /// <summary>
     /// TODO: Update summary.
     /// </summary>
-    public class TabData : INotifyPropertyChanged
+    public class TabData : ReactiveObject
     {
         public TabData()
             : this(null)
@@ -34,11 +36,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._header != value)
-                {
-                    this._header = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("Header"));
-                }
+                this.RaiseAndSetIfChanged(ref this._header, value);
             }
         }
         private string _header;
@@ -52,11 +50,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._contextualTabGroupHeader != value)
-                {
-                    this._contextualTabGroupHeader = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("ContextualTabGroupHeader"));
-                }
+                this.RaiseAndSetIfChanged(ref this._contextualTabGroupHeader, value);
             }
         }
         private string _contextualTabGroupHeader;
@@ -70,11 +64,7 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
 
             set
             {
-                if (this._isSelected != value)
-                {
-                    this._isSelected = value;
-                    this.OnPropertyChanged(new PropertyChangedEventArgs("IsSelected"));
-                }
+                this.RaiseAndSetIfChanged(ref this._isSelected, value);
             }
         }
         private bool _isSelected;
@@ -102,19 +92,5 @@ namespace Dhgms.Whipstaff.Model.ControlData.Ribbon
             }
         }
         private ObservableCollection<GroupData> _groupDataCollection;
-
-        #region INotifyPropertyChanged Members
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(PropertyChangedEventArgs e)
-        {
-            if (this.PropertyChanged != null)
-            {
-                this.PropertyChanged(this, e);
-            }
-        }
-
-        #endregion
     }
 }

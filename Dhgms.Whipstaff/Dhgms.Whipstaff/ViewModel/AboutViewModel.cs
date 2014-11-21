@@ -9,13 +9,11 @@ namespace Dhgms.Whipstaff.ViewModel
     using System.Reflection;
 
     using ReactiveUI;
-    using ReactiveUI.Routing;
-    using ReactiveUI.Xaml;
 
     /// <summary>
     /// View Model for the About View
     /// </summary>
-    public class AboutViewModel : BaseClosable, IAboutViewModel
+    public class AboutViewModel : ViewModelBaseClosable<AboutViewModel>, IAboutViewModel
     {
         /// <summary>
         /// The program name
@@ -54,7 +52,7 @@ namespace Dhgms.Whipstaff.ViewModel
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.ProgramName, ref this.programName, value);
+                this.RaiseAndSetIfChanged(ref this.programName, value);
             }
         }
 
@@ -70,7 +68,7 @@ namespace Dhgms.Whipstaff.ViewModel
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.ProgramVersion, ref this.programVersion, value);
+                this.RaiseAndSetIfChanged(ref this.programVersion, value);
             }
         }
 
@@ -86,7 +84,7 @@ namespace Dhgms.Whipstaff.ViewModel
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.Copyright, ref this.copyright, value);
+                this.RaiseAndSetIfChanged(ref this.copyright, value);
             }
         }
 
@@ -102,7 +100,7 @@ namespace Dhgms.Whipstaff.ViewModel
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.Notice, ref this.notice, value);
+                this.RaiseAndSetIfChanged(ref this.notice, value);
             }
         }
 
@@ -118,7 +116,7 @@ namespace Dhgms.Whipstaff.ViewModel
 
             set
             {
-                this.RaiseAndSetIfChanged(x => x.Dependencies, ref this.dependencies, value);
+                this.RaiseAndSetIfChanged(ref this.dependencies, value);
             }
         }
     }
