@@ -39,14 +39,65 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Helpers\" />
     <Folder Include="ViewModels\Controls\" />
     <Folder Include="ViewModels\Windows\" />
     <Folder Include="Views\Controls\" />
+    <Folder Include="Views\Windows\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ViewHelpers.cs" />
+    <Compile Include="Helpers\ViewModelHelpers.cs" />
+    <Compile Include="Model\CommandLineArguments.cs" />
+    <Compile Include="Model\FontAwesome.cs" />
+    <Compile Include="Model\KeyboardMapping.cs" />
+    <Compile Include="Model\OperatingSystemFeatureSet.cs" />
+    <Compile Include="Model\SecurityProvider.cs" />
+    <Compile Include="Model\SecurityProviderHealth.cs" />
+    <Compile Include="Model\ValidationDetails.cs" />
+    <Compile Include="Model\ValidationIndicator.cs" />
+    <Compile Include="Model\VersionHistory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\Windows\ViewModelBase.cs" />
+    <Compile Include="ViewModels\IAboutViewModel.cs" />
+    <Compile Include="ViewModels\IChangeLogViewModel.cs" />
+    <Compile Include="ViewModels\IClosableViewModel.cs" />
+    <Compile Include="ViewModels\IDiagnosticViewModel.cs" />
+    <Compile Include="ViewModels\IFeatureUsageTracking.cs" />
+    <Compile Include="ViewModels\IKeyboardViewModel.cs" />
+    <Compile Include="ViewModels\ILoggingConsoleViewModel.cs" />
+    <Compile Include="ViewModels\IOptionsViewModel.cs" />
+    <Compile Include="ViewModels\IPermissionsListViewModel.cs" />
+    <Compile Include="ViewModels\ISavableViewModel.cs" />
+    <Compile Include="ViewModels\ISplashScreenViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\packages\Caliburn.Micro.Core.2.0.0\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.ReactiveUI">
+      <HintPath>..\packages\Caliburn.Micro.ReactiveUI.2.2.1\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI">
+      <HintPath>..\packages\reactiveui-core.6.0.3\lib\Portable-Net45+Win8+WP8+WPA81\ReactiveUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.1.3.3\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -137,17 +137,8 @@
     <Compile Include="Model\Helper\SecurityCenter\AntiVirus.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Base.cs" />
     <Compile Include="Model\Helper\SecurityCenter\Firewall.cs" />
-    <Compile Include="Model\Info\FontAwesome.cs" />
-    <Compile Include="Model\Info\ValidationDetails.cs" />
-    <Compile Include="Model\Info\VersionHistory.cs" />
-    <Compile Include="Model\Info\CommandLineArguments.cs" />
     <Compile Include="Model\Info\GroupPolicy\Window.cs" />
-    <Compile Include="Model\Info\KeyboardMapping.cs" />
-    <Compile Include="Model\Info\OperatingSystemFeatureSet.cs" />
     <Compile Include="Model\Info\Registry\Window.cs" />
-    <Compile Include="Model\Info\SecurityProvider.cs" />
-    <Compile Include="Model\Info\SecurityProviderHealth.cs" />
-    <Compile Include="Model\Info\ValidationIndicator.cs" />
     <Compile Include="Model\Interface\IArgumentsHandlerInvoker.cs" />
     <Compile Include="Model\ProgramHandler.cs" />
     <Compile Include="Model\ProviderBase\ChangeLog.cs" />
@@ -169,6 +160,7 @@
     <Compile Include="Model\SpeechSynthesizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
+    <Compile Include="ViewModel\Ctrl\TextBoxControlViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\BaseClosable.cs" />
     <Compile Include="ViewModel\BaseSavable.cs" />

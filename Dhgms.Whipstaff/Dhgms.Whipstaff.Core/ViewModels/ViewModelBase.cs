@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ViewModel
+﻿namespace Dhgms.Whipstaff.Core.ViewModels
 {
+    using Caliburn.Micro.ReactiveUI;
+
     using ReactiveUI;
 
-    using NLog;
+    using Splat;
 
-    public class ViewModelBase<TInheritingClass> : ReactiveObject, IRoutableViewModel, IFeatureUsageTracking
+    public class ViewModelBase<TInheritingClass> : ReactiveScreen, IRoutableViewModel, IFeatureUsageTracking
         where TInheritingClass : ViewModelBase<TInheritingClass>
     {
         /// <summary>
@@ -18,7 +14,7 @@ namespace Dhgms.Whipstaff.ViewModel
         /// </summary>
         public ViewModelBase()
         {
-            Logger = LogManager.GetLogger(typeof(TInheritingClass).Name);
+            this.Logger = this.Log();
         }
 
         /// <summary>
@@ -36,7 +32,7 @@ namespace Dhgms.Whipstaff.ViewModel
         /// <summary>
         /// Gets the logger instance.
         /// </summary>
-        protected Logger Logger
+        protected IFullLogger Logger
         {
             get;
             private set;
@@ -54,11 +50,12 @@ namespace Dhgms.Whipstaff.ViewModel
 
         public void OnFeatureException(System.Exception exception)
         {
-            this.Logger.Warn("Feature Exception", exception);
+            this.Logger.WarnException("Feature Exception", exception);
         }
 
         public void OnFeatureError()
         {
+            this.Logger.Warn("Feature error");
         }
     }
 }
