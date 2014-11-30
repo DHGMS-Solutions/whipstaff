@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MahApps.Metro">
+      <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack">
       <HintPath>..\..\ThirdParty\Windows API Code Pack\binaries\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
@@ -53,6 +56,9 @@
     </Reference>
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.3.1.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PerMonitorDpi">
+      <HintPath>..\packages\PerMonitorDpi.1.0.0\lib\net40\PerMonitorDpi.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI">
       <HintPath>..\packages\reactiveui-core.6.0.1\lib\Net45\ReactiveUI.dll</HintPath>
@@ -81,6 +87,9 @@
     </Reference>
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.0.14.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -95,8 +104,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\Desktop.cs" />
-    <Compile Include="Helper\JumpListHelper.cs" />
-    <Compile Include="Model\Helper\SystemIntegrity.cs" />
+    <Compile Include="Controls\IDesktopWindow.cs" />
+    <Compile Include="Controls\WhipstaffMetroNavigationWindow.cs" />
+    <Compile Include="Controls\WhipstaffMetroWindow.cs" />
+    <Compile Include="DisableSystemDpiAwareness.cs" />
+    <Compile Include="FeatureUsageTracking.cs" />
+    <Compile Include="Helpers\CommandLineHelper.cs" />
+    <Compile Include="Helpers\DesktopWindowHelper.cs" />
+    <Compile Include="Helpers\SecurityCenter\AntiSpyware.cs" />
+    <Compile Include="Helpers\SecurityCenter\AntiVirus.cs" />
+    <Compile Include="Helpers\SecurityCenter\Base.cs" />
+    <Compile Include="Helpers\SecurityCenter\Firewall.cs" />
+    <Compile Include="Helpers\ViewHelper.cs" />
+    <Compile Include="Helpers\ViewModelHelper.cs" />
+    <Compile Include="Helpers\JumpListHelper.cs" />
+    <Compile Include="Models\CommandLineModel.cs" />
+    <Compile Include="Models\Helper\SystemIntegrity.cs" />
+    <Compile Include="Models\ICommandLineModel.cs" />
+    <Compile Include="ProgramHandler.cs" />
+    <Compile Include="Remoting\RemotingStrategy.cs" />
+    <Compile Include="Remoting\RemotingStrategyFactory.cs" />
+    <Compile Include="SingleInstance\ApplicationDispatcherInvoker.cs" />
+    <Compile Include="SingleInstance\ArgumentsDeliveryStrategy.cs" />
+    <Compile Include="SingleInstance\DeliveryStrategyFactory.cs" />
+    <Compile Include="SingleInstance\InstanceNotificationOption.cs" />
+    <Compile Include="SingleInstance\SingleInstance.cs" />
+    <Compile Include="SingleInstance\SingleInstanceManagerSetup.cs" />
+    <Compile Include="SingleInstance\TerminationOption.cs" />
+    <Compile Include="SingleInstance\ThreadPoolInvoker.cs" />
+    <Compile Include="SpeechSynthesizer.cs" />
     <Compile Include="View\Ctrl\ChangeLogControl.xaml.cs">
       <DependentUpon>ChangeLogControl.xaml</DependentUpon>
     </Compile>
@@ -134,6 +170,10 @@
     <Compile Include="View\Wndw\SystemNotificationArea.xaml.cs">
       <DependentUpon>SystemNotificationArea.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControl1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -208,6 +248,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\Entypo-Social.ttf" />
+    <Resource Include="Resources\zocial-regular-webfont.ttf" />
+    <Resource Include="Resources\openwebicons.ttf" />
+    <Resource Include="Resources\opendyslexic.ttf" />
+    <Resource Include="Resources\fontawesome-webfont.ttf" />
+    <Resource Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ThirdParty\wpf-notifyicon\NotifyIconWpf\NotifyIconWpf.csproj">
@@ -224,7 +270,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helper\" />
     <Folder Include="ViewModel\Wndw\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowsIcons-license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Entypo-license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

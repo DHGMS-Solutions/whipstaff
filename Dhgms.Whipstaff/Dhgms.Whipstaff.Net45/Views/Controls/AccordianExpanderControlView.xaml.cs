@@ -16,14 +16,16 @@ using System.Windows.Shapes;
 
 namespace Dhgms.Whipstaff.Views.Controls
 {
+    using Dhgms.Whipstaff.ViewModels.Controls;
+
     /// <summary>
     /// Interaction logic for AccordianExpanderControl.xaml
     /// </summary>
-    public partial class AccordianExpanderControlView : IViewFor<IAccordianExpanderControlViewModel>
+    public partial class AccordianExpanderControlView //: IViewFor<IAccordianExpanderControlViewModel>
     {
         public AccordianExpanderControlView()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
