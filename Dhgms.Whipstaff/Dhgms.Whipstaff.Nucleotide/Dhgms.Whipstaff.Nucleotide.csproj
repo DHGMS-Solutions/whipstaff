@@ -53,12 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
-      <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
-      <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

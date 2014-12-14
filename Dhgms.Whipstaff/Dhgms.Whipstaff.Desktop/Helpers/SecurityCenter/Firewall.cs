@@ -1,7 +1,7 @@
 ﻿namespace Dhgms.Whipstaff.Model.Helper.SecurityCenter
 {
+    using Dhgms.Whipstaff.Core.Model;
     using Dhgms.Whipstaff.Model.Excptn.Security.Firewall;
-    using Dhgms.Whipstaff.Model.Info;
 
     /// <summary>
     /// Checks on the security center status for the firewall

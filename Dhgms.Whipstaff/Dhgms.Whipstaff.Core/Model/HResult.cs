@@ -9,7 +9,7 @@ namespace Dhgms.Whipstaff.Model.Helper
     /// <summary>
     /// HRESULT for WinApi calls
     /// </summary>
-    enum HRESULT : long
+    public enum HRESULT : long
     {
         S_FALSE = 0x0001,
         S_OK = 0x0000,

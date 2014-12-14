@@ -8,7 +8,7 @@
     /// </summary>
     public sealed class ApplicationInstanceAlreadyExistsException : Exception
     {
-        internal ApplicationInstanceAlreadyExistsException()
+        public ApplicationInstanceAlreadyExistsException()
             : base("Application instance already exists")
         { }
     }

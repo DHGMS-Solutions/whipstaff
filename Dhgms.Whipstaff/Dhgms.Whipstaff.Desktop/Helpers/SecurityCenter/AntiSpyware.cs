@@ -1,7 +1,6 @@
 ﻿namespace Dhgms.Whipstaff.Model.Helper.SecurityCenter
 {
-    using Dhgms.Whipstaff.Model.Excptn.Security.AntiSpyware;
-    using Dhgms.Whipstaff.Model.Info;
+    using Dhgms.Whipstaff.Core.Model;
 
     using UnexpectedProductState = Dhgms.Whipstaff.Model.Excptn.Security.AntiSpyware.UnexpectedProductState;
 

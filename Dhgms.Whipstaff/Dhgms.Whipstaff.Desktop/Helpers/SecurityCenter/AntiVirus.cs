@@ -1,9 +1,7 @@
 ﻿namespace Dhgms.Whipstaff.Model.Helper.SecurityCenter
 {
+    using Dhgms.Whipstaff.Core.Model;
     using Dhgms.Whipstaff.Model.Excptn.Security.AntiVirus;
-    using Dhgms.Whipstaff.Model.Info;
-
-    using UnexpectedProductState = Dhgms.Whipstaff.Model.Excptn.Security.AntiVirus.UnexpectedProductState;
 
     /// <summary>
     /// Checks on the security center status for the anti virus

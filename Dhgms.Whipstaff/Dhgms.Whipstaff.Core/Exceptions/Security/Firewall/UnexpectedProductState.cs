@@ -2,7 +2,7 @@
 {
     using Dhgms.Whipstaff.Core.Model;
 
-    class UnexpectedProductState
+    public class UnexpectedProductState
 		: System.Exception
 	{
         public UnexpectedProductState(SecurityProviderHealth healthState)

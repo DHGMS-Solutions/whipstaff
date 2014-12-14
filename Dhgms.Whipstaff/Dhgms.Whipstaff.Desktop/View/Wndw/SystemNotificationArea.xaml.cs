@@ -1,4 +1,4 @@
-﻿namespace Dhgms.Whipstaff.View.Wndw
+﻿namespace Dhgms.Whipstaff.Desktop.View.Wndw
 {
     /// <summary>
     /// Interaction logic for SystemNotificationArea

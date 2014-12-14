@@ -9,7 +9,7 @@ namespace Dhgms.Whipstaff.Desktop.Helpers
     using System;
     using System.Linq;
 
-    using MahAppsMetroWpfSpike.Models;
+    using Dhgms.Whipstaff.Desktop.Models;
 
     internal static class CommandLineHelper
     {

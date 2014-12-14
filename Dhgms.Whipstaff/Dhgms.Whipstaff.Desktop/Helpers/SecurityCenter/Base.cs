@@ -4,7 +4,7 @@
     using System.Linq;
     using System.Runtime.InteropServices;
 
-    using Dhgms.Whipstaff.Model.Info;
+    using Dhgms.Whipstaff.Core.Model;
 
     /// <summary>
     /// Base class for checking the status of products registered with

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Dhgms.Whipstaff.View.Wndw.Options"
+﻿<Window x:Class="Dhgms.Whipstaff.Desktop.View.Wndw.Options"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">

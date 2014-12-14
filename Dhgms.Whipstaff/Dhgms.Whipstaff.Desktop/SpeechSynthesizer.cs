@@ -9,8 +9,7 @@ namespace Dhgms.Whipstaff.Model
     using System;
     using System.Speech.Synthesis;
 
-    using Dhgms.Whipstaff.Model.Info;
-
+    using Dhgms.Whipstaff.Core.Model;
     /// <summary>
     /// Handler for speech synthesis
     /// </summary>

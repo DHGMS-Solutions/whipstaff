@@ -7,19 +7,20 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Dhgms.Whipstaff.View.Wndw
+namespace Dhgms.Whipstaff.Desktop.View.Wndw
 {
-    using ReactiveUI;
+    using Dhgms.Whipstaff.Core.ViewModels;
 
     /// <summary>
     /// Interaction logic for Change Log Window
     /// </summary>
-    public partial class ChangeLog
+    public partial class ChangeLogView
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChangeLog"/> class.
+        /// Initializes a new instance of the <see cref="ChangeLogView"/> class.
         /// </summary>
-        public ChangeLog()
+        public ChangeLogView(IChangeLogViewModel viewModel)
+            : base(viewModel)
         {
             InitializeComponent();
 

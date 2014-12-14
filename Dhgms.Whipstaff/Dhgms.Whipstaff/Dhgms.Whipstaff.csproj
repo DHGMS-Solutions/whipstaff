@@ -167,13 +167,6 @@
     <Compile Include="View\Wndw\Diagnostic.xaml.cs">
       <DependentUpon>Diagnostic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Wndw\Generic\AboutView.cs" />
-    <Compile Include="View\Wndw\Generic\BaseView.cs" />
-    <Compile Include="View\Wndw\Generic\ChangeLogView.cs" />
-    <Compile Include="View\Wndw\Generic\DiagnosticView.cs" />
-    <Compile Include="View\Wndw\Generic\KeyboardView.cs" />
-    <Compile Include="View\Wndw\Generic\OptionsView.cs" />
-    <Compile Include="View\Wndw\Generic\SplashScreenView.cs" />
     <Compile Include="View\Wndw\Keyboard.xaml.cs">
       <DependentUpon>Keyboard.xaml</DependentUpon>
     </Compile>

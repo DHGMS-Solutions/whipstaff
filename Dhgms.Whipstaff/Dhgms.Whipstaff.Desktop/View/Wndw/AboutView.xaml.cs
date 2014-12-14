@@ -7,21 +7,22 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Dhgms.Whipstaff.View.Wndw
+namespace Dhgms.Whipstaff.Desktop.View.Wndw
 {
-    using Dhgms.Whipstaff.ViewModel;
+    using Dhgms.Whipstaff.Core.ViewModels;
 
     using ReactiveUI;
 
     /// <summary>
     /// Interaction logic for the about window
     /// </summary>
-    public partial class About
+    public partial class AboutView
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="About"/> class.
         /// </summary>
-        public About()
+        public AboutView(IAboutViewModel viewModel)
+            : base(viewModel)
         {
             this.InitializeComponent();
 

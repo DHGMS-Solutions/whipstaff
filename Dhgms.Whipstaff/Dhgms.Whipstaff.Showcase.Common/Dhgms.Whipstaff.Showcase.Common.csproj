@@ -92,16 +92,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Dhgms.Whipstaff.Common.BaseTypes\Dhgms.Whipstaff.Common.BaseTypes.csproj">
-      <Project>{a3dd6754-6e83-4c13-9b82-b6e10f46cab9}</Project>
-      <Name>Dhgms.Whipstaff.Common.BaseTypes</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dhgms.Whipstaff\Dhgms.Whipstaff.csproj">
-      <Project>{4a63bf10-4c22-4ac9-bd0d-1f7880c98ecb}</Project>
-      <Name>Dhgms.Whipstaff</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
