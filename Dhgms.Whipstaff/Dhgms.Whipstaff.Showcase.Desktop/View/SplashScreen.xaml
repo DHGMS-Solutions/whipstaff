@@ -1,9 +1,8 @@
-﻿<generic:SplashScreenView x:Class="Dhgms.Whipstaff.ShowCase.View.SplashScreen"
+﻿<Window x:Class="Dhgms.Whipstaff.ShowCase.View.SplashScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:generic="clr-namespace:Dhgms.Whipstaff.View.Wndw.Generic;assembly=Dhgms.Whipstaff"
                       Title="{Binding Path=ProgramName}" Height="270" Width="480" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         
     </Grid>
-</generic:SplashScreenView>
+</Window>

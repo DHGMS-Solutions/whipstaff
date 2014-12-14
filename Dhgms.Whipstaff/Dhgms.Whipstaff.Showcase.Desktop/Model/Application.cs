@@ -3,13 +3,14 @@
     using System;
     using System.Collections.Generic;
 
+    using Dhgms.Whipstaff.Desktop.View.Wndw;
     using Dhgms.Whipstaff.ShowCase.View;
     using Dhgms.Whipstaff.ShowCase.ViewModel;
 
     /// <summary>
     /// Main Application Logic
     /// </summary>
-    public class Application : Controller.Desktop<SplashScreen, Dhgms.Whipstaff.View.Wndw.MainRibbonWindow, SystemNotificationAreaViewModel>
+    public class Application : Controller.Desktop<SplashScreen, MainRibbonWindow, SystemNotificationAreaViewModel>
     {
         private static Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel> mainWindowViewModel = new Lazy<Whipstaff.ViewModel.MainRibbonWindowViewModel>(() => new Whipstaff.ViewModel.MainRibbonWindowViewModel());
 

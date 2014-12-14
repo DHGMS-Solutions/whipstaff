@@ -1,6 +1,9 @@
 ﻿namespace Dhgms.Whipstaff.Future.ViewModels
 {
     using Caliburn.Micro.ReactiveUI;
+
+    using Dhgms.Whipstaff.Core.ViewModels;
+
     using NLog;
     using ReactiveUI;
 

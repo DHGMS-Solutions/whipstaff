@@ -60,6 +60,5 @@ namespace Dhgms.Whipstaff.ViewModel
         public void OnFeatureError()
         {
         }
-
     }
 }

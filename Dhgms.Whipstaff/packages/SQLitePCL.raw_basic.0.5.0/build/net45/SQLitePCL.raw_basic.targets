@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Automatically generated-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target Name="check_cpu_0c72a276-f4be-4f0e-bd92-2a1989a25230" BeforeTargets="ResolveAssemblyReferences" Condition=" ( ($(Platform.ToLower()) != 'x86') AND ($(Platform.ToLower()) != 'x64') ) ">
+    <Warning Text="$(Platform) is not supported. The Platform configuration must be x86 or x64" />
+  </Target>
+  <Target Name="InjectReference_87384a6c-0435-42c0-a1fd-2ef989adce4b" BeforeTargets="ResolveAssemblyReferences">
+    <!--platform.net45.pinvoke_sqlite3.x86-->
+    <ItemGroup Condition=" '$(Platform.ToLower())' == 'x86' ">
+      <Reference Include="SQLitePCL.raw">
+        <HintPath>$(MSBuildThisFileDirectory)pinvoke_sqlite3\x86\SQLitePCL.raw.dll</HintPath>
+      </Reference>
+      <Content Include="$(MSBuildThisFileDirectory)..\..\build\native\sqlite3_dynamic\winxp\x86\sqlite3.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+    <!--platform.net45.pinvoke_sqlite3.x64-->
+    <ItemGroup Condition=" '$(Platform.ToLower())' == 'x64' ">
+      <Reference Include="SQLitePCL.raw">
+        <HintPath>$(MSBuildThisFileDirectory)pinvoke_sqlite3\x64\SQLitePCL.raw.dll</HintPath>
+      </Reference>
+      <Content Include="$(MSBuildThisFileDirectory)..\..\build\native\sqlite3_dynamic\winxp\x64\sqlite3.dll">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+  </Target>
+</Project>

@@ -7,13 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Dhgms.Whipstaff.View.Wndw.Generic
+namespace Dhgms.Whipstaff.Desktop.View.Wndw.Generic
 {
-    using System;
     using System.Windows;
+    using System.Windows.Controls.Ribbon;
 
     using ReactiveUI;
-    using System.Windows.Controls.Ribbon;
 
     /// <summary>
     /// BaseView class for a ribbon window
@@ -27,10 +26,9 @@ namespace Dhgms.Whipstaff.View.Wndw.Generic
     /// <typeparam name="TViewModel">
     /// The type for the view model
     /// </typeparam>
-    public class BaseRibbonView<TView, TViewModelInterface, TViewModel> : RibbonWindow, IViewFor<TViewModelInterface>
+    public class BaseRibbonView<TView, TViewModelInterface> : RibbonWindow, IViewFor<TViewModelInterface>
         where TView : class
         where TViewModelInterface : class
-        where TViewModel : class, TViewModelInterface, IRoutableViewModel, new()
     {
         /// <summary>
         /// Dependency Property for the view model

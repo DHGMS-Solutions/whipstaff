@@ -86,17 +86,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Controls\AccordianExpanderControlViewModel.cs" />
     <Compile Include="ViewModels\Controls\IAccordianExpanderControlViewModel.cs" />
-    <Compile Include="ViewModels\IAboutViewModel.cs" />
-    <Compile Include="ViewModels\IChangeLogViewModel.cs" />
-    <Compile Include="ViewModels\IClosableViewModel.cs" />
-    <Compile Include="ViewModels\IDiagnosticViewModel.cs" />
-    <Compile Include="ViewModels\IFeatureUsageTracking.cs" />
-    <Compile Include="ViewModels\IKeyboardViewModel.cs" />
-    <Compile Include="ViewModels\ILoggingConsoleViewModel.cs" />
-    <Compile Include="ViewModels\IOptionsViewModel.cs" />
-    <Compile Include="ViewModels\IPermissionsListViewModel.cs" />
-    <Compile Include="ViewModels\ISavableViewModel.cs" />
-    <Compile Include="ViewModels\ISplashScreenViewModel.cs" />
     <Compile Include="Views\Controls\AccordianExpanderControlView.xaml.cs">
       <DependentUpon>AccordianExpanderControlView.xaml</DependentUpon>
     </Compile>
