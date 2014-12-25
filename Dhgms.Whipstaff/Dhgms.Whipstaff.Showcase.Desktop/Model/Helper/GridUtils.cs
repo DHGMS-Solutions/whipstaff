@@ -1,21 +1,13 @@
-﻿namespace Dhgms.Whipstaff.ShowCase.Model.Helper
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.Model.Helper
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Net;
-    using System.Windows;
-    using System.Linq;
-    using System.Windows.Controls;
-    using System.Windows.Documents;
-    using System.Windows.Ink;
-    using System.Windows.Input;
-    using System.Windows.Media;
-    using System.Windows.Media.Animation;
-    using System.Windows.Shapes;
     using System.Collections;
     using System.Collections.Specialized;
+    using System.Linq;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
 
-    using Dhgms.Whipstaff.ShowCase.View.Ctrl;
+    using Dhgms.Whipstaff.Showcase.Desktop.View.Ctrl;
 
     /// <summary>
     /// Taken from http://www.scottlogic.co.uk/blog/colin/2010/11/using-a-grid-as-the-panel-for-an-itemscontrol/

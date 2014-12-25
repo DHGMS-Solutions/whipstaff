@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
-using Dhgms.Whipstaff.ShowCase.Model.Info;
-
-namespace Dhgms.Whipstaff.ShowCase.Model
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.Model
 {
     public class ThemeSelector
     {

@@ -105,7 +105,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\Desktop.cs" />
+    <Compile Include="Controller\DesktopApplication.cs" />
     <Compile Include="Controls\IDesktopWindow.cs" />
     <Compile Include="Controls\WhipstaffMetroNavigationWindow.cs" />
     <Compile Include="Controls\WhipstaffMetroWindow.cs" />

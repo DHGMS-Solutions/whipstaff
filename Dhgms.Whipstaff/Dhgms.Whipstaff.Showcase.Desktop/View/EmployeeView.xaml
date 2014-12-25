@@ -1,9 +1,9 @@
-﻿<vw:EmployeeView x:Class="Dhgms.Whipstaff.ShowCase.View.EmployeeView"
+﻿<generic:EmployeeView x:Class="Dhgms.Whipstaff.Showcase.Desktop.View.EmployeeView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        xmlns:generic="clr-namespace:Dhgms.Whipstaff.Showcase.Desktop.View.Generic"
         Title="EmployeeView" Height="300" Width="300">
     <Grid>
         
     </Grid>
-</vw:EmployeeView>
+</generic:EmployeeView>

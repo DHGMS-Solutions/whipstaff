@@ -1,7 +1,7 @@
-﻿<model:Application x:Class="Dhgms.Whipstaff.ShowCase.App"
+﻿<model:Application x:Class="Dhgms.Whipstaff.Showcase.Desktop.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                xmlns:model="clr-namespace:Dhgms.Whipstaff.ShowCase.Model">
+             xmlns:model="clr-namespace:Dhgms.Whipstaff.Showcase.Desktop.Model">
     <Application.Resources>
          
     </Application.Resources>

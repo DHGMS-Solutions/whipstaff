@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.Model.ProviderProxy
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.Model.ProviderProxy
 {
     public sealed class Application //: Dhgms.DataManager.Model.Provider.Base
     {

@@ -1,5 +1,7 @@
-﻿namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
+
     using ReactiveUI;
 
     public class DepartmentViewModel : ReactiveObject, IDepartmentViewModel, IRoutableViewModel

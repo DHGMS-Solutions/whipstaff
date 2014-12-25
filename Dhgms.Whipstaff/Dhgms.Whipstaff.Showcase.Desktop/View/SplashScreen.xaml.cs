@@ -1,31 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace Dhgms.Whipstaff.ShowCase.View
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View
 {
     /// <summary>
     /// Interaction logic for SplashScreen.xaml
     /// </summary>
     public partial class SplashScreen
     {
-        public SplashScreen()
+        public SplashScreen(SplashScreenViewModel viewModel)
+            : base(viewModel)
         {
-            this.ViewModel = new Dhgms.Whipstaff.ViewModel.SplashScreenViewModel();
             InitializeComponent();
-
-            this.ViewModel.ProgramName = "DHGMS Whipstaff Showcase";
-            this.ViewModel.ProgramVersion = "1.0.0.0";
         }
     }
 }

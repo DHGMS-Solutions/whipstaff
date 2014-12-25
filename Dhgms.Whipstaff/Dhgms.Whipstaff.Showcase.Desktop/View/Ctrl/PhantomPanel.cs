@@ -1,4 +1,4 @@
-﻿namespace Dhgms.Whipstaff.ShowCase.View.Ctrl
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View.Ctrl
 {
     using System.Windows.Controls;
 

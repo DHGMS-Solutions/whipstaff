@@ -108,12 +108,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Caliburn.Micro">
-      <HintPath>..\packages\Caliburn.Micro.Core.2.0.0\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Micro.ReactiveUI">
-      <HintPath>..\packages\Caliburn.Micro.ReactiveUI.2.0.0\lib\portable-net45+win8+wp8\Caliburn.Micro.ReactiveUI.dll</HintPath>
-    </Reference>
     <Reference Include="ReactiveUI">
       <HintPath>..\packages\reactiveui-core.6.0.1\lib\Win8\ReactiveUI.dll</HintPath>
     </Reference>

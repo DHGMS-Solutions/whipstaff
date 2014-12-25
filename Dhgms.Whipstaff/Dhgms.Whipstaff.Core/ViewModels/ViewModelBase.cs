@@ -1,12 +1,17 @@
 ﻿namespace Dhgms.Whipstaff.Core.ViewModels
 {
+#if REACTIVESCREEN
     using Caliburn.Micro.ReactiveUI;
+#endif
 
     using ReactiveUI;
 
     using Splat;
-
+#if REACTIVESCREEN
     public class ViewModelBase<TInheritingClass> : ReactiveScreen, IRoutableViewModel, IFeatureUsageTracking
+#else
+    public class ViewModelBase<TInheritingClass> : ReactiveObject, IRoutableViewModel, IFeatureUsageTracking
+#endif
         where TInheritingClass : ViewModelBase<TInheritingClass>
     {
         /// <summary>

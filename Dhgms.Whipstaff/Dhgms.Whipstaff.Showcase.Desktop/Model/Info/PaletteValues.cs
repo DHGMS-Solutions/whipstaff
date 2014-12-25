@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Media;
-
-namespace Dhgms.Whipstaff.ShowCase.Model.Info
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.Model.Info
 {
+    using System.Windows.Media;
+
     public class PaletteValues
     {
         public Color First;

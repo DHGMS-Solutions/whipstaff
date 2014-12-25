@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace Dhgms.Whipstaff.ShowCase.Model.Info.PostCode
+namespace Dhgms.Whipstaff.Showcase.Desktop.Model.Info.PostCode
 {
     /// <summary>
     /// The sector.

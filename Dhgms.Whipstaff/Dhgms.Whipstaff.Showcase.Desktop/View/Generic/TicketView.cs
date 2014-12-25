@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.View.Generic
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View.Generic
 {
-    using Dhgms.Whipstaff.ShowCase.ViewModel;
-    using Dhgms.Whipstaff.View;
-    using Dhgms.Whipstaff.View.Wndw;
-    using Dhgms.Whipstaff.View.Wndw.Generic;
+    using Dhgms.Whipstaff.Desktop.Controls;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     /// <summary>
     /// Wrappers for the Generic Class. This is done because of a WPF Designer Issue in Visual Studio 2012.
     /// </summary>
-    public class TicketView : BaseView<TicketView, ITicketViewModel, ViewModel.TicketViewModel>
+    public class TicketView : WhipstaffMetroWindow<TicketView, ITicketViewModel>
     {
+        public TicketView(ITicketViewModel viewModel)
+            : base(viewModel)
+        {
+        }
     }
 }

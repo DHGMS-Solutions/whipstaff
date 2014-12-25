@@ -1,9 +1,9 @@
-﻿<vw:DeskView x:Class="Dhgms.Whipstaff.ShowCase.View.DeskViewModel"
+﻿<generic:DeskView x:Class="Dhgms.Whipstaff.Showcase.Desktop.View.DeskViewModel"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        xmlns:generic="clr-namespace:Dhgms.Whipstaff.Showcase.Desktop.View.Generic"
         Title="DeskViewModel" Height="300" Width="300">
     <Grid>
         
     </Grid>
-</vw:DeskView>
+</generic:DeskView>

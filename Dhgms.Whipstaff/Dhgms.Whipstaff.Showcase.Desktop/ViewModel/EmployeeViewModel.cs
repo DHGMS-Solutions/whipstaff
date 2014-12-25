@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
     using System.Net.Mail;
+
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     using ReactiveUI;
 
