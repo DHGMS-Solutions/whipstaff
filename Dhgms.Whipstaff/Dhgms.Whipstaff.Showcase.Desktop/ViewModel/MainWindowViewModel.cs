@@ -1,7 +1,9 @@
 ﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
+    using System;
     using System.Collections.Generic;
 
+    using Dhgms.Whipstaff.Showcase.Common;
     using Dhgms.Whipstaff.Showcase.Desktop.Model;
     using Dhgms.Whipstaff.Showcase.Desktop.View;
     using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
@@ -14,8 +16,19 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(IShowcaseSampleService showcaseSampleService)
         {
+            if (showcaseSampleService == null)
+            {
+                throw new ArgumentNullException("showcaseSampleService");
+            }
+
+            var crossPlatformSamples = showcaseSampleService.GetCrossPlatformSamples();
+            CrossPlatformSampleCollection = new ReactiveList<string>(crossPlatformSamples);
+
+            var nativeSamples = showcaseSampleService.GetNativeSamples();
+            NativeSampleCollection = new ReactiveList<string>(nativeSamples);
+
             //buildingViewCommand = new ReactiveCommand();
             //buildingViewCommand.Subscribe(this.OnBuildingCommandExecuted);
 
@@ -91,5 +104,9 @@
             }
         }
          * */
+
+        public ReactiveList<string> NativeSampleCollection { get; private set; }
+
+        public ReactiveList<string> CrossPlatformSampleCollection { get; private set; }
     }
 }

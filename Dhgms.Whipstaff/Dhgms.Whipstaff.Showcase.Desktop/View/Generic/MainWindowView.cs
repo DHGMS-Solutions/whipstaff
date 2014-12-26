@@ -1,6 +1,7 @@
 ﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View.Generic
 {
     using Dhgms.Whipstaff.Desktop.Controls;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel;
     using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     /// <summary>

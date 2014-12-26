@@ -11,18 +11,44 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <ItemsControl ItemsSource="{Binding ShowCases}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Grid.Column="0" Content="{Binding Name}" Height="32" Command="{Binding Command}" />
-                    <!--<Label Grid.Column="1" Content="{Binding Description}" />-->
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label>W</Label>
+            <Label Grid.Column="1">HI</Label>
+            <Label Grid.Column="2">P</Label>
+            <Label Grid.Column="3">STAF</Label>
+            <Label Grid.Column="4">F</Label>
+            <Label Grid.Column="6">Showcase</Label>
+        </Grid>
+        <TabControl Grid.Row="1">
+            <TabItem Header="Cross Platform Samples">
+                <ListView Name="CrossPlatformSamplesList" AlternationCount="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>Item</TextBlock>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Desktop Platform Samples">
+                <ListView Grid.Row="1" Name="DesktopPlatformSamplesList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Name="Test">Item</TextBlock>
+                            <!--Text="{Binding Name}"-->
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
     </Grid>
 </generic:MainWindowView>

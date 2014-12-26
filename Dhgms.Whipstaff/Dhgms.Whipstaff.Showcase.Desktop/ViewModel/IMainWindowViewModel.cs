@@ -1,6 +1,11 @@
-﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
+    using ReactiveUI;
+
     public interface IMainWindowViewModel
     {
+        ReactiveList<string> NativeSampleCollection { get; }
+
+        ReactiveList<string> CrossPlatformSampleCollection { get; }
     }
 }

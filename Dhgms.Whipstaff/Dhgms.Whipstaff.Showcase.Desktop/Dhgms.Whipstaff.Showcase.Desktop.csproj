@@ -51,6 +51,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\reactiveui-core.6.2.1.1\lib\Net45\ReactiveUI.dll</HintPath>
     </Reference>
+    <Reference Include="ReactiveUI.Events">
+      <HintPath>..\packages\reactiveui-events.6.2.1.1\lib\net45\ReactiveUI.Events.dll</HintPath>
+    </Reference>
     <Reference Include="Splat, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Splat.1.5.1\lib\Net45\Splat.dll</HintPath>
@@ -127,10 +130,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Services\DesktopShowCaseSampleService.cs" />
     <Compile Include="ViewModel\BuildingViewModel.cs" />
     <Compile Include="ViewModel\CommandQueueViewModel.cs" />
     <Compile Include="ViewModel\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\DeskViewModel.cs" />
+    <Compile Include="ViewModel\DeveloperConsoleViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\FloorViewModel.cs" />
     <Compile Include="ViewModel\IBuildingViewModel.cs" />
@@ -170,6 +175,10 @@
     <Compile Include="View\DeskView.xaml.cs">
       <DependentUpon>DeskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DeveloperConsoleView.xaml.cs">
+      <DependentUpon>DeveloperConsoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeveloperConsoleViewBase.cs" />
     <Compile Include="View\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -318,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\DeveloperConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EmployeeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -369,7 +382,6 @@
     <Folder Include="Model\ProviderBase\" />
     <Folder Include="Model\ProviderCollection\" />
     <Folder Include="Model\Provider\" />
-    <Folder Include="ViewModel\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dhgms.Whipstaff.Core\Dhgms.Whipstaff.Core.csproj">

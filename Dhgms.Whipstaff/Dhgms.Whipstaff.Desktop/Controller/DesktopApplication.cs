@@ -37,10 +37,11 @@ namespace Dhgms.Whipstaff.Desktop.Controller
     /// <typeparam name="TSystemNotificationAreaViewModel">
     /// The type for the system notification area view model.
     /// </typeparam>
-    public abstract class DesktopApplication<TSplashScreenClass, TSplashScreenViewModel/*, TMainWindowClass, TSystemNotificationAreaViewModel, TJumpListHelper*/> : System.Windows.Application, IEnableLogger
+    public abstract class DesktopApplication<TSplashScreenClass, TSplashScreenViewModel, TMainView, TMainViewModel /*TSystemNotificationAreaViewModel, TJumpListHelper*/> : System.Windows.Application, IEnableLogger
         where TSplashScreenClass : Window, IViewFor<TSplashScreenViewModel>
         where TSplashScreenViewModel : class
-        //where TMainWindowClass : Window, IViewFor<ViewModel.IMainRibbonWindowViewModel>, new()
+        where TMainView : Window, IViewFor<TMainViewModel>
+        where TMainViewModel : class
         //where TSystemNotificationAreaViewModel : ReactiveObject, ISystemNotificationAreaViewModel, IRoutableViewModel, new()
         //where TJumpListHelper : JumpListHelper, new()
     {
@@ -109,6 +110,8 @@ namespace Dhgms.Whipstaff.Desktop.Controller
             //this.monitorGroupPolicyRefresh = monitorGroupPolicyRefresh;
         }
 
+        protected TMainView MainView { get; set; }
+
         /// <summary>
         /// Shows the application windows.
         /// </summary>
@@ -158,6 +161,8 @@ namespace Dhgms.Whipstaff.Desktop.Controller
                 this.manager = SingleInstanceManager.Initialize(this.GetSingleInstanceManagerSetup());
             }
 
+
+
             TSplashScreenClass splash = null;
             if (e.Args.All(x => !x.Equals("/nosplash", StringComparison.OrdinalIgnoreCase)))
             {
@@ -181,10 +186,12 @@ namespace Dhgms.Whipstaff.Desktop.Controller
                 splash.Close();
             }
 
-            if (!initialised)
+            this.MainWindow = initialised ? this.MainView : null;
+            if (this.MainWindow != null)
             {
-                this.MainWindow = null;
+                this.MainWindow.Show();
             }
+
 
             // this is done here so random windows don't appear
             // one at a time while the splash screen is up
@@ -226,6 +233,8 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         /// </summary>
         protected bool DoInitialisation()
         {
+            ShowDeveloperConsole();
+
             new Model.Helper.SystemIntegrity().CheckOk();
 
             this.DoGroupPolicyRefreshMonitoring();
@@ -244,6 +253,8 @@ namespace Dhgms.Whipstaff.Desktop.Controller
 
             return true;
         }
+
+        protected abstract void ShowDeveloperConsole();
 
         private void DoGroupPolicyRefreshMonitoring()
         {
@@ -311,13 +322,15 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         /// </summary>
         private void DoMainWindowInitialisation()
         {
-            var screens = Screen.AllScreens;
+            this.MainView = GetMainView();
+
+            //var screens = Screen.AllScreens;
 
             //var screenCount = this.MultiScreenMode ? screens.Length : 1;
             //this.mainWindows = new List<TMainWindowClass>();
 
-            double height = 0;
-            double width = 0;
+            //double height = 0;
+            //double width = 0;
 
             // check if we have a default behaviour specified in group policy
             // check if we have a /resetui command line argument
@@ -349,6 +362,8 @@ namespace Dhgms.Whipstaff.Desktop.Controller
             }
              * */
         }
+
+        protected abstract TMainView GetMainView();
 
         /// <summary>
         /// The main window on closing event.

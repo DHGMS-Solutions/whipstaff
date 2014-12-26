@@ -1,13 +1,18 @@
 ﻿namespace Dhgms.Whipstaff.Showcase.Desktop.Model
 {
     using System;
+
+    using Dhgms.Whipstaff.Showcase.Desktop.Services;
     using Dhgms.Whipstaff.Showcase.Desktop.View;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     /// <summary>
     /// Main Application Logic
     /// </summary>
-    public class Application : Dhgms.Whipstaff.Desktop.Controller.DesktopApplication<SplashScreen, SplashScreenViewModel/*, MainRibbonWindow, SystemNotificationAreaViewModel*/>
+    public class Application : Dhgms.Whipstaff.Desktop.Controller.DesktopApplication<SplashScreen, SplashScreenViewModel, MainWindow, IMainWindowViewModel /*SystemNotificationAreaViewModel*/>
     {
+        private DeveloperConsoleView developerConsoleView;
         //private static TeamView teamView;
 
         //private static BuildingView buildingView;
@@ -150,6 +155,17 @@
 
         protected override void OnRemoteInstanceCommandRecieved(string[] args)
         {
+        }
+
+        protected override MainWindow GetMainView()
+        {
+            return new MainWindow(new MainWindowViewModel(new DesktopShowCaseSampleService()));
+        }
+
+        protected override void ShowDeveloperConsole()
+        {
+            this.developerConsoleView = new DeveloperConsoleView(new DeveloperConsoleViewModel());
+            this.developerConsoleView.Show();
         }
     }
 }
