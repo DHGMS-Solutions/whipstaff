@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Dhgms.Whipstaff.ShowCase
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View
 {
+    using System.Windows.Controls;
+
+    using Dhgms.Whipstaff.Showcase.Desktop.Services;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
+
     using ReactiveUI;
 
     /// <summary>
@@ -21,10 +13,13 @@ namespace Dhgms.Whipstaff.ShowCase
     /// </summary>
     public partial class MainWindow
     {
-        public MainWindow()
+        public MainWindow(IMainWindowViewModel viewModel)
+            : base(viewModel)
         {
             this.InitializeComponent();
-            this.DataContext = new Dhgms.Whipstaff.ShowCase.ViewModel.MainWindowViewModel();
+
+            this.OneWayBind(this.ViewModel, vm => vm.CrossPlatformSampleCollection, vw => vw.CrossPlatformSamplesList.ItemsSource);
+            this.OneWayBind(this.ViewModel, vm => vm.NativeSampleCollection, vw => vw.DesktopPlatformSamplesList.ItemsSource);
         }
     }
 }

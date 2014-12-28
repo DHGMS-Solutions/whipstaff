@@ -1,7 +1,7 @@
-﻿<vw:TeamView x:Class="Dhgms.Whipstaff.ShowCase.View.TeamView"
+﻿<generic:TeamView x:Class="Dhgms.Whipstaff.Showcase.Desktop.View.TeamView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        xmlns:generic="clr-namespace:Dhgms.Whipstaff.Showcase.Desktop.View.Generic"
         Title="TeamView" Height="300" Width="300">
     <Grid>
         <Grid.RowDefinitions>
@@ -10,4 +10,4 @@
         </Grid.RowDefinitions>
         <Label Content="{Binding Name}" />
     </Grid>
-</vw:TeamView>
+</generic:TeamView>

@@ -1,49 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
-    using Dhgms.Whipstaff.Model.ControlData.Button;
-    //using Dhgms.Whipstaff.ShowCase.Model;
-    using Dhgms.Whipstaff.ShowCase.Model;
-    using Dhgms.Whipstaff.ShowCase.View;
+    using System;
+    using System.Collections.Generic;
+
+    using Dhgms.Whipstaff.Showcase.Common;
+    using Dhgms.Whipstaff.Showcase.Desktop.Model;
+    using Dhgms.Whipstaff.Showcase.Desktop.View;
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     using ReactiveUI;
-    using ReactiveUI.Xaml;
+    //using Dhgms.Whipstaff.ShowCase.Model;
 
     public class MainWindowViewModel : ReactiveObject, IMainWindowViewModel, IRoutableViewModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
         /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(IShowcaseSampleService showcaseSampleService)
         {
-            buildingViewCommand = new ReactiveCommand();
-            buildingViewCommand.Subscribe(this.OnBuildingCommandExecuted);
+            if (showcaseSampleService == null)
+            {
+                throw new ArgumentNullException("showcaseSampleService");
+            }
 
-            teamViewCommand = new ReactiveCommand();
-            teamViewCommand.Subscribe(this.OnTeamViewCommandExecuted);
+            var crossPlatformSamples = showcaseSampleService.GetCrossPlatformSamples();
+            CrossPlatformSampleCollection = new ReactiveList<string>(crossPlatformSamples);
 
-            employeeViewCommand = new ReactiveCommand();
-            employeeViewCommand.Subscribe(this.OnEmployeeViewCommandExecuted);
+            var nativeSamples = showcaseSampleService.GetNativeSamples();
+            NativeSampleCollection = new ReactiveList<string>(nativeSamples);
+
+            //buildingViewCommand = new ReactiveCommand();
+            //buildingViewCommand.Subscribe(this.OnBuildingCommandExecuted);
+
+            //teamViewCommand = new ReactiveCommand();
+            //teamViewCommand.Subscribe(this.OnTeamViewCommandExecuted);
+
+            //employeeViewCommand = new ReactiveCommand();
+            //employeeViewCommand.Subscribe(this.OnEmployeeViewCommandExecuted);
         }
 
         private void OnBuildingCommandExecuted(object o)
         {
-            Application.ShowBuildingView();
+            //Application.ShowBuildingView();
         }
 
         private void OnTeamViewCommandExecuted(object o)
         {
-            Application.ShowTeamView();
+            //Application.ShowTeamView();
         }
 
         private void OnEmployeeViewCommandExecuted(object o)
         {
-            Application.ShowEmployeeView();
+            //Application.ShowEmployeeView();
         }
 
         public string UrlPathSegment
@@ -58,6 +66,7 @@ namespace Dhgms.Whipstaff.ShowCase.ViewModel
 
         private object objectLock = new object();
 
+        /*
         private static ReactiveCommand buildingViewCommand;
 
         private static ReactiveCommand teamViewCommand;
@@ -94,5 +103,10 @@ namespace Dhgms.Whipstaff.ShowCase.ViewModel
                 return this.showCases;
             }
         }
+         * */
+
+        public ReactiveList<string> NativeSampleCollection { get; private set; }
+
+        public ReactiveList<string> CrossPlatformSampleCollection { get; private set; }
     }
 }

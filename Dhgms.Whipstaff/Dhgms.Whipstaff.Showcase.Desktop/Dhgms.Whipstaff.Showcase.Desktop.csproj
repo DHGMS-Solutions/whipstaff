@@ -17,6 +17,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,44 +40,54 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Akavache">
-      <HintPath>..\packages\akavache.3.2.0\lib\net45\Akavache.dll</HintPath>
-    </Reference>
     <Reference Include="Dhgms.DataManager">
       <HintPath>..\packages\Dhgms.DataManager.0.1403.10.0\lib\net40\Dhgms.DataManager.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.6.0.1\lib\Net45\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI, Version=6.2.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\reactiveui-core.6.2.1.1\lib\Net45\ReactiveUI.dll</HintPath>
     </Reference>
-    <Reference Include="Splat">
-      <HintPath>..\packages\Splat.1.3.1\lib\Net45\Splat.dll</HintPath>
+    <Reference Include="ReactiveUI.Events">
+      <HintPath>..\packages\reactiveui-events.6.2.1.1\lib\net45\ReactiveUI.Events.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Splat.1.5.1\lib\Net45\Splat.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.2.4\lib\net45\System.Reactive.Core.dll</HintPath>
+    <Reference Include="System.Reactive.Core, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\net45\System.Reactive.Core.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.2.4\lib\net45\System.Reactive.Interfaces.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="System.Reactive.Interfaces, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\net45\System.Reactive.Interfaces.dll</HintPath>
     </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.2.4\lib\net45\System.Reactive.Linq.dll</HintPath>
+    <Reference Include="System.Reactive.Linq, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\net45\System.Reactive.Linq.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.2.4\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Reactive.Windows.Threading">
-      <HintPath>..\packages\Rx-XAML.2.2.4\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
+    <Reference Include="System.Reactive.Windows.Threading, Version=2.2.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Rx-Xaml.2.2.5\lib\net45\System.Reactive.Windows.Threading.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -103,6 +115,7 @@
     <Compile Include="Model\Info\PostCode\Sector.cs" />
     <Compile Include="Model\Info\QueueStatus.cs" />
     <Compile Include="Model\ProviderProxy\Application.cs" />
+    <Compile Include="Model\ServerState.cs" />
     <Compile Include="Model\ThemeSelector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -117,28 +130,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Services\DesktopShowCaseSampleService.cs" />
     <Compile Include="ViewModel\BuildingViewModel.cs" />
     <Compile Include="ViewModel\CommandQueueViewModel.cs" />
     <Compile Include="ViewModel\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\DeskViewModel.cs" />
+    <Compile Include="ViewModel\DeveloperConsoleViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
     <Compile Include="ViewModel\FloorViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IBuildingViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ICommandQueueViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ICustomerViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IDepartmentViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IDeskViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IEmployeeViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IFloorViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IId.cs" />
-    <Compile Include="ViewModel\Interface\IMainWindowViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IName.cs" />
-    <Compile Include="ViewModel\Interface\IPermissionListViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IServerSelectionViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ITeamViewModel.cs" />
-    <Compile Include="ViewModel\Interface\IThemeSelectorViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ITicketListViewModel.cs" />
-    <Compile Include="ViewModel\Interface\ITicketViewModel.cs" />
+    <Compile Include="ViewModel\IBuildingViewModel.cs" />
+    <Compile Include="ViewModel\ICommandQueueViewModel.cs" />
+    <Compile Include="ViewModel\ICustomerViewModel.cs" />
+    <Compile Include="ViewModel\IDepartmentViewModel.cs" />
+    <Compile Include="ViewModel\IDeskViewModel.cs" />
+    <Compile Include="ViewModel\IEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\IFloorViewModel.cs" />
+    <Compile Include="ViewModel\IId.cs" />
+    <Compile Include="ViewModel\IMainWindowViewModel.cs" />
+    <Compile Include="ViewModel\IName.cs" />
+    <Compile Include="ViewModel\IPermissionListViewModel.cs" />
+    <Compile Include="ViewModel\IServerSelectionViewModel.cs" />
+    <Compile Include="ViewModel\IServerViewModel.cs" />
+    <Compile Include="ViewModel\ITeamViewModel.cs" />
+    <Compile Include="ViewModel\IThemeSelectorViewModel.cs" />
+    <Compile Include="ViewModel\ITicketListViewModel.cs" />
+    <Compile Include="ViewModel\ITicketViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\ServerSelectionViewModel.cs" />
     <Compile Include="ViewModel\SystemNotificationAreaViewModel.cs" />
@@ -159,6 +175,10 @@
     <Compile Include="View\DeskView.xaml.cs">
       <DependentUpon>DeskView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DeveloperConsoleView.xaml.cs">
+      <DependentUpon>DeveloperConsoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DeveloperConsoleViewBase.cs" />
     <Compile Include="View\EmployeeView.xaml.cs">
       <DependentUpon>EmployeeView.xaml</DependentUpon>
     </Compile>
@@ -186,6 +206,8 @@
     <Compile Include="View\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\SplashScreenViewBase.cs" />
+    <Compile Include="ViewModel\SplashScreenViewModel.cs" />
     <Compile Include="View\TeamView.xaml.cs">
       <DependentUpon>TeamView.xaml</DependentUpon>
     </Compile>
@@ -305,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\DeveloperConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\EmployeeView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -358,6 +384,10 @@
     <Folder Include="Model\Provider\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Dhgms.Whipstaff.Core\Dhgms.Whipstaff.Core.csproj">
+      <Project>{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}</Project>
+      <Name>Dhgms.Whipstaff.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Desktop\Dhgms.Whipstaff.Desktop.csproj">
       <Project>{07f58508-4d92-46f4-88a7-35206bf1a902}</Project>
       <Name>Dhgms.Whipstaff.Desktop</Name>
@@ -376,4 +406,11 @@
   </Target>
   -->
   <Import Project="..\CommonBuild.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
 </Project>

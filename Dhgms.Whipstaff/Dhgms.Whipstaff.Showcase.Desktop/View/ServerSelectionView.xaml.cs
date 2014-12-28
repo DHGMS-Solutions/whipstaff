@@ -1,25 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace Dhgms.Whipstaff.ShowCase.View
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.View
 {
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
+
     /// <summary>
     /// Interaction logic for ServerSelectionView.xaml
     /// </summary>
     public partial class ServerSelectionView
     {
-        public ServerSelectionView()
+        public ServerSelectionView(IServerSelectionViewModel viewModel)
+            : base(viewModel)
         {
             InitializeComponent();
         }

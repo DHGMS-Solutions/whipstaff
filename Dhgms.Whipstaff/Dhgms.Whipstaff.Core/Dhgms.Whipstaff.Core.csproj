@@ -19,6 +19,8 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,7 +44,7 @@
     <Folder Include="ViewModels\Controls\" />
     <Folder Include="ViewModels\Windows\" />
     <Folder Include="Views\Controls\" />
-    <Folder Include="Views\Windows\" />
+    <Folder Include="Views\Windows\Generic\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="ViewModels\IFeatureUsageTracking.cs" />
     <Compile Include="ViewModels\IKeyboardViewModel.cs" />
     <Compile Include="ViewModels\ILoggingConsoleViewModel.cs" />
+    <Compile Include="ViewModels\IMainRibbonWindowViewModel.cs" />
     <Compile Include="ViewModels\IOptionsViewModel.cs" />
     <Compile Include="ViewModels\IPermissionsListViewModel.cs" />
     <Compile Include="ViewModels\ISavableViewModel.cs" />
@@ -90,23 +93,17 @@
     <Reference Include="Akavache.Sqlite3">
       <HintPath>..\packages\akavache.sqlite3.4.0.4\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Micro">
-      <HintPath>..\packages\Caliburn.Micro.Core.2.0.0\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.dll</HintPath>
-    </Reference>
-    <Reference Include="Caliburn.Micro.ReactiveUI">
-      <HintPath>..\packages\Caliburn.Micro.ReactiveUI.2.2.1\lib\portable-net45+win8+wp8+wpa81\Caliburn.Micro.ReactiveUI.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.6.0.3\lib\Portable-Net45+Win8+WP8+WPA81\ReactiveUI.dll</HintPath>
+      <HintPath>..\packages\reactiveui-core.6.2.1.1\lib\Portable-Net45+Win8+WP8+WPA81\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="Splat">
-      <HintPath>..\packages\Splat.1.3.3\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
+      <HintPath>..\packages\Splat.1.5.1\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
     </Reference>
     <Reference Include="SQLitePCL.raw">
-      <HintPath>..\packages\SQLitePCL.raw_basic.0.5.0\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\SQLitePCL.raw.dll</HintPath>
+      <HintPath>..\packages\SQLitePCL.raw_basic.0.7.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll</HintPath>
     </Reference>
     <Reference Include="System.Reactive.Core">
       <HintPath>..\packages\Rx-Core.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Core.dll</HintPath>
@@ -122,9 +119,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Dhgms.Whipstaff.Core.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -1,7 +1,7 @@
-﻿<vw:ThemeSelectorView x:Class="Dhgms.Whipstaff.ShowCase.View.ThemeSelector"
+﻿<generic:ThemeSelectorView x:Class="Dhgms.Whipstaff.Showcase.Desktop.View.ThemeSelector"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vw="clr-namespace:Dhgms.Whipstaff.ShowCase.View.Generic"
+        xmlns:generic="clr-namespace:Dhgms.Whipstaff.Showcase.Desktop.View.Generic"
         Title="ThemeSelector" Height="300" Width="300">
     <Grid>
         <ListView>
@@ -18,4 +18,4 @@
             </ListView.View>
         </ListView>
     </Grid>
-</vw:ThemeSelectorView>
+</generic:ThemeSelectorView>

@@ -28,6 +28,8 @@ namespace Dhgms.Whipstaff.Desktop.Controls
             }
 
             DesktopWindowHelper.InitialiseWindow(this);
+
+            this.ViewModel = viewModel;
         }
 
         public PerMonitorDpiBehavior PerMonitorDpiBehavior { get; set; }

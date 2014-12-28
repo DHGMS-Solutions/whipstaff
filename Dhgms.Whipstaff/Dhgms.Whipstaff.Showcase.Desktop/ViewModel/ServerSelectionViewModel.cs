@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
-    using Dhgms.Whipstaff.Model.Info;
+    using System.Collections.Generic;
+
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
 
     using ReactiveUI;
 
@@ -22,6 +18,6 @@ namespace Dhgms.Whipstaff.ShowCase.ViewModel
 
         public IScreen HostScreen { get; protected set; }
 
-        public IList<Server> Servers { get; set; }
+        public IList<IServerViewModel> Servers { get; set; }
     }
 }

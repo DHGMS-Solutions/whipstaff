@@ -1,44 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
-    using System.ComponentModel;
+    using System;
+    using System.Reactive;
+    using System.Threading.Tasks;
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using Dhgms.Whipstaff.Model.ControlData.Ribbon;
-    using Dhgms.Whipstaff.Model.ControlData.SystemNotificationArea;
-    using Dhgms.Whipstaff.ShowCase.Model;
+    using Dhgms.Whipstaff.Showcase.Desktop.Model;
 
     using ReactiveUI;
-    using ReactiveUI.Xaml;
 
-    public class SystemNotificationAreaViewModel : ReactiveObject, Whipstaff.ViewModel.ISystemNotificationAreaViewModel, IRoutableViewModel
+    public class SystemNotificationAreaViewModel : ReactiveObject /*ISystemNotificationAreaViewModel,*/ //IRoutableViewModel
     {
-        private readonly object lockingObject;
-
         private static ContextMenu contextMenu;
-
-        private ReactiveCommand showApplicationCommand;
-
-        private ReactiveCommand exitApplicationCommand;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemNotificationAreaViewModel"/> class.
         /// </summary>
         public SystemNotificationAreaViewModel()
         {
-            lockingObject = new object();
             this.IconFileUri = "pack://application:,,,/Resource/Icon/sna.ico";
+
+            this.ShowApplicationCommand = ReactiveCommand.CreateAsyncTask(async _ => await OnShowApplication());
+
+            this.ExitApplicationCommand = ReactiveCommand.CreateAsyncTask(async _ => await OnExitApplication());
         }
 
-        public string UrlPathSegment { get; private set; }
+        private Task<Unit> OnShowApplication()
+        {
+            throw new NotImplementedException();
+        }
 
-        public IScreen HostScreen { get; private set; }
+        //public string UrlPathSegment { get; private set; }
+
+        //public IScreen HostScreen { get; private set; }
 
         public ICommand DoubleClick
         {
@@ -52,20 +47,7 @@ namespace Dhgms.Whipstaff.ShowCase.ViewModel
         {
             get
             {
-                if (contextMenu == null)
-                {
-                    lock (lockingObject)
-                    {
-                        LoadContextMenu();
-                    }
-                }
-
                 return contextMenu;
-            }
-
-            set
-            {
-                throw new NotImplementedException();
             }
         }
 
@@ -80,43 +62,26 @@ namespace Dhgms.Whipstaff.ShowCase.ViewModel
             contextMenu.Items.Add(exit);
         }
 
-        protected ReactiveCommand ExitApplicationCommand
-        {
-            get
-            {
-                if (this.exitApplicationCommand == null)
-                {
-                    this.exitApplicationCommand = new ReactiveCommand();
-                    this.exitApplicationCommand.Subscribe(this.OnExitApplication);
-                }
+        protected ReactiveCommand<Unit> ExitApplicationCommand { get; set; }
 
-                return this.exitApplicationCommand;
-            }
+        protected ReactiveCommand<Unit> ShowApplicationCommand
+        {
+            get;
+            private set;
         }
 
-        private void OnExitApplication(object value)
+        private Task OnExitApplication()
         {
-            Application.ExitApplication();
+            //Application.ExitApplication();
+            throw new NotImplementedException();
         }
-
-        protected ReactiveCommand ShowApplicationCommand
+        /*
+        private async Task OnShowApplication()
         {
-            get
-            {
-                if (this.showApplicationCommand == null)
-                {
-                    this.showApplicationCommand = new ReactiveCommand();
-                    this.showApplicationCommand.Subscribe(this.OnShowApplication);
-                }
-
-                return this.showApplicationCommand;
-            }
+            //Application.ShowApplicationWindows();
+            throw new NotImplementedException();
         }
-
-        private void OnShowApplication(object value)
-        {
-            Application.ShowApplicationWindows();
-        }
+         * */
 
         public string IconFileUri { get; private set; }
 

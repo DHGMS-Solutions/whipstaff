@@ -1,6 +1,9 @@
-﻿namespace Dhgms.Whipstaff.ShowCase.ViewModel
+﻿namespace Dhgms.Whipstaff.Showcase.Desktop.ViewModel
 {
     using System.Collections.Generic;
+
+    using Dhgms.Whipstaff.Showcase.Desktop.ViewModel.Interface;
+
     using ReactiveUI;
 
     /// <summary>
