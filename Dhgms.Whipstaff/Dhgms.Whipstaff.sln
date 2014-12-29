@@ -21,10 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{17BB5D16
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Tests", "Dhgms.Whipstaff.Tests\Dhgms.Whipstaff.Tests.csproj", "{F34C5603-AAD6-4390-8E6F-015608CB88AC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Third Party", "Third Party", "{2D853942-AD4E-4AE4-8CFF-92FE767AC7CD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotifyIconWpf", "..\ThirdParty\wpf-notifyicon\NotifyIconWpf\NotifyIconWpf.csproj", "{7AC63864-7638-41C4-969C-D3197EF2BED9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Showcase.Desktop", "Dhgms.Whipstaff.Showcase.Desktop\Dhgms.Whipstaff.Showcase.Desktop.csproj", "{B2D54242-533A-48A9-B963-961AEBDF4FCF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dhgms.Whipstaff.Showcase.Common", "Dhgms.Whipstaff.Showcase.Common\Dhgms.Whipstaff.Showcase.Common.csproj", "{7AB86FED-EDF7-4D2D-A979-77A1E59DF003}"
@@ -50,7 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B9EDB9
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 12
+		SccNumberOfProjects = 11
 		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
 		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs01
 		SccLocalPath0 = .
@@ -66,33 +62,29 @@ Global
 		SccProjectTopLevelParentUniqueName3 = Dhgms.Whipstaff.sln
 		SccProjectName3 = Dhgms.Whipstaff.Tests
 		SccLocalPath3 = Dhgms.Whipstaff.Tests
-		SccProjectUniqueName4 = ..\\ThirdParty\\wpf-notifyicon\\NotifyIconWpf\\NotifyIconWpf.csproj
+		SccProjectUniqueName4 = Dhgms.Whipstaff.Showcase.Desktop\\Dhgms.Whipstaff.Showcase.Desktop.csproj
 		SccProjectTopLevelParentUniqueName4 = Dhgms.Whipstaff.sln
-		SccProjectName4 = ../ThirdParty/wpf-notifyicon/NotifyIconWpf
-		SccLocalPath4 = ..\\ThirdParty\\wpf-notifyicon\\NotifyIconWpf
-		SccProjectUniqueName5 = Dhgms.Whipstaff.Showcase.Desktop\\Dhgms.Whipstaff.Showcase.Desktop.csproj
+		SccProjectName4 = Dhgms.Whipstaff.Showcase.Desktop
+		SccLocalPath4 = Dhgms.Whipstaff.Showcase.Desktop
+		SccProjectUniqueName5 = Dhgms.Whipstaff.Showcase.Common\\Dhgms.Whipstaff.Showcase.Common.csproj
 		SccProjectTopLevelParentUniqueName5 = Dhgms.Whipstaff.sln
-		SccProjectName5 = Dhgms.Whipstaff.Showcase.Desktop
-		SccLocalPath5 = Dhgms.Whipstaff.Showcase.Desktop
-		SccProjectUniqueName6 = Dhgms.Whipstaff.Showcase.Common\\Dhgms.Whipstaff.Showcase.Common.csproj
-		SccProjectTopLevelParentUniqueName6 = Dhgms.Whipstaff.sln
-		SccProjectName6 = Dhgms.Whipstaff.Showcase.Common
-		SccLocalPath6 = Dhgms.Whipstaff.Showcase.Common
-		SccProjectUniqueName7 = Dhgms.Whipstaff.Desktop\\Dhgms.Whipstaff.Desktop.csproj
-		SccProjectName7 = Dhgms.Whipstaff.Desktop
-		SccLocalPath7 = Dhgms.Whipstaff.Desktop
-		SccProjectUniqueName8 = Dhgms.Whipstaff.WindowsStore\\Dhgms.Whipstaff.WindowsStore.csproj
-		SccProjectName8 = Dhgms.Whipstaff.WindowsStore
-		SccLocalPath8 = Dhgms.Whipstaff.WindowsStore
-		SccProjectUniqueName9 = Dhgms.Whipstaff.WindowsPhone\\Dhgms.Whipstaff.WindowsPhone.csproj
-		SccProjectName9 = Dhgms.Whipstaff.WindowsPhone
-		SccLocalPath9 = Dhgms.Whipstaff.WindowsPhone
-		SccProjectUniqueName10 = Dhgms.Whipstaff.Core\\Dhgms.Whipstaff.Core.csproj
-		SccProjectName10 = Dhgms.Whipstaff.Core
-		SccLocalPath10 = Dhgms.Whipstaff.Core
-		SccProjectUniqueName11 = Dhgms.Whipstaff.Future\\Dhgms.Whipstaff.Future.csproj
-		SccProjectName11 = Dhgms.Whipstaff.Future
-		SccLocalPath11 = Dhgms.Whipstaff.Future
+		SccProjectName5 = Dhgms.Whipstaff.Showcase.Common
+		SccLocalPath5 = Dhgms.Whipstaff.Showcase.Common
+		SccProjectUniqueName6 = Dhgms.Whipstaff.Desktop\\Dhgms.Whipstaff.Desktop.csproj
+		SccProjectName6 = Dhgms.Whipstaff.Desktop
+		SccLocalPath6 = Dhgms.Whipstaff.Desktop
+		SccProjectUniqueName7 = Dhgms.Whipstaff.WindowsStore\\Dhgms.Whipstaff.WindowsStore.csproj
+		SccProjectName7 = Dhgms.Whipstaff.WindowsStore
+		SccLocalPath7 = Dhgms.Whipstaff.WindowsStore
+		SccProjectUniqueName8 = Dhgms.Whipstaff.WindowsPhone\\Dhgms.Whipstaff.WindowsPhone.csproj
+		SccProjectName8 = Dhgms.Whipstaff.WindowsPhone
+		SccLocalPath8 = Dhgms.Whipstaff.WindowsPhone
+		SccProjectUniqueName9 = Dhgms.Whipstaff.Core\\Dhgms.Whipstaff.Core.csproj
+		SccProjectName9 = Dhgms.Whipstaff.Core
+		SccLocalPath9 = Dhgms.Whipstaff.Core
+		SccProjectUniqueName10 = Dhgms.Whipstaff.Future\\Dhgms.Whipstaff.Future.csproj
+		SccProjectName10 = Dhgms.Whipstaff.Future
+		SccLocalPath10 = Dhgms.Whipstaff.Future
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -145,19 +137,6 @@ Global
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC}.Release|x64.ActiveCfg = Release|Any CPU
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC}.Release|x86.ActiveCfg = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|ARM.ActiveCfg = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|x64.ActiveCfg = Release|Any CPU
-		{7AC63864-7638-41C4-969C-D3197EF2BED9}.Release|x86.ActiveCfg = Release|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -268,7 +247,6 @@ Global
 		{2F107A4F-0373-4289-AADB-DB195F3710EA} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{08D9CC10-DEAE-4DFA-998C-3C3BD620A418} = {BDA920A6-4BED-4FEA-BA67-99414BDCF746}
 		{F34C5603-AAD6-4390-8E6F-015608CB88AC} = {17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}
-		{7AC63864-7638-41C4-969C-D3197EF2BED9} = {2D853942-AD4E-4AE4-8CFF-92FE767AC7CD}
 		{B2D54242-533A-48A9-B963-961AEBDF4FCF} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
 		{7AB86FED-EDF7-4D2D-A979-77A1E59DF003} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
 	EndGlobalSection

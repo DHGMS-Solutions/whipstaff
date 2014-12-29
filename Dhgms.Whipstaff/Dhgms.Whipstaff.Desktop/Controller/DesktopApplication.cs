@@ -13,11 +13,13 @@ namespace Dhgms.Whipstaff.Desktop.Controller
     using System.Diagnostics;
     using System.Linq;
     using System.Net.Mime;
+    using System.Threading;
     using System.Windows;
     using System.Windows.Forms;
 
     using Dhgms.Whipstaff.Core.Model;
     using Dhgms.Whipstaff.Model.SingleInstance;
+    using Dhgms.Whipstaff.Showcase.Desktop.Exceptions;
 
     using Microsoft.Win32;
 
@@ -99,7 +101,7 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         {
             if (applicationId.Equals(Guid.Empty))
             {
-                throw new ArgumentException("Application GUID should not be an empty value", "applicationId");
+                throw new ArgumentException(Desktop.Properties.Resources.ApplicationGuidShouldNotBeAnEmptyValue, "applicationId");
             }
 
             this.applicationId = applicationId;
@@ -161,19 +163,37 @@ namespace Dhgms.Whipstaff.Desktop.Controller
                 this.manager = SingleInstanceManager.Initialize(this.GetSingleInstanceManagerSetup());
             }
 
-
-
-            TSplashScreenClass splash = null;
+            TSplashScreenClass splashScreenView = null;
+            //TSplashScreenViewModel splashScreenViewModel = null;
+            bool? initialised = null;
             if (e.Args.All(x => !x.Equals("/nosplash", StringComparison.OrdinalIgnoreCase)))
             {
-                splash = GetSplashScreenView();
-                splash.Show();
+                var splashScreenViewAndViewModel = this.GetSplashScreenAndViewModel();
+                splashScreenView = splashScreenViewAndViewModel.Item1;
+                //splashScreenViewModel = splashScreenViewAndViewModel.Item2;
+
+                if (splashScreenView == null)
+                {
+                    throw new NoSplashScreenException();
+                }
+
+                initialised = splashScreenView.ShowDialog();
             }
 
+#warning need to add a way of initialising with /nosplash
+
+            this.MainWindow = initialised.HasValue && initialised.Value ? this.MainView : null;
+            if (this.MainWindow != null)
+            {
+                this.MainWindow.Show();
+            }
+            
+
+            /*
             bool initialised;
             try
             {
-                initialised = this.DoInitialisation();
+                initialised = this.DoInitialisation(splashScreenViewModel);
             }
             catch (Exception ex)
             {
@@ -181,29 +201,15 @@ namespace Dhgms.Whipstaff.Desktop.Controller
                 this.Log().FatalException("Program Initialisation Failed", ex);
             }
 
-            if (splash != null)
+            if (splashScreenView != null)
             {
-                splash.Close();
+                splashScreenView.Close();
             }
 
-            this.MainWindow = initialised ? this.MainView : null;
-            if (this.MainWindow != null)
-            {
-                this.MainWindow.Show();
-            }
-
-
-            // this is done here so random windows don't appear
-            // one at a time while the splash screen is up
-            /*
-            foreach (var win in this.mainWindows)
-            {
-                win.Show();
-            }
              * */
         }
 
-        protected abstract TSplashScreenClass GetSplashScreenView();
+        protected abstract Tuple<TSplashScreenClass, TSplashScreenViewModel> GetSplashScreenAndViewModel();
 
         /// <summary>
         /// Code for relaunching a process under UAC
@@ -231,8 +237,11 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         /// <summary>
         /// Performs initialization.
         /// </summary>
-        protected bool DoInitialisation()
+        /// <param name="splashScreenViewModel"></param>
+        protected bool DoInitialisation(TSplashScreenViewModel splashScreenViewModel)
         {
+            Thread.Sleep(10000);
+
             ShowDeveloperConsole();
 
             new Model.Helper.SystemIntegrity().CheckOk();

@@ -38,6 +38,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Hardcodet.NotifyIcon.Wpf.1.0.5\lib\net45\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MahApps.Metro.1.0.0.0\lib\net45\MahApps.Metro.dll</HintPath>
@@ -119,6 +123,7 @@
     <Compile Include="Controls\WhipstaffMetroNavigationWindow.cs" />
     <Compile Include="Controls\WhipstaffMetroWindow.cs" />
     <Compile Include="DisableSystemDpiAwareness.cs" />
+    <Compile Include="Exceptions\NoSplashScreenException.cs" />
     <Compile Include="FeatureUsageTracking.cs" />
     <Compile Include="Helpers\CommandLineHelper.cs" />
     <Compile Include="Helpers\DesktopWindowHelper.cs" />
@@ -240,6 +245,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -256,10 +262,6 @@
     <Resource Include="Resources\fontawesome-webfont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ThirdParty\wpf-notifyicon\NotifyIconWpf\NotifyIconWpf.csproj">
-      <Project>{7ac63864-7638-41c4-969c-d3197ef2bed9}</Project>
-      <Name>NotifyIconWpf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dhgms.Whipstaff.Core\Dhgms.Whipstaff.Core.csproj">
       <Project>{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}</Project>
       <Name>Dhgms.Whipstaff.Core</Name>

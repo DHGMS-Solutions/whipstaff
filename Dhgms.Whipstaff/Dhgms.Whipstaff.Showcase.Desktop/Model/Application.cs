@@ -12,7 +12,7 @@
     /// </summary>
     public class Application : Dhgms.Whipstaff.Desktop.Controller.DesktopApplication<SplashScreen, SplashScreenViewModel, MainWindow, IMainWindowViewModel /*SystemNotificationAreaViewModel*/>
     {
-        private DeveloperConsoleView developerConsoleView;
+        private DeveloperConsoleView _developerConsoleView;
         //private static TeamView teamView;
 
         //private static BuildingView buildingView;
@@ -23,7 +23,6 @@
         protected Application()
             : base(new Guid("4758C856-FD05-4D38-84C6-1FE91B669041")/*, false, false, false, false*/)
         {
-
         }
 
         //public static void ShowTeamView()
@@ -148,9 +147,17 @@
         ///// <param name="args">
         ///// Collection of arguments
         ///// </param>
-        protected override SplashScreen GetSplashScreenView()
+
+        protected override Tuple<SplashScreen, SplashScreenViewModel> GetSplashScreenAndViewModel()
         {
-            return new SplashScreen(new SplashScreenViewModel());
+            var viewModel = new SplashScreenViewModel(ProgramInitialisationAction);
+            var view = new SplashScreen(viewModel);
+
+            return new Tuple<SplashScreen, SplashScreenViewModel>(view, viewModel);
+        }
+
+        private void ProgramInitialisationAction()
+        {
         }
 
         protected override void OnRemoteInstanceCommandRecieved(string[] args)
@@ -164,8 +171,8 @@
 
         protected override void ShowDeveloperConsole()
         {
-            this.developerConsoleView = new DeveloperConsoleView(new DeveloperConsoleViewModel());
-            this.developerConsoleView.Show();
+            this._developerConsoleView = new DeveloperConsoleView(new DeveloperConsoleViewModel());
+            this._developerConsoleView.Show();
         }
     }
 }
