@@ -2,6 +2,8 @@
 
 ## Introduction
 
+**This is massively out of date - I'm in progress of sorting it out**
+
 Whipstaff is a PoC library for designing a common UI library leveraging WPF, ReactiveUI and DHGMS Data Manager. It is written in C#
 
 Whipstaff is a proof of concept around designing a common way of loading and handling a UI application (much like Job Helper is designed around batch processes). The concept is aimed towards enterprise development and reducing the amount of code reproduced whilst ensuring a reasonable amount of power and functionality in terms of group policy, system integrity checks, operating system versioning, etc.
