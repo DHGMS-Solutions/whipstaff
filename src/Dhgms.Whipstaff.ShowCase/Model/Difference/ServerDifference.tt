@@ -1,0 +1,28 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="$(SolutionDir)\..\..\..\nucleotide\main\Dhgms.Nucleotide\bin\$(ConfigurationName)\Dhgms.Nucleotide.dll" #>
+<#@ assembly name="$(SolutionDir)\Dhgms.Whipstaff.CodeGeneration\bin\$(ConfigurationName)\Dhgms.Whipstaff.CodeGeneration.dll" #>
+<#
+
+Dhgms.Nucleotide.Model.Info.PropertyInfo.Base[] properties = new Dhgms.Whipstaff.CodeGeneration.Server().Properties;
+
+Dhgms.Nucleotide.Model.Helper.Difference classGen = new Dhgms.Nucleotide.Model.Helper.Difference();
+
+string rootNamespace = "Dhgms.Whipstaff";
+string className = "Server";
+string description = "Represents a server";
+#>
+<#=classGen.Generate(
+	rootNamespace,
+	null,
+	className,
+	description,
+	properties,
+	null,
+	null
+	)
+#>

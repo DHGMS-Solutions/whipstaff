@@ -1,9 +1,0 @@
-﻿<wndw:BaseDiagnosticView x:Class="Dhgms.Whipstaff.Desktop.View.Wndw.DiagnosticView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:wndw="clr-namespace:Dhgms.Whipstaff.Desktop.View.Wndw"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <ListView Name="DiagnosticInfo" />
-    </Grid>
-</wndw:BaseDiagnosticView>

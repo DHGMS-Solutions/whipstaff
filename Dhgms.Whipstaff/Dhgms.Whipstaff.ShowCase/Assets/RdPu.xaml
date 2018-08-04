@@ -1,9 +1,0 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <!-- taken from http://colorbrewer2.org/ BuGn color set -->
-    <SolidColorBrush x:Key="PaletteColor1" Color="#FFFEEBE2" />
-    <SolidColorBrush x:Key="PaletteColor2" Color="#FFFBB4B9" />
-    <SolidColorBrush x:Key="PaletteColor3" Color="#FFF768A1" />
-    <SolidColorBrush x:Key="PaletteColor4" Color="#FFC51B8A" />
-    <SolidColorBrush x:Key="PaletteColor5" Color="#FF7A0177" />
-</ResourceDictionary>

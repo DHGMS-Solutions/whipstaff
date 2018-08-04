@@ -1,0 +1,9 @@
+﻿<Window x:Class="Dhgms.Whipstaff.Desktop.View.Wndw.SystemNotificationArea"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:taskbarNotification="clr-namespace:Hardcodet.Wpf.TaskbarNotification;assembly=Hardcodet.Wpf.TaskbarNotification"
+        Title="SystemNotificationArea" Height="1" Width="1">
+    <Grid>
+        <taskbarNotification:TaskbarIcon IconSource="{Binding IconFileUri}" DoubleClickCommand="{Binding DoubleClick}" ToolTipText="{Binding ToolTipText}" ContextMenu="{Binding ContextMenu}" />
+    </Grid>
+</Window>
