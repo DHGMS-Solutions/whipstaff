@@ -15,6 +15,6 @@
         /// <summary>
         /// Gets or sets the application command.
         /// </summary>
-        public IReactiveCommand ApplicationCommand { get; set; }
+        public ReactiveCommand ApplicationCommand { get; set; }
     }
 }

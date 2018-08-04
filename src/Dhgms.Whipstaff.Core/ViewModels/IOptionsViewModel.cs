@@ -1,4 +1,6 @@
-﻿namespace Dhgms.Whipstaff.Core.ViewModels
+﻿using System.Reactive;
+
+namespace Dhgms.Whipstaff.Core.ViewModels
 {
     using ReactiveUI;
 
@@ -10,11 +12,11 @@
         /// <summary>
         /// Gets the command handler for saving changes
         /// </summary>
-        ReactiveCommand<object> SaveChanges { get; }
+        ReactiveCommand<Unit, Unit> SaveChanges { get; }
 
         /// <summary>
         /// Gets the command handler for canceling changes
         /// </summary>
-        ReactiveCommand<object> CancelChanges { get; }
+        ReactiveCommand<Unit, Unit> CancelChanges { get; }
     }
 }

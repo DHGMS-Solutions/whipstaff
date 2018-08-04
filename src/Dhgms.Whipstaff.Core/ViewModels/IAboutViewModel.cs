@@ -1,4 +1,6 @@
-﻿namespace Dhgms.Whipstaff.Core.ViewModels
+﻿using System.Reactive;
+
+namespace Dhgms.Whipstaff.Core.ViewModels
 {
     using System.Collections.Generic;
     using System.Reflection;
@@ -38,6 +40,6 @@
         /// <summary>
         /// Gets the Close Window Command
         /// </summary>
-        ReactiveCommand<object> CloseWindow { get; }
+        ReactiveCommand<Unit, Unit> CloseWindow { get; }
     }
 }

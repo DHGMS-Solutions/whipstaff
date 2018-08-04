@@ -1,137 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C16CCA0-EBFD-4098-9000-E0B064B1EC38}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dhgms.Whipstaff.Core</RootNamespace>
-    <AssemblyName>Dhgms.Whipstaff.Core</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
+    <TargetFrameworks>netcoreapp2.0;netstandard2.0</TargetFrameworks>
+    <Version>0.0.1</Version>
+    <Authors>DHGMSSolutions,dpvreony</Authors>
+    <Company>DHGMS Solutions</Company>
+    <Product>Whipstaff</Product>
+    <Copyright>Copyright 2004-2018. All Rights Reserved</Copyright>
+    <PackageProjectUrl>https://github.com/dhgms-solutions/whipstaff</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dhgms-solutions/whipstaff</RepositoryUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/dhgms-solutions/whipstaff/master/license</PackageLicenseUrl>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>True</DebugSymbols>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="ViewModels\Controls\" />
-    <Folder Include="ViewModels\Windows\" />
-    <Folder Include="Views\Controls\" />
-    <Folder Include="Views\Windows\Generic\" />
+    <PackageReference Include="ReactiveUI" Version="8.3.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="Exceptions\ApplicationCompatabilityModeException.cs" />
-    <Compile Include="Exceptions\ApplicationInstanceAlreadyExistsException.cs" />
-    <Compile Include="Exceptions\OperatingSystem\LessThanMinimumVersion.cs" />
-    <Compile Include="Exceptions\Security\AntiSpyware\NotFound.cs" />
-    <Compile Include="Exceptions\Security\AntiSpyware\UnexpectedProductState.cs" />
-    <Compile Include="Exceptions\Security\AntiVirus\NotFound.cs" />
-    <Compile Include="Exceptions\Security\AntiVirus\UnexpectedProductState.cs" />
-    <Compile Include="Exceptions\Security\Firewall\NotFound.cs" />
-    <Compile Include="Exceptions\Security\Firewall\UnexpectedProductState.cs" />
-    <Compile Include="Exceptions\Security\TerminalServerSessionNotAllowed.cs" />
-    <Compile Include="Helpers\ViewHelpers.cs" />
-    <Compile Include="Helpers\ViewModelHelpers.cs" />
-    <Compile Include="Model\CommandLineArguments.cs" />
-    <Compile Include="Model\FontAwesome.cs" />
-    <Compile Include="Model\HResult.cs" />
-    <Compile Include="Model\IArgumentsHandlerInvoker.cs" />
-    <Compile Include="Model\KeyboardMapping.cs" />
-    <Compile Include="Model\OperatingSystemFeatureSet.cs" />
-    <Compile Include="Model\SecurityProvider.cs" />
-    <Compile Include="Model\SecurityProviderHealth.cs" />
-    <Compile Include="Model\ValidationDetails.cs" />
-    <Compile Include="Model\ValidationIndicator.cs" />
-    <Compile Include="Model\VersionHistory.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\IAboutViewModel.cs" />
-    <Compile Include="ViewModels\IChangeLogViewModel.cs" />
-    <Compile Include="ViewModels\IClosableViewModel.cs" />
-    <Compile Include="ViewModels\IDiagnosticViewModel.cs" />
-    <Compile Include="ViewModels\IFeatureUsageTracking.cs" />
-    <Compile Include="ViewModels\IKeyboardViewModel.cs" />
-    <Compile Include="ViewModels\ILoggingConsoleViewModel.cs" />
-    <Compile Include="ViewModels\IMainRibbonWindowViewModel.cs" />
-    <Compile Include="ViewModels\IOptionsViewModel.cs" />
-    <Compile Include="ViewModels\IPermissionsListViewModel.cs" />
-    <Compile Include="ViewModels\ISavableViewModel.cs" />
-    <Compile Include="ViewModels\ISplashScreenViewModel.cs" />
-    <Compile Include="ViewModels\ViewModelBase.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Akavache">
-      <HintPath>..\packages\akavache.core.4.0.4\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.dll</HintPath>
-    </Reference>
-    <Reference Include="Akavache.Sqlite3">
-      <HintPath>..\packages\akavache.sqlite3.4.0.4\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI">
-      <HintPath>..\packages\reactiveui-core.6.2.1.1\lib\Portable-Net45+Win8+WP8+WPA81\ReactiveUI.dll</HintPath>
-    </Reference>
-    <Reference Include="Splat">
-      <HintPath>..\packages\Splat.1.5.1\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCL.raw">
-      <HintPath>..\packages\SQLitePCL.raw_basic.0.7.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCL.raw.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Core">
-      <HintPath>..\packages\Rx-Core.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Interfaces">
-      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.Linq">
-      <HintPath>..\packages\Rx-Linq.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Linq.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reactive.PlatformServices">
-      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.PlatformServices.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Dhgms.Whipstaff.Core.nuspec" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
