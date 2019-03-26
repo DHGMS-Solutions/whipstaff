@@ -1,4 +1,6 @@
-﻿namespace Dhgms.Whipstaff.Core.Model
+﻿using System.Reactive;
+
+namespace Dhgms.Whipstaff.Core.Model
 {
     using ReactiveUI;
 
@@ -15,6 +17,6 @@
         /// <summary>
         /// Gets or sets the application command.
         /// </summary>
-        public ReactiveCommand ApplicationCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ApplicationCommand { get; set; }
     }
 }
