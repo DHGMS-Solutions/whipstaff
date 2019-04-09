@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Dhgms.Whipstaff.Core\Dhgms.Whipstaff.Core.csproj" />
+  </ItemGroup>
+
 </Project>

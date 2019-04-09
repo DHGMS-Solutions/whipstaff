@@ -94,5 +94,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dhgms.Whipstaff.Wpf\Dhgms.Whipstaff.Wpf.csproj">
+      <Project>{953ccae5-cc83-4ae1-aa9a-8ee3b2f49182}</Project>
+      <Name>Dhgms.Whipstaff.Wpf</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
