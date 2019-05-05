@@ -9,6 +9,8 @@ namespace Dhgms.Whipstaff.Core.Model
     /// </summary>
     public class KeyboardMapping
     {
+        public ModifierKeys KeyboardModifierKeys { get; set; }
+
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
