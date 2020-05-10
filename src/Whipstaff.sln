@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4F08881D-DEEA-4B5A-AE6E-6D5A0E3A8196}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CodeGeneration", "CodeGeneration", "{BDA920A6-4BED-4FEA-BA67-99414BDCF746}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{17BB5D16-7C33-4B92-81B7-CBDD4DD7364A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Showcase", "Showcase", "{C30E074D-E642-4E96-AEE7-8CE404C79370}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Uwp", "Uwp", "{CC314E02-8ACD-425A-8096-F36301F7809A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xamarin", "Xamarin", "{EAA8CE1A-6325-4C25-A76F-0AC203EC7DBE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Uno", "Uno", "{7405D4E8-625A-4668-AA16-6EEE0E034B9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wpf", "Wpf", "{9769A1BF-F883-460E-BC7F-B1E882E7B9AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "IntegrationTests", "{55EDB8A8-0E41-4D6D-9919-D69173400FC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Whipstaff.Wpf", "Whipstaff.Wpf\Whipstaff.Wpf.csproj", "{3BA72589-4FB9-4E4C-B1DA-284F65BC636A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whipstaff.UnitTests", "Whipstaff.UnitTests\Whipstaff.UnitTests.csproj", "{7D2DE25F-6B4D-46C7-8761-6867DAFB7850}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "docfx_project", "docfx_project\docfx_project.csproj", "{28D7CE94-29F3-4218-860C-98A27587CCF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BA72589-4FB9-4E4C-B1DA-284F65BC636A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA72589-4FB9-4E4C-B1DA-284F65BC636A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA72589-4FB9-4E4C-B1DA-284F65BC636A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA72589-4FB9-4E4C-B1DA-284F65BC636A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2DE25F-6B4D-46C7-8761-6867DAFB7850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2DE25F-6B4D-46C7-8761-6867DAFB7850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2DE25F-6B4D-46C7-8761-6867DAFB7850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2DE25F-6B4D-46C7-8761-6867DAFB7850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28D7CE94-29F3-4218-860C-98A27587CCF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28D7CE94-29F3-4218-860C-98A27587CCF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28D7CE94-29F3-4218-860C-98A27587CCF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28D7CE94-29F3-4218-860C-98A27587CCF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CC314E02-8ACD-425A-8096-F36301F7809A} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{EAA8CE1A-6325-4C25-A76F-0AC203EC7DBE} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{7405D4E8-625A-4668-AA16-6EEE0E034B9F} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+		{9769A1BF-F883-460E-BC7F-B1E882E7B9AA} = {C30E074D-E642-4E96-AEE7-8CE404C79370}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6E01417-D1FA-4499-8595-6DB964C3B2AB}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Dhgms.Whipstaff.vsmdi
+	EndGlobalSection
+EndGlobal

@@ -1,16 +1,13 @@
 //////////////////////////////////////////////////////////////////////
-// MODULES
+// ADDINS
 //////////////////////////////////////////////////////////////////////
 #module "nuget:?package=Cake.DotNetTool.Module"
 
-//////////////////////////////////////////////////////////////////////
-// ADDINS
-//////////////////////////////////////////////////////////////////////
-
-//#addin "nuget:?package=Cake.FileHelpers&version=3.0.0"
+#addin "nuget:?package=Cake.DocFx&version=0.11.0"
+//#addin "nuget:?package=Cake.FileHelpers&version=1.0.4"
 #addin "nuget:?package=Cake.Coveralls&version=0.9.0"
-//#addin "nuget:?package=Cake.PinNuGetDependency&version=3.0.1"
-//#addin "nuget:?package=Cake.Powershell&version=0.4.5"
+//#addin "nuget:?package=Cake.PinNuGetDependency&version=1.0.0"
+//#addin "nuget:?package=Cake.Powershell&version=0.3.5"
 //#addin "nuget:?package=Cake.Sonar&version=1.0.4"
 
 //////////////////////////////////////////////////////////////////////
@@ -26,6 +23,11 @@
 #tool "nuget:?package=GitVersion.CommandLine&version=3.6.5"
 #tool "nuget:?package=MSBuild.SonarQube.Runner.Tool"
 #tool "dotnet:?package=dotnet-sonarscanner&version=4.4.2"
+#tool "nuget:?package=docfx.console&version=2.40.5"
+#tool "dotnet:?package=dotMorten.OmdGenerator&version=1.1.2"
+#tool "dotnet:?package=ConfigValidate&version=1.0.0&global"
+#tool "dotnet:?package=dotnet-outdated&version=2.7.0&global"
+#tool "dotnet:?package=snitch&global"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -45,33 +47,31 @@ if (string.IsNullOrWhiteSpace(target))
 var treatWarningsAsErrors = false;
 
 // Build configuration
-var githubOwner = "dhgms-solutions";
-var githubRepository = "nlogtargetstextwriter";
-var githubUrl = string.Format("https://github.com/{0}/{1}", githubOwner, githubRepository);
-var solutionToBuild = "./src/NLog.Targets.TextWriter.sln";
-
 var local = BuildSystem.IsLocalBuild;
 var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
-var isRepository = StringComparer.OrdinalIgnoreCase.Equals(githubOwner + "/" + githubRepository, AppVeyor.Environment.Repository.Name);
+var isRepository = StringComparer.OrdinalIgnoreCase.Equals("dpvreony/whipstaff", AppVeyor.Environment.Repository.Name);
 
 var isDevelopBranch = StringComparer.OrdinalIgnoreCase.Equals("develop", AppVeyor.Environment.Repository.Branch);
 var isReleaseBranch = StringComparer.OrdinalIgnoreCase.Equals("master", AppVeyor.Environment.Repository.Branch);
 var isTagged = AppVeyor.Environment.Repository.Tag.IsTag;
-var unitTestProjectFilePath = "./src/NLog.Targets.TextWriter.UnitTests/NLog.Targets.TextWriter.UnitTests.csproj";
+var unitTestProjectFilePath = "./src/Whipstaff.UnitTests/Dhgms.AspNetCoreContrib.UnitTests.csproj";
 
+var githubOwner = "dpvreony";
+var githubRepository = "whipstaff";
+var githubUrl = string.Format("https://github.com/{0}/{1}", githubOwner, githubRepository);
 
 var vsPath = VSWhereLatest();
 
 if (vsPath == null)
 {
-    throw new Exception("Unable to find Visual Studio");
+	throw new Exception("Unable to find Visual Studio");
 }
 Information("Visual Studio Path: " + vsPath);
 
 var msBuildPath = GetFiles(vsPath + "/**/msbuild.exe").FirstOrDefault();
 if (msBuildPath == null)
 {
-    throw new Exception("Unable to find MSBuild path");
+	throw new Exception("Unable to find MSBuild path");
 }
 Information("MSBuild Path: " + msBuildPath);
 
@@ -81,45 +81,42 @@ var androidHome = EnvironmentVariable("ANDROID_HOME");
 var gitVersion = GitVersion();
 var majorMinorPatch = gitVersion.MajorMinorPatch;
 var informationalVersion = gitVersion.InformationalVersion;
-var nugetVersion = gitVersion.NuGetVersionV2;
+var nugetVersion = gitVersion.NuGetVersion;
 var buildVersion = gitVersion.FullBuildMetaData;
 var assemblyVersion = gitVersion.Major + "." + gitVersion.Minor + ".0.0";
 var fileVersion = majorMinorPatch;
 var packageVersion = isReleaseBranch ? majorMinorPatch : informationalVersion;
-Information("nugetVersion: " + nugetVersion);
 Information("informationalVersion: " + informationalVersion);
 Information("assemblyVersion: " + assemblyVersion);
 Information("fileVersion: " + fileVersion);
-
+Information("packageVersion: " + packageVersion);
 
 // Artifacts
 var artifactDirectory = "./artifacts/";
 var testCoverageOutputFile = artifactDirectory + "OpenCover.xml";
-var packageWhitelist = new[] { "NLog.Targets.TextWriter" };
+var packageWhitelist = new[] { "Whipstaff.Wpf" };
 
 var runSonarQube = false;
 var sonarQubePreview = false;
 var sonarQubeLogin = EnvironmentVariable("sonarqubeLogin");
-var sonarqubeProjectKey = "nlogtargetstextwriter";
+var sonarqubeProjectKey = "Whipstaff";
 var sonarqubeOrganisationKey = "dpvreony-github";
 
 // sonarqube
-if (isRepository && !local && sonarQubeLogin != null)
-{
-    if (isPullRequest)
-    {
-        // currently doesn't happen as PR's don't pass secure env vars
+if (isRepository && !local && sonarQubeLogin != null) {
+    if (isPullRequest) { 
         sonarQubePreview = true;
         runSonarQube = true;
         Information("Sonar on PR " + AppVeyor.Environment.PullRequest.Number);
     }
-    else
-    {
+    else if (isReleaseBranch) {
         runSonarQube = true;
         Information("Sonar on branch " + AppVeyor.Environment.Repository.Branch);
     }
 }
 
+// open cover
+var openCoverArtifactDirectory = artifactDirectory + "/opencover/";
 
 // Define global marcos.
 Action Abort = () => { throw new Exception("a non-recoverable fatal error occurred."); };
@@ -129,7 +126,7 @@ Action Abort = () => { throw new Exception("a non-recoverable fatal error occurr
 ///////////////////////////////////////////////////////////////////////////////
 Setup(context =>
 {
-    Information("Building version {0}. (isTagged: {1})", informationalVersion, isTagged);
+    Information("Building version {0} of AspNetContrib. (isTagged: {1})", informationalVersion, isTagged);
 
     CreateDirectory(artifactDirectory);
 });
@@ -150,38 +147,32 @@ Task("BuildSolution")
 
         MSBuild(solution, new MSBuildSettings() {
                 ToolPath = msBuildPath,
-                ArgumentCustomization = args => args.Append("/bl:build.binlog /m")
+                ArgumentCustomization = args => args.Append("/bl:artifacts\\binlog\\build.binlog /m")
             }
-            .WithTarget("build")
-            .WithProperty("PackageOutputPath",  MakeAbsolute(Directory(artifactDirectory)).ToString().Quote())
+            .WithTarget("build;pack") 
+            .WithProperty("AndroidSdkDirectory", androidHome)
+            .WithProperty("PackageOutputPath",  MakeAbsolute(Directory(artifactDirectory + "/nuget/")).ToString().Quote())
             .WithProperty("TreatWarningsAsErrors", treatWarningsAsErrors.ToString())
             .SetConfiguration("Release")
             .WithProperty("Version", packageVersion)
             .WithProperty("AssemblyVersion", assemblyVersion)
             .WithProperty("FileVersion", fileVersion)
             .WithProperty("InformationalVersion", informationalVersion)
-            .WithProperty("PublishRepositoryUrl", "true")
-            .WithProperty("EmbedUntrackedSources", "true")
-            .WithProperty("AllowedOutputExtensionsInPackageBuildOutputFolder", "$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb")
             .SetVerbosity(Verbosity.Minimal)
             .SetNodeReuse(false));
     };
 
-	Information("Triggering Nuget Restore");
-	Information("Solution to Build: " + solutionToBuild);
-	Information("msBuildPath: " + msBuildPath);
-	Information("nuget version: " + nugetVersion.ToString());
     // Restore must be a separate step
-    MSBuild(solutionToBuild, new MSBuildSettings() {
+    MSBuild("./src/Whipstaff.sln", new MSBuildSettings() {
             ToolPath = msBuildPath,
-            ArgumentCustomization = args => args.Append("/bl:restore.binlog /m")
+            ArgumentCustomization = args => args.Append("/bl:artifacts\\binlog\\restore.binlog /m")
         }
         .WithTarget("restore")
+        .WithProperty("AndroidSdkDirectory", androidHome)
         .WithProperty("Version", nugetVersion.ToString())
         .SetVerbosity(Verbosity.Minimal));
     
-	Information("Triggering Build");
-    build(solutionToBuild);
+    build("./src/Whipstaff.sln");
 });
 
 // https://andrewlock.net/running-tests-with-dotnet-xunit-using-cake/
@@ -193,57 +184,52 @@ Task("RunUnitTests")
     .Does(() =>
 {
     var projectDirectory = new FilePath(unitTestProjectFilePath).GetDirectory();
-    var pdbDirectory = projectDirectory + "\\bin\\Debug\\netcoreapp2.0";
-
-    // workaround for https://github.com/xunit/xunit/issues/1573
-    // C:\Program Files\dotnet\shared\Microsoft.NETCore.App
-    var fxVersion = "2.0.5";
+	var pdbDirectory = projectDirectory + "\\bin\\Debug\\netcoreapp2.0";
 
 	Action<ICakeContext> testAction = tool => {
         tool.DotNetCoreTool(
                 projectPath: unitTestProjectFilePath,
                 command: "test",
-                arguments: "-- -noshadow -fxversion " + fxVersion + " -configuration Debug -diagnostics"
+                arguments: "-- -noshadow -configuration Debug -diagnostics"
             );
     };
 
     OpenCover(testAction,
         testCoverageOutputFile,
         new OpenCoverSettings {
-            //LogLevel = OpenCoverLogLevel.All,
-            MergeOutput = true,
-            Register = "user",
+			//LogLevel = OpenCoverLogLevel.All,
+			MergeOutput = true,
+			Register = "user",
             ReturnTargetCodeOffset = 0,
             ArgumentCustomization = args => args.Append("-coverbytest:*.UnitTests.dll").Append("-searchdirs:" + pdbDirectory).Append("-oldstyle"),
-            // working dir set to allow use of dotnet-xunit
-            WorkingDirectory = projectDirectory
+			// working dir set to allow use of dotnet-xunit
+			WorkingDirectory = projectDirectory
         }
-        .WithFilter("+[NLog*]*")
+        .WithFilter("+[Dhgms*]*")
         .ExcludeByAttribute("*.ExcludeFromCodeCoverage*")
         .ExcludeByFile("*/*Designer.cs")
         .ExcludeByFile("*/*.g.cs")
         .ExcludeByFile("*/*.g.i.cs"));
 
-    ReportGenerator(testCoverageOutputFile, artifactDirectory);
+    ReportGenerator(testCoverageOutputFile, openCoverArtifactDirectory);
 }).ReportError(exception =>
 {
     var apiApprovals = GetFiles("./**/ApiApprovalTests.*");
-    CopyFiles(apiApprovals, artifactDirectory);
+    CopyFiles(apiApprovals, openCoverArtifactDirectory);
 });
 
 Task("UploadTestCoverage")
     .WithCriteria(() => !local)
     .WithCriteria(() => isRepository)
-    .WithCriteria(() => !isPullRequest)
     .IsDependentOn("RunUnitTests")
     .Does(() =>
 {
     // Resolve the API key.
-    // pull requests can't currently get secure variables
     var token = EnvironmentVariable("COVERALLS_TOKEN");
     if (string.IsNullOrEmpty(token))
     {
-        throw new Exception("The COVERALLS_TOKEN environment variable is not defined.");
+		// pr's don't have the token for security reasons
+		return;
     }
 
     CoverallsIo(testCoverageOutputFile, new CoverallsIoSettings()
@@ -264,7 +250,7 @@ Task("SonarBegin")
   .Does(() => {
     var coverageFilePath = MakeAbsolute(new FilePath(testCoverageOutputFile)).FullPath;
     Information("Sonar: Test Coverage Output File: " + testCoverageOutputFile);
-    var arguments = "sonarscanner begin /k:\"" + sonarqubeProjectKey + "\" /v:\"" + nugetVersion + "\" /d:\"sonar.host.url=https://sonarcloud.io\" /d:\"sonar.organization=" + sonarqubeOrganisationKey + "\" /d:\"sonar.login=" + sonarQubeLogin + "\" /d:sonar.cs.opencover.reportsPaths=\"" + coverageFilePath + "\"";
+    var arguments = "sonarscanner begin /k:\"" + sonarqubeProjectKey + "\" /v:\"" + nugetVersion + "\" /d:\"sonar.host.url=https://sonarcloud.io\" /o:" + sonarqubeOrganisationKey + " /d:\"sonar.login=" + sonarQubeLogin + "\" /d:sonar.cs.opencover.reportsPaths=\"" + coverageFilePath + "\"";
 
     if (sonarQubePreview) {
         Information("Sonar: Running Sonar on PR " + AppVeyor.Environment.PullRequest.Number);
@@ -297,26 +283,78 @@ Task("Package")
     //.IsDependentOn("PinNuGetDependencies")
     .Does (() =>
 {
-    Information("Packaging");
+});
 
-    MSBuild(solutionToBuild, new MSBuildSettings() {
-            ToolPath = msBuildPath,
-            ArgumentCustomization = args => args.Append("/bl:pack.binlog /m")
-        }
-        .WithTarget("pack")
-        .WithProperty("PackageOutputPath",  MakeAbsolute(Directory(artifactDirectory)).ToString().Quote())
-        .WithProperty("TreatWarningsAsErrors", treatWarningsAsErrors.ToString())
-        .SetConfiguration("Release")
-        .WithProperty("Version", packageVersion)
-        .WithProperty("AssemblyVersion", assemblyVersion)
-        .WithProperty("FileVersion", fileVersion)
-        .WithProperty("InformationalVersion", informationalVersion)
-        .SetVerbosity(Verbosity.Minimal)
-        .SetNodeReuse(false));
+Task("ValidateConfiguration")
+    .IsDependentOn("BuildSolution")
+    .Does (() =>
+{
+	var directories = GetSubDirectories("./src/");
+	foreach (var dir in directories)
+	{
+		var validationSettings = new ProcessSettings
+		{
+			Arguments = "config-validate",
+			WorkingDirectory = dir
+		};
+		StartProcess("dotnet.exe", validationSettings);
+	}
+});
+
+Task("ListOutdatedPackages")
+    .IsDependentOn("BuildSolution")
+    .Does (() =>
+{
+	var dir = Directory("./src/");
+    CreateDirectory(artifactDirectory + "\\outdated");
+	var validationSettings = new ProcessSettings
+	{
+		Arguments = "outdated -o artifacts\\outdated\\outdated.json src",
+		//WorkingDirectory = dir
+	};
+	StartProcess("dotnet.exe", validationSettings);
+});
+
+Task("RunSnitchOnPackages")
+    .IsDependentOn("BuildSolution")
+    .Does (() =>
+{
+	var dir = Directory("./src/");
+	var snitchSettings = new ProcessSettings
+	{
+		WorkingDirectory = dir
+	};
+	StartProcess("snitch", snitchSettings);
+});
+
+Task("GenerateOmd")
+    .IsDependentOn("Sonar")
+    .Does (() =>
+{
+    CreateDirectory(artifactDirectory + "\\omd");
+    var omdSettings = new ProcessSettings{ Arguments = "/source=src /output=artifacts\\omd\\index.htm /format=html" };
+    StartProcess("tools\\generateomd.exe", omdSettings);
+});
+
+Task("CopyDocFx")
+    .IsDependentOn("BuildSolution")
+    .Does (() =>
+{
+// Copy the output of docfx to artifacts
+	var docfxArtifactDirectory = artifactDirectory + "docfx/";
+    CreateDirectory(docfxArtifactDirectory);
+    CopyDirectory(
+		"./src/docfx_project/_site/",
+		docfxArtifactDirectory);
 });
 
 Task("PublishPackages")
+    .IsDependentOn("CopyDocFx")
+    .IsDependentOn("ListOutdatedPackages")
+    .IsDependentOn("RunSnitchOnPackages")
+    //.IsDependentOn("ValidateConfiguration")
     .IsDependentOn("RunUnitTests")
+    .IsDependentOn("GenerateOmd")
     .IsDependentOn("Package")
     .WithCriteria(() => !local)
     .WithCriteria(() => !isPullRequest)
@@ -348,7 +386,7 @@ Task("PublishPackages")
     foreach(var package in packageWhitelist)
     {
         // only push the package which was created during this build run.
-        var packagePath = artifactDirectory + File(string.Concat(package, ".", nugetVersion, ".nupkg"));
+        var packagePath = artifactDirectory + "nuget/" + File(string.Concat(package, ".", nugetVersion, ".nupkg"));
 
         // Push the package.
         NuGetPush(packagePath, new NuGetPushSettings {
