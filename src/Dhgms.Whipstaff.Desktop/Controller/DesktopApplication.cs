@@ -92,7 +92,7 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         //private TJumpListHelper jumpList;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaTypeNames.Application"/> class. 
+        /// Initializes a new instance of the <see cref="MediaTypeNames.Application"/> class.
         /// </summary>
         /// <param name="applicationId">
         /// The application Id.
@@ -187,7 +187,7 @@ namespace Dhgms.Whipstaff.Desktop.Controller
             {
                 this.MainWindow.Show();
             }
-            
+
 
             /*
             bool initialised;
