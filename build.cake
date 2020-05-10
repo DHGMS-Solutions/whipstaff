@@ -54,7 +54,7 @@ var isRepository = StringComparer.OrdinalIgnoreCase.Equals("dpvreony/whipstaff",
 var isDevelopBranch = StringComparer.OrdinalIgnoreCase.Equals("develop", AppVeyor.Environment.Repository.Branch);
 var isReleaseBranch = StringComparer.OrdinalIgnoreCase.Equals("master", AppVeyor.Environment.Repository.Branch);
 var isTagged = AppVeyor.Environment.Repository.Tag.IsTag;
-var unitTestProjectFilePath = "./src/Whipstaff.UnitTests/Dhgms.AspNetCoreContrib.UnitTests.csproj";
+var unitTestProjectFilePath = "./src/Whipstaff.UnitTests/Whipstaff.UnitTests.csproj";
 
 var githubOwner = "dpvreony";
 var githubRepository = "whipstaff";
