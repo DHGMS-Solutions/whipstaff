@@ -9,6 +9,6 @@
         /// <summary>
         /// Gets or sets the collection of changes
         /// </summary>
-        ReactiveList<VersionHistory> Versions { get; set; }
+        DynamicData.SourceList<VersionHistory> Versions { get; set; }
     }
 }

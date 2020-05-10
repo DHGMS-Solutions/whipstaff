@@ -7,9 +7,6 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Dhgms.Whipstaff.Desktop.Features.GroupPolicyMonitoring;
-using Dhgms.Whipstaff.Desktop.Features.LaunchElevatedProcess;
-
 namespace Dhgms.Whipstaff.Desktop.Controller
 {
     using System;
@@ -91,12 +88,11 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         private Guid applicationId;
 
         private readonly bool monitorGroupPolicyRefresh;
-        private GroupPolicyMonitoringProcessManager groupPolicyMonitoringProcessManager;
 
         //private TJumpListHelper jumpList;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MediaTypeNames.Application"/> class. 
+        /// Initializes a new instance of the <see cref="MediaTypeNames.Application"/> class.
         /// </summary>
         /// <param name="applicationId">
         /// The application Id.
@@ -191,7 +187,7 @@ namespace Dhgms.Whipstaff.Desktop.Controller
             {
                 this.MainWindow.Show();
             }
-            
+
 
             /*
             bool initialised;
@@ -220,7 +216,22 @@ namespace Dhgms.Whipstaff.Desktop.Controller
         /// </summary>
         private static void DoRunAs(string[] arguments)
         {
-            LaunchElevatedProcessHelper.DoElevatedProcess(arguments);
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = System.Reflection.Assembly.GetEntryAssembly().CodeBase
+            };
+
+            var argumentsToPass = arguments != null && arguments.Length > 0 ? string.Join(" ", arguments) : null;
+            if (!string.IsNullOrWhiteSpace(argumentsToPass))
+            {
+                processStartInfo.Arguments = argumentsToPass;
+            }
+
+            processStartInfo.Verb = "runas";
+            processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            processStartInfo.UseShellExecute = true;
+
+            Process.Start(processStartInfo);
         }
 
         /// <summary>
@@ -256,8 +267,25 @@ namespace Dhgms.Whipstaff.Desktop.Controller
 
         private void DoGroupPolicyRefreshMonitoring()
         {
-            this.groupPolicyMonitoringProcessManager = new GroupPolicyMonitoringProcessManager();
-            this.groupPolicyMonitoringProcessManager.Run();
+            if (this.monitorGroupPolicyRefresh)
+            {
+                SystemEvents.UserPreferenceChanging += this.SystemEventsOnUserPreferenceChanging;
+            }
+        }
+
+        private void SystemEventsOnUserPreferenceChanging(object sender, UserPreferenceChangingEventArgs userPreferenceChangingEventArgs)
+        {
+            switch (userPreferenceChangingEventArgs.Category)
+            {
+                case UserPreferenceCategory.Policy:
+                    this.Log().Info("Group Policy Refresh Detected");
+                    this.OnGroupPolicyRefresh();
+                    break;
+            }
+        }
+
+        private void OnGroupPolicyRefresh()
+        {
         }
 
         /// <summary>

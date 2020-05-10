@@ -1,4 +1,6 @@
-﻿namespace Dhgms.Whipstaff.Core.Model
+﻿using System.Reactive;
+
+namespace Dhgms.Whipstaff.Core.Model
 {
     using ReactiveUI;
 
@@ -7,6 +9,8 @@
     /// </summary>
     public class KeyboardMapping
     {
+        public ModifierKeys KeyboardModifierKeys { get; set; }
+
         /// <summary>
         /// Gets or sets the description.
         /// </summary>
@@ -15,6 +19,6 @@
         /// <summary>
         /// Gets or sets the application command.
         /// </summary>
-        public ReactiveCommand ApplicationCommand { get; set; }
+        public ReactiveCommand<Unit, Unit> ApplicationCommand { get; set; }
     }
 }
