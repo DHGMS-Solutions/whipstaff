@@ -1,6 +1,8 @@
 <Project>  
   <PropertyGroup>
-    <Copyright>DPVreony and Contributors</Copyright>
+    <Company>DPVreony and Contributors</Company>
+	<StartYear>2012</StartYear>
+	<Copyright>© $(StartYear)-$([System.DateTime]::Now.Year) $(Company)</Copyright>
     <Product>Whipstaff ($(TargetFramework))</Product>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/dpvreony/whipstaff/</PackageProjectUrl>
@@ -39,10 +41,6 @@
 
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)..\LICENSE" Pack="true" PackagePath="LICENSE" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Nerdbank.GitVersioning" Version="2.3.151" PrivateAssets="all" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(IsTestProject)' != 'true' and '$(SourceLinkEnabled)' != 'false'">
