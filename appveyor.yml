@@ -18,7 +18,7 @@
   build_script:
     - ps: .\build.ps1
   artifacts:
-    - path: artifacts/*.nupkg
+    - path: artifacts/nuget/*.nupkg
     - path: '**/*.binlog'
   test: off
   on_failure:
@@ -48,7 +48,7 @@
   build_script:
     - ps: .\build.ps1
   artifacts:
-    - path: artifacts/*.nupkg
+    - path: artifacts/nuget/*.nupkg
     - path: '**/*.binlog'
   test: off
   on_failure:
